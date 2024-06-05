@@ -17,7 +17,7 @@
             </ul>
         </nav>
     </header>
-    <h2>Fil index</h2>
+    <h2>Fill index</h2>
       <ul>
         <li><a href="404.html">404.html</a></li>
         <li><a href="Adim.html">Adim.html</a></li>
