@@ -1,0 +1,1 @@
+"Vikoret är att om du kommer att kuna endera på sidan får du inte det"

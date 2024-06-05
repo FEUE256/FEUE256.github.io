@@ -1,0 +1,1 @@
+"Ni kan inte vara 100% säker det kan var över en AI:ens skydsnings genomsökare, men ni kan vara 99,99% säkra. "

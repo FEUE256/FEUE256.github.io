@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(153, 220, 198);
+    margin: 10px;
+    padding: 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+    widows: initial;
+    src: url("https://www.feue.webber.se");
+    font: 900;
+    font: bolder;
+    font-size: 13px;
+    font-family: verdana;
+    text-align: center;
+}
+.dark-theme {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.dot2 {
+    color: #ffffff;
+}
+
+.light-theme {
+    background-color: rgb(153, 220, 198);
+    color: #000000;
+}
+.conterner  {
+    text-indent: 30px;
+}
+#reg {
+background-color: brown;
+margin: 15px;
+display: flexbox;
+margin-left: 37%;
+flex: content;
+padding: 20px;
+word-wrap: break-word;
+word-break: break-all;
+widows: inherit;
+src: format("https://www.feue.webber.se");
+font: 900;
+font: bolder;
+font-size: 13px;
+font-family: verdana;
+width: 175px;
+height: 1000000;
+border: 5px black solid;
+}
+#kalkulator {
+    background-color: aqua;
+    color: red;
+    text-align: center;
+}
+.dot {
+    border-radius: 50%;
+    background-color: blueviolet;
+}
+* {
+    border: 10px black solid;
+}

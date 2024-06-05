@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<produkter>
+  <produkt>
+    <namn>Tandborste</namn>
+    <pris>10</pris>
+    <beskrivning>En tandborste för daglig användning.</beskrivning>
+  </produkt>
+  <produkt>
+    <namn>Handtvål</namn>
+    <pris>5</pris>
+    <beskrivning>En mild handtvål med fräsch doft.</beskrivning>
+  </produkt>
+</produkter>

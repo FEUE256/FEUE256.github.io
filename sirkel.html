@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><a href="3d.html">Min 3d värld</a></title>
+</head>
+<body>
+    <script src="https://koda.nu/simple.js">
+        var cat = load("positon");
+        if (! cat){
+            cat = {X: 100, Y: 100, size: 20, color: "blue", speed: 5};
+        }
+          function update(){
+            hideMouse();
+            fill("green");
+            startGPS();
+            playSound("https://koda.nu/ljud/musik/Grand_Prix_Circuit_PSID_01");
+          circle(cat.X, cat.Y, cat.size, cat.color);
+          circle(mouse.x, mouse.y, 20, "red");
+            if (keyboard.h){
+            cat.X += cat.speed;
+            }
+            if (keyboard.v){
+            cat.X -= cat.speed;
+            }
+            if (keyboard.u){
+            cat.Y -= cat.speed;
+            }
+            if (keyboard.n){
+            cat.Y += cat.speed;
+            }
+            if (keyboard.s){
+            text(50, 50, 20, "Slut", "black");
+                stopUpdate();
+                    showMouse();
+                        stopSound("https://koda.nu/ljud/musik/Grand_Prix_Circuit_PSID_01");
+            }
+           
+
+             store("positon", cat);
+            
+
+            text(50, 50, 20, gps.longitude, "black")
+            text(50, 100, 20, gps.latitude, "black")
+          }
+        </script>
+        <script>
+          
+        </script>
+        
+    
+  
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enkel webbsida</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Välkommen till min webbsida!</h1>
+  </header>
+  <main>
+    <p>Det här är en enkel webbsida med HTML, CSS och JavaScript.</p>
+    <button id="changeColorButton">Ändra färg</button>
+  </main>
+  <footer>
+    <p>&copy; 2024 Min webbsida</p>
+  </footer>
+  <script>
+    document.getElementById("changeColorButton").addEventListener("click", function() {
+      var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+      document.body.style.backgroundColor = randomColor;
+    });
+  </script>
+</body>
+</html>

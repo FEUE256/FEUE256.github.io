@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="UE.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return checkCredentials()">
+            Användarnamn: <input type="text" id="username" required><br>
+            Lösenord: <input type="password" id="password" required><br>
+           <label for="myCheckbox">Godkän vilkoren</label>  <input type="checkbox" id="vilkor" required><br>
+            <input type="submit" value="Logga in" id="submitButton">
+          </form>
+          
+    </div>
+    <script src="fe.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sidan hittades inte</title>
+    <style>
+        /* Stilar för 404-sidan */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        /* Stilar för att dölja 404-sidan om sidan finns */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="notFoundPage">
+        <!-- 404-sidan -->
+        <h1>404</h1>
+        <p>Sidan du letar efter kunde inte hittas.</p>
+        <p>Gå <a href="/">tillbaka till startsidan</a> eller prova att söka efter det du letar efter.</p>
+    </div>
+    <script>
+        // Kontrollera sidans statuskod med JavaScript
+        window.addEventListener('load', function() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status == 404) {
+                        // Visa 404-sidan om sidan inte hittas
+                        document.getElementById('notFoundPage').classList.remove('hidden');
+                    } else {
+                        // Dölj 404-sidan om sidan finns
+                        document.getElementById('notFoundPage').classList.add('hidden');
+                    }
+                }
+            };
+            xhttp.open("GET", window.location.href, true);
+            xhttp.send();
+        });
+    </script>
+</body>
+</html>

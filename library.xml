@@ -1,0 +1,46 @@
+<playlist>
+
+	<playitem>
+		<path>C:\Users\nefve\AppData\Roaming\NCH Software\Zulu\Cache\Min spelnings låt.wav</path>
+		<album>Unknown</album>
+		<artist>Unknown</artist>
+		<beatoffset>25443</beatoffset>
+		<bpm>102.80</bpm>
+		<cuemarkfraction0>0.000000</cuemarkfraction0>
+		<cuemarkfraction1>0.000000</cuemarkfraction1>
+		<cuemarkfraction2>0.000000</cuemarkfraction2>
+		<cuemarkpos0>-1</cuemarkpos0>
+		<cuemarkpos1>-1</cuemarkpos1>
+		<cuemarkpos2>-1</cuemarkpos2>
+		<cuepointbeatloop0>-1</cuepointbeatloop0>
+		<cuepointbeatloop1>-1</cuepointbeatloop1>
+		<cuepointbeatloop2>-1</cuepointbeatloop2>
+		<feedto>Deck A</feedto>
+		<filepathvalid>1</filepathvalid>
+		<length>977917</length>
+		<normalizegain>1</normalizegain>
+		<originalfilepath>C:\Users\nefve\OneDrive\Skrivbord\FE\Min spelnings låt.mp3</originalfilepath>
+		<playtimes>6</playtimes>
+		<samplerate>44100</samplerate>
+		<title>Min spelnings låt</title>
+		<version>1</version>
+	</playitem>
+
+	<playitem>
+		<path>C:\Users\nefve\AppData\Roaming\NCH Software\Zulu\Cache\Marcus Nyman - Cute.wav</path>
+		<album>Unknown</album>
+		<artist>Unknown</artist>
+		<beatoffset>0</beatoffset>
+		<bpm>-1.0</bpm>
+		<feedto>Deck B</feedto>
+		<filepathvalid>1</filepathvalid>
+		<length>0</length>
+		<normalizegain>0</normalizegain>
+		<originalfilepath>C:\Users\nefve\OneDrive\Skrivbord\FE\Marcus Nyman - Cute.mp3</originalfilepath>
+		<playtimes>0</playtimes>
+		<samplerate>44100</samplerate>
+		<title>Marcus Nyman - Cute</title>
+		<version>1</version>
+	</playitem>
+
+</playlist>
