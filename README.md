@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nils Efverman - FÈUE</title>
     <link rel="stylesheet" href="index.chat.openai.com.css">
@@ -642,9 +642,8 @@ function startCamera() {
             <div class="square"></div>
 <div class="element"></div>
 
-            <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4uXocNcZx96XkuaqfE43HD?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            
             <img src="imgs/epost_test.png" alt="atl">
             <p>
                   med integrity <a href="vilkor.py">vilkor</a>
