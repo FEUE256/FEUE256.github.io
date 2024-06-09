@@ -6,9 +6,11 @@ html, body {
 html {
   background-color: #369;
 }
+
 body {
   background-color: red;
 }
+
 .hv3000 {
   background-color: yellow;
   color: red;
