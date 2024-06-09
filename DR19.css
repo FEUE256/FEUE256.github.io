@@ -1,1 +1,17 @@
+html, body {
+  margin: 2.63px;
+  padding: 5.26px;
+}
 
+html {
+  background-color: #369;
+}
+body {
+  background-color: red;
+}
+.hv3000 {
+  background-color: yellow;
+  color: red;
+  padding: 14px;
+  margin: 12px;
+}
