@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8"
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<DOCTYPE html>
+    <html>
+    <head>
     <title>Nils Efverman - FÈUE</title>
     <link rel="stylesheet" href="index.chat.openai.com.css">
           <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
@@ -26,6 +24,7 @@
         <li><a href="Databas.accdb">Databas.accdb</a></li>
         <li><a href="FE-Notepad.html">FE-Notepad.html</a></li>
         <li><a href="DR19">FÈUE Davinci Resolve 19 (Gratis versionen)</a></li>
+        <li></li>
         <li><a href="FE.bat">FE.bat</a></li>
         <li><a href="FE.bin">FE.bin</a></li>
         <li><a href="FE.class">FE.class</a></li>
@@ -161,7 +160,7 @@
 <p class="rattFE" class="felFE"></p>
 <br>
 <br>
-<header>FE 2021 &#169; &#174; &#8482; <a href="FE.html" class="Startsida"><img src="imgs/Free_Sample_By_Wix.jpg"></a><a href="mailto:feue.com1@outlook.com?subject=FE post från FE.html&body=FE mdelande Skriv ditt medelade här under:" onclick="mail()">E-posta FE</a>
+<header>FE 2021 &#169; &#174; &#8482; <a href="README.md" class="Startsida"><img src="https://github.com/FEUE256/FEUE256.github.io/assets/171849528/66383d65-c258-42cb-9519-cec44cb5932d"></a><a href="mailto:feue.com1@outlook.com?subject=FE post från FE.html&body=FE mdelande Skriv ditt medelade här under:" onclick="mail()">E-posta FE</a>
 <div id="sidoBar">SidoBar</div>
 <div class="dot-container">Laddar</header>
   
