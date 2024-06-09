@@ -40,6 +40,9 @@ h2 {
     margin: auto;
     overflow: hidden;
 }
+nav {
+    color: #000;
+}
 h1 {
     font-family: 'FEUE_fonts';
 }
