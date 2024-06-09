@@ -25,6 +25,7 @@
         <li><a href="Databas.accbd">Databas.accbd</a></li>
         <li><a href="Databas.accdb">Databas.accdb</a></li>
         <li><a href="FE-Notepad.html">FE-Notepad.html</a></li>
+        <li><a href="DR19">FÈUE Davinci Resolve 19 (Gratis versionen)</a></li>
         <li><a href="FE.bat">FE.bat</a></li>
         <li><a href="FE.bin">FE.bin</a></li>
         <li><a href="FE.class">FE.class</a></li>
