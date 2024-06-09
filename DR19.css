@@ -17,3 +17,16 @@ body {
   padding: 14px;
   margin: 12px;
 }
+
+.container {
+    display: flex;
+    gap: 5px; /* Padding mellan bilder */
+}
+
+.bild {
+    display: inline-block; /* Gör att bilderna ligger i rad */
+}
+
+.bild img {
+    display: block;
+}
