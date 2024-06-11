@@ -1,7 +1,7 @@
 <DOCTYPE html>
     <html>
     <head>
-    <title>Nils Efverman - FÈUE</title>
+    <title>FÈUE</title>
     <link rel="stylesheet" href="index.chat.openai.com.css">
           <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
 </head>
