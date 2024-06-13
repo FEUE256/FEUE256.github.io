@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Välkommen till Nils Efvermans hemsida</h1>
+        <h1>Välkommen till FÈUE</h1>
         <nav>
             <ul>
                 <li><a href="about.chat.openai.com.html">Om</a></li>
