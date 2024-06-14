@@ -959,7 +959,7 @@ app.post('/submit-form', async (req, res) => {
 
   try {
     // Validera reCAPTCHA-svaret med Google reCAPTCHA-tjänsten
-    const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${6LchuvgpAAAAAG5Onq9H6eoj63ERa2SkGnolghuL}&response=${recaptchaToken}`);
+    const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${6LclufgpAAAAAGajYSbx-xXeMYBX3j28wdD_Ws6o}&response=${recaptchaToken}`);
     const { success, score } = response.data;
 
     // Om validering lyckades (success true och score >= 0.5)
