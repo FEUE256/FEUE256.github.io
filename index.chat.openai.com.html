@@ -883,6 +883,7 @@ function startCamera() {
     <!-- Lägg till data-sitekey med din Site Key -->
     <div class="g-recaptcha" data-sitekey="6LcdtvgpAAAAAJfYy2iGJ3--WuVL_W3o7g_VU2BV" data-callback="onSubmit"></div>
     <div class="g-recaptcha" date-sitekey="6LchuvgpAAAAAKtjG16xL5aJb_qqZEF8VA0cWXuR" date-callback="onSubmit"></div>
+    <div class="g-recaptcha" date-sitekey="6LdJuvgpAAAAABpLQ9e8yjLPtgJ2-zp29qX9cer3" date-callback="onSubmit"></div>
     <br>
     <input type="submit" value="Submit">
   </form>
@@ -960,6 +961,45 @@ app.post('/submit-form', async (req, res) => {
   try {
     // Validera reCAPTCHA-svaret med Google reCAPTCHA-tjänsten
     const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${6LclufgpAAAAAGajYSbx-xXeMYBX3j28wdD_Ws6o}&response=${recaptchaToken}`);
+    const { success, score } = response.data;
+
+    // Om validering lyckades (success true och score >= 0.5)
+    if (success && score >= 0.5) {
+      // Här kan du hantera formulärets data, t.ex. skicka e-post eller spara i en databas
+      console.log(`Form submitted: Name - ${name}, Email - ${email}`);
+      res.status(200).send('Form submitted successfully!');
+    } else {
+      // Om validering misslyckades
+      res.status(400).send('reCAPTCHA validation failed.');
+    }
+  } catch (error) {
+    console.error('Error validating reCAPTCHA:', error);
+    res.status(500).send('Server error.');
+  }
+});
+
+// Starta servern
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+        const express = require('express');
+const axios = require('axios');
+const bodyParser = require('body-parser');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware för att tolka JSON och urlencoded formulärdata
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Hantera POST-förfrågan för formulär
+app.post('/submit-form', async (req, res) => {
+  const { name, email, 'g-recaptcha-response': recaptchaToken } = req.body;
+  const secretKey = '6LcdtvgpAAAAALOYWxsUIHHH_avrBpeXFGkH0-2g'; // Din Secret Key från Google reCAPTCHA
+
+  try {
+    // Validera reCAPTCHA-svaret med Google reCAPTCHA-tjänsten
+    const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${6LdJuvgpAAAAAJLdYHTZ1oEfSnY2M1y_Ixm-EWp5}&response=${recaptchaToken}`);
     const { success, score } = response.data;
 
     // Om validering lyckades (success true och score >= 0.5)
