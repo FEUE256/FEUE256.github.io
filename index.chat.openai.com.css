@@ -567,6 +567,7 @@ border-radius: 50%;
     font-variant: var(#101313);
     color: #ff0000;
     cursor: vertical-text;
+    border-radius: silver, gold solid 51%;
     column-gap: 2rex;
     text-align: center;
     text-transform: lowercase;
