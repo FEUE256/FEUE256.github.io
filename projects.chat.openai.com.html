@@ -137,7 +137,78 @@
                         </div>
                         </div>
                     </div>
-                    
+                    <div class="project-item" style="animation-name: slideInFormLeft10;">
+                        <div>
+                        <div class="container">
+                            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPS Testare</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 20px;
+            font-size: 24px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="click-button">Klicka här!</button>
+    <div id="result"></div>
+    
+    <script>
+        let clickCount = 0;
+        let startTime;
+        let duration = 5; // Testens varaktighet i sekunder
+        let isTestRunning = false;
+
+        const button = document.getElementById('click-button');
+        const result = document.getElementById('result');
+
+        button.addEventListener('click', () => {
+            if (!isTestRunning) {
+                startTest();
+            }
+            clickCount++;
+        });
+
+        function startTest() {
+            isTestRunning = true;
+            clickCount = 0;
+            result.textContent = '';
+            button.disabled = true;
+
+            startTime = new Date().getTime();
+            setTimeout(endTest, duration * 1000);
+        }
+
+        function endTest() {
+            const endTime = new Date().getTime();
+            const timeTaken = (endTime - startTime) / 1000; // omvandla till sekunder
+            const cps = clickCount / timeTaken;
+            
+            result.textContent = `Du klickade ${clickCount} gånger på ${timeTaken.toFixed(2)} sekunder. Din CPS är ${cps.toFixed(2)}.`;
+            button.disabled = false;
+            isTestRunning = false;
+        }
+    </script>
+</body>
+</html>
+
+                        </div>
       
         <div dir="rtl">
             <p><a href="kontakt.html">Feeddback gå till startsidan skrolla ner till "FEK" och tryck</a></p>
