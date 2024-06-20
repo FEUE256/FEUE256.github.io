@@ -558,6 +558,7 @@ border-radius: 50%;
         transform: rotate(360deg);
     }
 }
+
 .item-container {
     font-size: 13rcap;
     font-family: 'FÈUE';
@@ -578,6 +579,10 @@ border-radius: 50%;
     grid-auto-flow: column;
     animation-name: run;
     -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.item {
+    font-stretch: narrower;
 }
 
 @keyframes run {
