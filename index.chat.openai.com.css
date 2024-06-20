@@ -565,5 +565,5 @@ border-radius: 50%;
     font-style: oblique;
     font-variant: var(#101313);
     color: #ff0000;
-    cursor: -webkit-zoom-in;
+    cursor: vertical-text;
 }
