@@ -558,3 +558,12 @@ border-radius: 50%;
         transform: rotate(360deg);
     }
 }
+.item-container {
+    font-size: 13rcap;
+    font-family: 'FÈUE';
+    font-weight: bolder;
+    font-style: oblique;
+    font-variant: var(#101313);
+    color: #ff0000;
+    cursor: -webkit-zoom-in;
+}
