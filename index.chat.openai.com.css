@@ -576,5 +576,20 @@ border-radius: 50%;
     view-transition-name: exe;
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     grid-auto-flow: column;
+    animation-name: run;
     -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes run {
+    from, to {
+        background-color: aquamarine;
+        transform: rotate(0deg);
+    }
+    0% {
+        background-color: #a01d99;
+        transform: rotate(50deg);
+    }
+    100% {
+        background-color: lightseagreen;
+    }
 }
