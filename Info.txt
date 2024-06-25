@@ -1,0 +1,3 @@
+Database Name: Local Database
+User Name: guest
+Project Name: Copy of Untitled Project 1 copy
