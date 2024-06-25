@@ -1,0 +1,32 @@
+{
+	Tools = ordered() {
+		MultiPoly2 = MultiPoly {
+			CtrlWZoom = false,
+			Inputs = {
+				MaskWidth = Input { Value = 1920, },
+				MaskHeight = Input { Value = 1080, },
+				PixelAspect = Input { Value = { 1, 1 }, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				ClippingMode = Input { Value = FuID { "None" }, },
+				PolyOrder = Input { Value = ScriptVal { {
+							[0] = 1
+						} }, },
+				["PolyMask1.Filter"] = Input { Value = FuID { "Fast Gaussian" }, },
+				["PolyMask1.Polyline"] = Input {
+					Value = Polyline {
+					},
+				},
+				["PolyMask1.Polyline2"] = Input {
+					Value = Polyline {
+					},
+					Disabled = true,
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 200.5, -50.6265 } },
+			PolyMask1 = PolyMaskInputs {
+				DrawMode = "ClickAppend",
+				DrawMode2 = "InsertAndModify"
+			}
+		}
+	}
+}

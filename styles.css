@@ -1,0 +1,859 @@
+body {
+    border: 3px solid rgb(0, 0, 0);
+    width: 700px;
+    margin: 0 auto;
+    background-color: rgb(21, 211,289 );
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    
+}
+
+body:active {
+    background-color: #000000;
+    color: black;
+}
+
+.container {
+    position: relative;
+    width: 200px;
+    height: 417px;
+
+    border: #000 solid 6px;
+  }
+  
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    border: #000 solid 5px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .hidden-box {
+    border: #000 solid 5px;
+    width: 200px;
+    height: 203px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden;
+  }
+  
+  .container:hover .box {
+    transform: translateY(100%);
+  }
+  
+  .container:hover .hidden-box {
+    transform: translateY(0);
+    visibility: visible;
+  }
+  
+#var {
+    background-color: #1ceb95;
+    color: red;
+    padding: 10px;
+    margin: 20px;
+    width: 650px;
+    height: 150px;
+    position: absolute;
+    word-wrap: break-word;
+    text-overflow: clip;
+    text-align: center;
+    text-decoration: underline overline;
+    text-decoration-color: #f90505;
+    text-align: left;
+    text-transform: uppercase;
+    text-indent: 50px;
+    border: #000 solid 10px;
+    border-radius: #000 solid 10%;
+    text-overflow: ellipsis;
+    text-shadow: 1px 1px 1px #000;
+    text-justify: inter-word;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: none;
+    
+}
+
+#var a {
+    src:url(https://www.feue.webber.se);
+}
+
+.getElementById {
+    background-color: red;
+}
+
+.getElementById:hover {
+    cursor: cell;
+}
+
+.getElementByj {
+    background-color: #f90505;
+}
+
+.getElementByj:hover {
+    cursor: help;
+}
+
+.getElementByh {
+    background-color: red;
+}
+
+.getElementByh:hover {
+    cursor: not-allowed;
+}
+
+.getElementByTaggName {
+    background-color: #f90505;
+}
+.getElementByTaggName:hover {
+    
+    cursor: url('imgs/Free_Sample_By_Wix.jpg'), auto;
+}
+header {
+    background-color: chocolate;
+}
+
+#minElement {
+    margin-left: -400px;
+    left: 50%;
+    position: absolute;
+    width: 700px;
+    background-color: rgba(21, 236, 168, 0.267);
+    text-align: center;
+    background-image: url("https://player.vimeo.com/video/683859882?background=1&dnt=1");
+    background-size: 30px; /* Anpassa bakgrundsbilden efter fönstrets storlek */
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-overflow: clip;
+    word-wrap: break-word;
+    flex: auto;
+}
+
+#bild3 {
+    width: 800px;
+    height: 175px;
+    
+}
+
+#min_låt {
+    width: 100px;
+    height: 400px;
+    position: absolute;
+}
+
+#min_låt:hover {
+background-color: black;
+}
+
+#mainBox {
+    background-color: rgb(2, 187, 134);
+    word-wrap: break-word;
+    padding: 10px;
+    position: absolute;
+    margin-top: 215px;
+    width: 780px;
+    height: 545px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+
+
+#main {
+    width: 800px;
+    height: 800px;
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+
+}
+
+
+  
+
+  
+div {
+font-size: 12px;
+border: 3px solid black;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+;
+}
+
+nav {
+color: #aee8a6;
+font-size: 12px;
+padding: 2px;
+}
+
+h2 {
+    font-size: 35px;
+color: blue;
+margin: auto;
+}
+
+h1 {
+font-size: 70px;
+    color: #f90505;
+    margin: 0;
+}
+
+#form {
+    color: red;
+}
+
+p {
+    color: black;
+font-size: 12px;
+}
+
+
+ #menyBar {
+    font-size: 13px;
+    color: black;
+    background-color: whitesmoke;
+    width: 800px;
+    height: 25px;
+    position:absolute;
+
+}
+
+#menyBar dl {
+    display: inline;
+}
+
+#menyBar li {
+    height: 25px;
+    display: inline;
+    text-align: center;
+    margin-right: 90px;
+    float: left;
+}
+
+#menyBar button {
+    height: 25px;
+    display: inline;
+    text-align: center;
+    margin-right: 90px;
+    float: left;
+    background-color: red;
+}
+
+#menyBar a:link {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 10px solid black;
+    background-color: blue;
+    text-decoration: none;
+    color: #ff0000;
+    width: 78px;
+    height: 25px;
+    font-size: 13px;
+    position: absolute;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+#menyBar a:visited {
+    background-color: blue;
+    color: red;
+    text-decoration: none;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 10px solid black;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#menyBar a:hover {
+    background-color: red;
+    color: blue;
+
+}
+
+a {
+    background-color: yellow;
+    color: blue;
+    font-size: 13px;
+    border: 2px dotted red;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+}
+a :hover {
+    text-decoration: underline;
+    color: #000000;
+    font-size: 20px;
+    cursor: move;
+}
+
+a :active {
+    color: #f90505;
+    cursor: pointer;
+}
+.lank {
+    font-size: 14px;
+}
+
+section {
+    border: 3px solid black;
+    padding: 11.5px;
+
+}
+
+#bild {
+    background: black;
+    border: 5px rgb(255, 255, 255);
+    margin: 0;
+    width: 78.4%;
+}
+
+
+
+img {
+    max-width: 100%;
+}
+
+img:hover {
+    cursor: move;
+}
+
+input {
+    margin: auto;
+
+}
+
+#menyBar input[type="Text"] {
+    background-color: greenyellow;
+    color: red;
+    border-radius: 10px black solid;
+    font-size: 13px;
+    font-weight: bolder;
+    font-style: italic;
+    padding: 5px;
+    margin: 10px;
+    width: 700px;
+    text-overflow: clip;
+    word-wrap: break-word;
+    text-indent: 30px;
+    text-decoration: overline underline;
+    text-decoration-color: #05f9c4;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+}
+
+
+
+#menyBar input[type="Text"]:hover {
+background-color: red;
+}
+.dot-container {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  #menyBar button {
+    width: 200px;
+    height: 100px;
+background-color: red;
+color: #000;
+cursor: pointer, var(#369);
+padding: 20px;
+margin: 15px;
+
+  }
+
+  #submitButton {
+    cursor: not-allowed; /* Förhindra klick när checkbox inte är markerad */
+  }
+  
+  #myCheckbox:checked + #submitButton {
+    cursor: pointer; /* Tillåt klick när checkbox är markerad */
+  }
+  
+ 
+  
+  /* Ändra färg på .box när checkboxen är markerad */
+  #toggleBtn:checked ~ .box123 {
+    background-color: red;
+  }
+  
+  a:active {
+background-color: black;
+color: white;
+  }
+
+  button:active {
+background-color: #ffffff;
+color: #000;
+
+  }
+
+
+  .box56 {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    
+    top: 100%;
+    left: 50%;
+    bottom: 30%;
+    right: 30%;
+    margin-left: 50%;
+    margin-bottom: px;
+    
+    transform: translate(-50%, -50%);
+    animation: moveBox 3s infinite alternate;
+  } /* 1600 * 900px */
+  
+  @keyframes moveBox {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    animation: moveDot 3s infinite alternate;
+  }
+  
+  @keyframes moveDot {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  }
+
+  
+  
+fieldset {
+    text-align: center;
+}
+
+#textarea {
+    width: 100%;
+}
+button {
+    background-color: #f90505;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(245, 240, 244);
+    cursor: pointer;
+}
+
+#jujy {
+    background-color: purple;
+}
+
+header {
+    border: 10px solid black;
+    color: darkgreen;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+footer {
+    border: 10px solid black;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#lpl {
+    text-decoration: solid;
+    text-transform: uppercase;
+    color: red;
+    font-family: cursive;
+    font-size: 14px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: yellow;
+}
+
+* {
+    border-radius: 4px solid rgb(0, 0, 0);
+
+}
+
+
+.vcv {
+border: 3px solid white;
+width: 257px;
+
+}
+
+section p {
+    background-color: cornflowerblue;
+}
+
+p a {
+    background-color: green;
+}
+
+#cd {
+    color: white;
+}
+
+table, td, tr {
+    margin: auto;
+    padding: 5px;
+    border: 3px solid black;
+    color: #000;
+    font-size: 13px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+nav div p {
+    background-color: green;
+    font-size: 13px;
+    font-family: verdana;
+    border: 3px solid black
+    color white;
+    }
+    
+    nav p, h3 {
+    color: purple;
+    background-color: ljusblå;
+    font-size: 12px;
+    font-family: verdana;
+    }
+    
+   
+
+    .form{
+        color: #f90505;
+    }
+
+    span {
+        color: #f90505;
+    }
+    
+    .btn-knap {
+        background-color: blue;
+        
+    }
+
+    #id3 {
+        background-color: green;
+        margin: auto;
+        width: 680px;
+    }
+
+    a:link {
+        color: #05cc8d;
+        text-decoration: line-through;
+    }
+
+    a:hover {
+        font-weight: bold;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        
+    }
+
+    a:visited {
+        color: #05cc8d;
+        text-decoration: line-through;
+    }
+
+    #id3:hover {
+        margin: auto;
+        width: 680px;
+        background-color: purple;
+    }
+
+    .class3 {
+        display: flex;
+    }
+
+    .box1 {
+       margin: auto; 
+       width: 300px;
+       border: 5px solid red;
+       padding: 10px;
+       color: white;
+       background-color: black;
+       flex: 2;
+       order: 2;
+    }
+
+    .box2 {
+        margin: auto; 
+        width: 300px;
+        border: 5px solid rgb(107, 2, 130);
+        padding: 10px;
+        color: white;
+       background-color: black;
+       flex: 1;
+       order: 1;
+     }
+
+     .box3 {
+        margin: auto; 
+        width: 300px;
+        border: 5px solid rgb(0, 255, 4);
+        padding: 10px;
+        color: white;
+       background-color: black;
+       flex: 1;
+       order: 3;
+     }
+
+     .class4 {
+        margin: 20px;
+     }
+
+     .class5 {
+        font-size: 13px;
+        margin: auto;
+     }
+
+     #id4 {
+        border: white solid 3px;
+     }
+
+     #medelande {
+        width: 200px;
+     }
+
+     .Startsida {
+        background-color: aliceblue;
+     }
+
+    .form2 img {
+        width: 10%;
+    }
+
+    .google {
+        width: 50px;
+    }
+
+    .form2 {
+       
+       height: fit-content; 
+       padding: 2cm;
+       overflow: 1px;
+    }
+
+    .loggin2 {
+   
+        align-items: center;
+        justify-content: center;
+    }
+
+    .namn2 {
+        border: #000 3px solid;
+    }
+
+    .kakor {
+        background-color: lightblue;
+    }
+  
+    .Tilläg {
+       background: rgb(155, 25, 157);
+    }
+
+    a:link {
+        color: green;
+    }
+
+
+    .HEJclasen {
+        background-color: #ff0000;
+    }
+
+    #id7 {
+        background-image: url(https://player.vimeo.com/video/683859882?background=1&dnt=1box3);
+    }
+
+
+    #rubrik2 {
+        background-color: #05cc8d;
+        
+    }
+    .ny-class {
+      color: red;
+      font-size: 100px;
+      font-family: verdana;
+    }
+
+    .calculator {
+        width: 200px;
+        margin: 100px auto;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      .calculator #display {
+        width: calc(100% - 20px);
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: 18px;
+      }
+      
+      .calculator .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+      }
+      
+      .calculator .buttons button {
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        background-color: #000000;
+        cursor: pointer;
+      }
+      
+      .calculator .buttons button:hover {
+        background-color: #000000;
+        color: #ffffff;
+      }
+
+      #video {
+        width: 175px;
+        height: 400px;
+      }
+      
+      #container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    #kodInput {
+        padding: 10px;
+        margin-right: 10px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    
+    #nedraknare {
+        font-size: 3em;
+        text-align: center;
+      }
+
+     button {
+        border-radius: 10px;
+     }
+
+     input {
+        border-radius: 10px;
+        color: black;
+     }
+
+     .clock {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .clock input {
+        width: 50px;
+      }
+      
+      .time {
+        font-size: 36px;
+        text-align: center;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+    }
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="date"], input[type="password"], select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #myForm {
+        background-color: purple;
+    }
+
+   .text {
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration: overline;
+    text-decoration-color: #f90505;
+    text-indent: 30px;
+   }
+
+   .text:hover {
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-color: #f90505;
+    text-indent: 30px;
+   }
+
+
+   body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 300px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.error-message {
+    color: red;
+}
+
+/* pyinstaller --onefile FE.py */
+
