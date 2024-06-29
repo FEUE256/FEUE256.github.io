@@ -9,6 +9,16 @@
 }
 
 @font-face {
+    font-family: 'FÈUE';
+    src: url(Fonts/IrisUPC.ttf) format('woff2'), /* För moderna webbläsare */
+         url(Fonts/IrisUPC.ttf) format('woff'), /* För äldre webbläsare */
+         url(Fonts/IrisUPC.ttf) format('truetype'); /* För äldre webbläsare som inte stödjer woff */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
     font-family: 'FEUE_fonts';
     src: url('Fonts/Danfo-Regular-VariableFont_ELSH.ttf') format('truetype'); /* Lägg till formatet */
     font-weight: normal;
