@@ -9,7 +9,7 @@
 }
 
 @font-face {
-    font-family: 'FÈUE';
+    font-family: 'XXXX';
     src: url(Fonts/IrisUPC.ttf) format('woff2'), /* För moderna webbläsare */
          url(Fonts/IrisUPC.ttf) format('woff'), /* För äldre webbläsare */
          url(Fonts/IrisUPC.ttf) format('truetype'); /* För äldre webbläsare som inte stödjer woff */
@@ -31,6 +31,10 @@
     src: url(Fonts/RubikMicrobe-Regular.ttf) format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+.XXXX {
+    font-family: 'XXXX';
 }
 
 body {
