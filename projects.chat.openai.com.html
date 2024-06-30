@@ -6,70 +6,7 @@
     <title>Projekt av Nils Efverman - FÈUE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="index.chat.openai.com.css">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Parametrar för Lorenz-systemet
-        const sigma = 10, rho = 28, beta = 8 / 3;
-        const dt = 0.01;
-        const numSteps = 10000;
 
-        // Startvärden
-        let x = 0, y = 1, z = 1.05;
-
-        // Lös systemet och lagra punkter
-        const points = [];
-        for (let i = 0; i < numSteps; i++) {
-            const dx = sigma * (y - x);
-            const dy = x * (rho - z) - y;
-            const dz = x * y - beta * z;
-
-            x += dx * dt;
-            y += dy * dt;
-            z += dz * dt;
-
-            points.push(new THREE.Vector3(x, y, z));
-        }
-
-        // Initiera Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // Skapa geometrin och materialet för linjen
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
-        const line = new THREE.Line(geometry, material);
-        scene.add(line);
-
-        camera.position.z = 50;
-
-        // Animation funktion
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotera linjen för en cool effekt
-            line.rotation.x += 0.01;
-            line.rotation.y += 0.01;
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Anpassa rendering vid fönsterstorleksändring
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
-
-     <style>
-        body { margin: 0; }
-        canvas { display: block; width: 200px; height: 150px; align-items: center;}
-    </style>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body onload="welcomeMessage()">
@@ -279,18 +216,7 @@
 
 <h2>Project 11</h2>
     
-   <canvas></canvas>
-
-                        </div>
-                    </div>
-        <div dir="rtl">
-            <p><a href="kontakt.html">Feeddback gå till startsidan skrolla ner till "FEK" och tryck</a></p>
-        </div>
-        <h5>Vissa av koderna är av Learning Axis på youtube</h5>
-        <a href="https://www.youtube.com/@learning-axis">Learning Axis</a>
-
-    <script src="index.chat.openai.com.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Parametrar för Lorenz-systemet
         const sigma = 10, rho = 28, beta = 8 / 3;
@@ -349,5 +275,22 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
+
+     <style>
+        body { margin: 0; }
+        canvas { display: block; width: 200px; height: 150px; align-items: center;}
+    </style>
+
+                        </div>
+                    </div>
+        <div dir="rtl">
+            <p><a href="kontakt.html">Feeddback gå till startsidan skrolla ner till "FEK" och tryck</a></p>
+        </div>
+        <h5>Vissa av koderna är av Learning Axis på youtube</h5>
+        <a href="https://www.youtube.com/@learning-axis">Learning Axis</a>
+
+    <script src="index.chat.openai.com.js"></script>
+
+                            
 
     </main></body></html>
