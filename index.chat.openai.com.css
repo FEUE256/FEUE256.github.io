@@ -43,6 +43,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+        height: 10000000px;
     overflow-y: scroll;
 }
 h2 {
@@ -613,3 +614,4 @@ border-radius: 50%;
         background-color: lightseagreen;
     }
 }
+
