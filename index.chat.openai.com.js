@@ -6,11 +6,11 @@ function welcomeMessage() {
 var blueSquare = document.querySelector('.blue-square');
 var colors = ['blue', 'green', 'purple', 'orange'];
 var currentIndex = 0;
-
+/*
 setInterval(function() {
   currentIndex = (currentIndex + 1) % colors.length;
   blueSquare.style.backgroundColor = colors[currentIndex];
-}, 1000);
+}, 1000); */
 document.getElementById("changeColorButton").addEventListener("click", function() {
   var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
   document.getElementById("random_color").style.backgroundColor = randomColor;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   executeRating(ratingStars);
-});
+});/*
 document.getElementById("loginForm").addEventListener("submit", function(event) {
   event.preventDefault(); // Förhindra att formuläret skickas och sidan laddas om
 
@@ -57,7 +57,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
   // Gå till aldim.html efter inloggning
   window.location.href = "aldim.html";
 });
-
+*/
 // Hämta sparade användaruppgifter från localStorage
 var savedEmail = localStorage.getItem("userEmail");
 var savedPassword = localStorage.getItem("userPassword");
@@ -67,3 +67,6 @@ if (savedEmail && savedPassword) {
     document.getElementById("email").value = savedEmail;
     document.getElementById("password").value = savedPassword;
 }
+
+
+
