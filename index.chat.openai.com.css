@@ -9,16 +9,6 @@
 }
 
 @font-face {
-    font-family: 'XXXX';
-    src: url(Fonts/IrisUPC.ttf) format('woff2'), /* För moderna webbläsare */
-         url(Fonts/IrisUPC.ttf) format('woff'), /* För äldre webbläsare */
-         url(Fonts/IrisUPC.ttf) format('truetype'); /* För äldre webbläsare som inte stödjer woff */
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-@font-face {
     font-family: 'FEUE_fonts';
     src: url('Fonts/Danfo-Regular-VariableFont_ELSH.ttf') format('truetype'); /* Lägg till formatet */
     font-weight: normal;
@@ -33,17 +23,12 @@
     font-style: normal;
 }
 
-.XXXX {
-    font-family: 'XXXX';
-}
-
 body {
     font-family: 'Verdana', sans-serif;
     background-color: #00CED1; 
     margin: 0;
     padding: 0;
     color: #333;
-        height: 10000000px;
     overflow-y: scroll;
 }
 h2 {
@@ -54,9 +39,6 @@ h2 {
     width: 80%;
     margin: auto;
     overflow: hidden;
-}
-a {
-    color: #369;
 }
 h1 {
     font-family: 'FEUE_fonts';
@@ -575,43 +557,25 @@ border-radius: 50%;
 }
 
 .item-container {
-    font-size: 13rcap;
     font-family: 'FÈUE';
-    font-weight: bolder;
-    font-style: oblique;
-    font-variant: var(#101313);
-    color: #ff0000;
-    cursor: vertical-text;
-    border-radius: silver, gold solid 51%;
-    column-gap: 2rex;
+    font-size: 24px;
+    font-style: inherit;
     text-align: center;
-    text-transform: lowercase;
     text-overflow: clip;
     text-decoration: overline, underline;
-    text-decoration-color: black;
-    text-wrap: var(#00ffaa);
-    view-transition-name: exe;
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    grid-auto-flow: column;
-    animation-name: run;
-    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration-color: red;
+    text-shadow: #00CED1;
+    color: rgb(#937, #369, #957);
+    column-gap: 2pt;
+    max-width: 400px;
+    min-width: 40px;
+    width: 80px;
+    height: auto;
+    animation-name: animation;
+    top: 15px;
+    bottom: 3dvb;
+    nav-index: auto;
+    hyphenate-limit-chars: unset;
+    cursor: col-resize;
+    border-radius: 50%;
 }
-
-.item {
-    font-stretch: narrower;
-}
-
-@keyframes run {
-    from, to {
-        background-color: aquamarine;
-        transform: rotate(0deg);
-    }
-    0% {
-        background-color: #a01d99;
-        transform: rotate(50deg);
-    }
-    100% {
-        background-color: lightseagreen;
-    }
-}
-
