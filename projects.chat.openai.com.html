@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekt av Nils Efverman - FÈUE</title>
-  <link rel="stylesheet" href="index.chat.openai.com.css">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="index.chat.openai.com.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body onload="welcomeMessage()">
     <header>
@@ -16,7 +16,6 @@
                 <li><a href="index.chat.openai.com.html">Tillbaka</a></li>
                 <li><a href="projects.chat.openai.com.html">Projekt</a></li>
                 <li><a href="contact.chat.openai.com.html">Kontakt</a></li>
-                <li><a href="DR19.html">Davinci Resolve 19 DR19.html (Gratis versionen)</a></li>
             </ul>
         </nav>
     </header>
@@ -92,8 +91,6 @@
                     </div>
                     </div>
                 </div>
-  
-      
                 <div class="project-item" style="animation-name: slideInFromLeft7">
                     <h2>Project 7</h2>
                     <div class="container">
@@ -118,9 +115,7 @@
                 </div>
             </div>
           </div>
-         
-                     
-                              <div class="project-item" style="animation-name: slideInFromLeft9;">
+                <div class="project-item" style="animation-name: slideInFromLeft9;">
                     <div class="container">
                         <h2>Project 9</h2>
                         <div class="item-container">
@@ -137,95 +132,86 @@
                         </div>
                         </div>
                     </div>
-                    <div class="project-item" style="animation-name: slideInFormLeft10;">
-                        <div>
-                        <div class="container">
-                            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CPS Testare</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-        }
-        button {
-            padding: 20px;
-            font-size: 24px;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-    <button id="click-button">Klicka här!</button>
-    <div id="result"></div>
-    
-    <script>
-        let clickCount = 0;
-        let startTime;
-        let duration = 5; // Testens varaktighet i sekunder
-        let isTestRunning = false;
-
-        const button = document.getElementById('click-button');
-        const result = document.getElementById('result');
-
-        button.addEventListener('click', () => {
-            if (!isTestRunning) {
-                startTest();
-            }
-            clickCount++;
-        });
-
-        function startTest() {
-            isTestRunning = true;
-            clickCount = 0;
-            result.textContent = '';
-            button.disabled = true;
-
-            startTime = new Date().getTime();
-            setTimeout(endTest, duration * 1000);
-        }
-
-        function endTest() {
-            const endTime = new Date().getTime();
-            const timeTaken = (endTime - startTime) / 1000; // omvandla till sekunder
-            const cps = clickCount / timeTaken;
-            
-            result.textContent = `Du klickade ${clickCount} gånger på ${timeTaken.toFixed(2)} sekunder. Din CPS är ${cps.toFixed(2)}.`;
-            button.disabled = false;
-            isTestRunning = false;
-        }
-    </script>
-</body>
-</html>
-
-                        </div></div>
-        <div class="project-item" style="animation-name: slideInFromLeft11">
+                    <div class="project-item" style="animation-name: slideInFromLeft10">
                         <div class="container">
                          
 
-<h2>Project 11</h2>
-                            <a href="project.html">Project 11</a>
-                            <p>Om den va här skulle sidan inte fungera</p>
+<head>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; width: 200px; height: 150px; align-items: center;}
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Parametrar för Lorenz-systemet
+        const sigma = 10, rho = 28, beta = 8 / 3;
+        const dt = 0.01;
+        const numSteps = 10000;
+
+        // Startvärden
+        let x = 0, y = 1, z = 1.05;
+
+        // Lös systemet och lagra punkter
+        const points = [];
+        for (let i = 0; i < numSteps; i++) {
+            const dx = sigma * (y - x);
+            const dy = x * (rho - z) - y;
+            const dz = x * y - beta * z;
+
+            x += dx * dt;
+            y += dy * dt;
+            z += dz * dt;
+
+            points.push(new THREE.Vector3(x, y, z));
+        }
+
+        // Initiera Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Skapa geometrin och materialet för linjen
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+        const line = new THREE.Line(geometry, material);
+        scene.add(line);
+
+        camera.position.z = 50;
+
+        // Animation funktion
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotera linjen för en cool effekt
+            line.rotation.x += 0.01;
+            line.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Anpassa rendering vid fönsterstorleksändring
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
+
                         </div>
-                        </div>
+                    </div>
         <div dir="rtl">
-            <p><a href="kontakt.html">Feeddback gå till startsidan skrolla ner till "FEK" och tryck</a></p>
+            <p><a href="kontakt.html">Feddback gå till startsidan skrolla ner till "FEK" och tryck</a></p>
         </div>
         <h5>Vissa av koderna är av Learning Axis på youtube</h5>
         <a href="https://www.youtube.com/@learning-axis">Learning Axis</a>
 
     <script src="index.chat.openai.com.js"></script>
-
-                            
-
-                    </main></body></html>
+ 
+    </main></body></html>
