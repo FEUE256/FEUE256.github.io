@@ -836,19 +836,74 @@ function startCamera() {
 <p> &times; </p>
 <br> 
 <div class="spiner"></div>
-    <form action="https://formspree.io/f/mvoeeway" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvåstegsverifiering</title>
+</head>
+<body>
+    <h1>Tvåstegsverifiering</h1>
+    <form id="emailForm"  method="POST" enctype="multipart/form-data" action="https://formspree.io/f/mqazkevg">
+        <label for="email">E-postadress:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Skicka kod</button>
+    </form>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <form id="verifyCodeForm" style="display: none;">
+        <label for="verificationCode">Verifieringskod:</label>
+        <input type="text" id="verificationCode" name="verificationCode" required>
+        <button type="submit">Verifiera kod</button>
+    </form>
 
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
+    <script>
+        // Generera en verifieringskod
+        function generateVerificationCode() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
+        }
 
-    <button type="submit">Send</button>
-</form>
+        // Hantera e-postformuläret
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const verificationCode = generateVerificationCode();
+            sessionStorage.setItem('verificationCode', verificationCode);
 
+            // Skicka verifieringskoden via Formspree
+            fetch('https://formspree.io/f/mqazkevg', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email, message: `Din verifieringskod är ${verificationCode}` })
+            }).then(response => {
+                if (response.ok) {
+                    alert('Verifieringskod skickad');
+                    document.getElementById('emailForm').style.display = 'none';
+                    document.getElementById('verifyCodeForm').style.display = 'block';
+                } else {
+                    alert('Ett fel uppstod vid skickandet av verifieringskoden');
+                }
+            });
+        });
+
+        // Hantera verifieringskodformuläret
+        document.getElementById('verifyCodeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const enteredCode = document.getElementById('verificationCode').value;
+            const savedCode = sessionStorage.getItem('verificationCode');
+
+            if (enteredCode === savedCode) {
+                alert('Verifiering lyckades');
+                // Här kan du omdirigera användaren eller utföra andra åtgärder
+            } else {
+                alert('Verifieringskod felaktig');
+            }
+        });
+    </script>
+</body>
+</html>
 <!-- Begin Mailchimp Signup Form -->
 <div id="mc_embed_signup">
 <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
