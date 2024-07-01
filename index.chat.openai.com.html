@@ -836,19 +836,20 @@ function startCamera() {
 <p> &times; </p>
 <br> 
 <div class="spiner"></div>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tvåstegsverifiering</title>
+    <title>Tvåstegsverifiering med reCAPTCHA</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <h1>Tvåstegsverifiering</h1>
-    <form id="emailForm"  method="POST" enctype="multipart/form-data" action="https://formspree.io/f/mqazkevg">
+    <h1>Tvåstegsverifiering med reCAPTCHA</h1>
+    <form id="emailForm" action="https://formspree.io/f/mqazkevg" method="POST">
         <label for="email">E-postadress:</label>
         <input type="email" id="email" name="email" required>
-        <button type="submit">Skicka kod</button>
+        <button type="submit" class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-callback="onSubmit">Skicka kod</button>
     </form>
 
     <form id="verifyCodeForm" style="display: none;">
@@ -858,68 +859,59 @@ function startCamera() {
     </form>
 
     <script>
-// Exempel med fetch för att skicka formulärdata till Formspree
-const emailForm = document.getElementById('emailForm');
-
-emailForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(emailForm);
-    
-    fetch('https://formspree.io/f/mqazkevg', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json'
-        },
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Ett fel uppstod vid skickandet av verifieringskoden');
+        // Generera en verifieringskod
+        function generateVerificationCode() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Formuläret har skickats:', data);
-        // Vid behov, visa en bekräftelse för användaren eller genomför andra åtgärder
-    })
-    .catch(error => {
-        console.error('Fel:', error);
-        // Visa ett felmeddelande för användaren eller hantera felet på annat sätt
-    });
-});
-// Exempel med fetch för att skicka formulärdata till Formspree
-const emailForm = document.getElementById('emailForm');
 
-emailForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(emailForm);
-    
-    fetch('https://formspree.io/f/mqazkevg', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json'
-        },
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Ett fel uppstod vid skickandet av verifieringskoden');
+        // Callback-funktion för reCAPTCHA
+        function onSubmit(token) {
+            document.getElementById("emailForm").submit();
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Formuläret har skickats:', data);
-        // Vid behov, visa en bekräftelse för användaren eller genomför andra åtgärder
-    })
-    .catch(error => {
-        console.error('Fel:', error);
-        // Visa ett felmeddelande för användaren eller hantera felet på annat sätt
-    });
-});
 
+        // Hantera e-postformuläret
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const verificationCode = generateVerificationCode();
+            sessionStorage.setItem('verificationCode', verificationCode);
+
+            // Skicka verifieringskoden via Formspree
+            fetch('https://formspree.io/f/mqazkevg', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email, message: `Din verifieringskod är ${verificationCode}` })
+            }).then(response => {
+                if (response.ok) {
+                    alert('Verifieringskod skickad');
+                    document.getElementById('emailForm').style.display = 'none';
+                    document.getElementById('verifyCodeForm').style.display = 'block';
+                } else {
+                    alert('Ett fel uppstod vid skickandet av verifieringskoden');
+                }
+            });
+        });
+
+        // Hantera verifieringskodformuläret
+        document.getElementById('verifyCodeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const enteredCode = document.getElementById('verificationCode').value;
+            const savedCode = sessionStorage.getItem('verificationCode');
+
+            if (enteredCode === savedCode) {
+                alert('Verifiering lyckades');
+                // Omdirigera till index.html
+                window.location.href = 'https://feue256.github.io/index.chat.openai.com.html';
+            } else {
+                alert('Verifieringskod felaktig');
+            }
+        });
     </script>
 </body>
 </html>
+
 <!-- Begin Mailchimp Signup Form -->
 <div id="mc_embed_signup">
 <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
