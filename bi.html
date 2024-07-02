@@ -7,7 +7,12 @@
         <link rel="stylesheet" href="index.chat.openai.com.css">
 </head>
 <body>
-    <h1>Batteriprocent</h1>
+        <h1>Systeminformation</h1>
+    <div class="info" id="internetStatus"></div>
+    <div class="info" id="userAgent"></div>
+    <div class="info" id="platform"></div>
+    <button id="updateButton">Uppdatera information</button>
+    <button id="closeButton">Stäng flik</button>
     <button id="batteryButton">Visa batteriprocent</button>
 
     <script>
@@ -17,6 +22,34 @@
                 document.getElementById('batteryButton').textContent = `Batteriprocent: ${batteryLevel}%`;
             });
         });
+        function updateSystemInfo() {
+    // Internetanslutningens status
+    const internetStatus = navigator.onLine ? "Online" : "Offline";
+    document.getElementById('internetStatus').textContent = `Internetanslutning: ${internetStatus}`;
+
+    // Användaragent
+    const userAgent = navigator.userAgent;
+    document.getElementById('userAgent').textContent = `Användaragent: ${userAgent}`;
+
+    // Plattform
+    const platform = navigator.platform;
+    document.getElementById('platform').textContent = `Plattform: ${platform}`;
+}
+
+function closeTab() {
+    window.close();
+}
+
+document.getElementById('updateButton').addEventListener('click', updateSystemInfo);
+document.getElementById('closeButton').addEventListener('click', closeTab);
+
+// Uppdatera informationen när sidan laddas
+updateSystemInfo();
+
+// Hantera ändringar i internetanslutningens status
+window.addEventListener('online', updateSystemInfo);
+window.addEventListener('offline', updateSystemInfo);
+
     </script>
 </body>
 </html>
