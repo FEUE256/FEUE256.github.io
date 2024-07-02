@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batteriprocent</title>
+        <link rel="stylesheet" href="index.chat.openai.com.css">
+</head>
+<body>
+    <h1>Batteriprocent</h1>
+    <button id="batteryButton">Visa batteriprocent</button>
+
+    <script>
+        document.getElementById('batteryButton').addEventListener('click', function() {
+            navigator.getBattery().then(function(battery) {
+                const batteryLevel = Math.round(battery.level * 100);
+                document.getElementById('batteryButton').textContent = `Batteriprocent: ${batteryLevel}%`;
+            });
+        });
+    </script>
+</body>
+</html>
