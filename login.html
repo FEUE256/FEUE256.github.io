@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logain på FÈUE</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  '<!-- Google Analytics -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-XXXXX-Y');
+        gtag('config', 'UA-XXXXX-Y');
     </script>
     <!-- End Google Analytics -->
-     <link rel="stylesheet" href="index.chat.openai.com.css">
+    <link rel="stylesheet" href="index.chat.openai.com.css">
 </head>
 <body>
     <h1>Kontaktformulär</h1>
-    <form id="contactForm" action="https://formspree.io/f/manwyebo" method="POST"   enctype="multipart/form-data">
+    <form id="contactForm" action="https://formspree.io/f/manwyebo" method="POST" enctype="multipart/form-data">
         <label for="name">Namn:</label>
         <input type="text" id="name" name="name" required><br>
 
@@ -41,7 +41,7 @@
         <label for="city">Stad:</label>
         <input type="text" id="city" name="city" required><br>
 
-        <label for="number">Ardesnummer:</label>
+        <label for="number">Adressnummer:</label>
         <input type="number" name="number" id="number"><br>
 
         <label for="zip">Postnummer:</label>
@@ -79,7 +79,7 @@
                 if (response.ok) {
                     alert('Formuläret har skickats!');
                     form.reset();
-                    window.href="index.html";
+                    window.location.href = "index.html";  // Korrigering av omdirigering
                 } else {
                     alert('Ett fel uppstod vid skickandet av formuläret');
                     form.reset();
