@@ -1,99 +1,133 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systeminformation</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .info { margin: 10px 0; }
-        button { margin-top: 20px; }
-    </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="index.chat.openai.com.css">
 </head>
 <body>
-    <h1>Systeminformation</h1>
-    <div class="info" id="internetStatus"></div>
-    <div class="info" id="userAgent"></div>
-    <div class="info" id="platform"></div>
-    <div class="info" id="cpu"></div>
-    <div class="info" id="memory"></div>
-    <div class="info" id="battery"></div>
-    <div class="info" id="charging"></div>
-    <div class="info" id="location"></div>
-    <div class="info" id="network"></div>
-    <button id="updateButton">Uppdatera information</button>
-    <button id="closeButton">Stäng flik</button>
+    <div class="container">
+        <h1>Systeminformation</h1>
+        <div class="info" id="internetStatus"></div>
+        <div class="info" id="userAgent"></div>
+        <div class="info" id="platform"></div>
+        <div class="info" id="cpu"></div>
+        <div class="info" id="memory"></div>
+        <div class="info" id="battery"></div>
+        <div class="info" id="charging"></div>
+        <div class="info" id="location"></div>
+        <div class="info" id="network"></div>
+        <div class="info" id="ipAddress"></div>
+        <div class="info" id="localStorage"></div>
+        <div class="info" id="sessionStorage"></div>
+        <button id="updateButton">Uppdatera information</button>
+        <button id="closeButton">Stäng flik</button>
+    </div>
 
-    <script>
-        function updateSystemInfo() {
-            // Internetanslutningens status
-            const internetStatus = navigator.onLine ? "Online" : "Offline";
-            document.getElementById('internetStatus').textContent = `Internetanslutning: ${internetStatus}`;
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+    const updateButton = document.getElementById('updateButton');
+    const closeButton = document.getElementById('closeButton');
 
-            // Användaragent
-            const userAgent = navigator.userAgent;
-            document.getElementById('userAgent').textContent = `Användaragent: ${userAgent}`;
+    updateButton.addEventListener('click', updateSystemInfo);
+    closeButton.addEventListener('click', closeTab);
 
-            // Plattform
-            const platform = navigator.platform;
-            document.getElementById('platform').textContent = `Plattform: ${platform}`;
+    // Uppdatera informationen när sidan laddas
+    updateSystemInfo();
 
-            // CPU (approximation via userAgent)
-            const cpu = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} kärnor` : "Information ej tillgänglig";
-            document.getElementById('cpu').textContent = `CPU: ${cpu}`;
+    // Hantera ändringar i internetanslutningens status
+    window.addEventListener('online', updateSystemInfo);
+    window.addEventListener('offline', updateSystemInfo);
+});
 
-            // RAM (approximation)
-            if (navigator.deviceMemory) {
-                document.getElementById('memory').textContent = `RAM: ${navigator.deviceMemory} GB`;
-            } else {
-                document.getElementById('memory').textContent = `RAM: Information ej tillgänglig`;
-            }
+function updateSystemInfo() {
+    // Internetanslutningens status
+    const internetStatus = navigator.onLine ? "Online" : "Offline";
+    document.getElementById('internetStatus').textContent = `Internetanslutning: ${internetStatus}`;
 
-            // Batteristatus
-            navigator.getBattery().then(function(battery) {
-                const batteryLevel = Math.round(battery.level * 100);
-                document.getElementById('battery').textContent = `Batteriprocent: ${batteryLevel}%`;
-                document.getElementById('charging').textContent = battery.charging ? "Laddar: Ja" : "Laddar: Nej";
-            });
+    // Användaragent
+    const userAgent = navigator.userAgent;
+    document.getElementById('userAgent').textContent = `Användaragent: ${userAgent}`;
 
-            // Geolocation
-            if ('geolocation' in navigator) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    document.getElementById('location').textContent = `Plats: Latitud ${latitude}, Longitud ${longitude}`;
-                }, function(error) {
-                    document.getElementById('location').textContent = `Plats: Information ej tillgänglig (${error.message})`;
-                });
-            } else {
-                document.getElementById('location').textContent = "Plats: Information ej tillgänglig";
-            }
+    // Operativsystem
+    const platform = navigator.platform;
+    document.getElementById('platform').textContent = `Operativsystem: ${platform}`;
 
-            // Nätverksinformation (Network Information API)
-            if ('connection' in navigator) {
-                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-                const type = connection.effectiveType;
-                document.getElementById('network').textContent = `Nätverkstyp: ${type}`;
-            } else {
-                document.getElementById('network').textContent = "Nätverkstyp: Information ej tillgänglig";
-            }
-        }
+    // CPU (approximation via userAgent)
+    const cpu = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} kärnor` : "Information ej tillgänglig";
+    document.getElementById('cpu').textContent = `CPU: ${cpu}`;
 
-        function closeTab() {
-            window.close();
-        }
+    // RAM (approximation)
+    if (navigator.deviceMemory) {
+        document.getElementById('memory').textContent = `RAM: ${navigator.deviceMemory} GB`;
+    } else {
+        document.getElementById('memory').textContent = `RAM: Information ej tillgänglig`;
+    }
 
-        document.getElementById('updateButton').addEventListener('click', updateSystemInfo);
-        document.getElementById('closeButton').addEventListener('click', closeTab);
+    // Batteristatus
+    navigator.getBattery().then(function(battery) {
+        const batteryLevel = Math.round(battery.level * 100);
+        document.getElementById('battery').textContent = `Batteriprocent: ${batteryLevel}%`;
+        document.getElementById('charging').textContent = battery.charging ? "Laddar: Ja" : "Laddar: Nej";
+    });
 
-        // Uppdatera informationen när sidan laddas
-        updateSystemInfo();
+    // Geolocation
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            document.getElementById('location').textContent = `Plats: Latitud ${latitude}, Longitud ${longitude}`;
+        }, function(error) {
+            document.getElementById('location').textContent = `Plats: Information ej tillgänglig (${error.message})`;
+        });
+    } else {
+        document.getElementById('location').textContent = "Plats: Information ej tillgänglig";
+    }
 
-        // Hantera ändringar i internetanslutningens status
-        window.addEventListener('online', updateSystemInfo);
-        window.addEventListener('offline', updateSystemInfo);
-    </script>
+    // Nätverksinformation (Network Information API)
+    if ('connection' in navigator) {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        const type = connection.effectiveType;
+        document.getElementById('network').textContent = `Nätverkstyp: ${type}`;
+    } else {
+        document.getElementById('network').textContent = "Nätverkstyp: Information ej tillgänglig";
+    }
+
+    // IP-adress
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const ipAddress = data.ip;
+            document.getElementById('ipAddress').textContent = `IP-adress: ${ipAddress}`;
+        })
+        .catch(error => {
+            console.error('Fel vid hämtning av IP-adress:', error);
+            document.getElementById('ipAddress').textContent = "IP-adress: Information ej tillgänglig";
+        });
+
+    // Local storage
+    try {
+        localStorage.setItem('test', 'test');
+        localStorage.removeItem('test');
+        document.getElementById('localStorage').textContent = `Local storage: Stöds`;
+    } catch (e) {
+        document.getElementById('localStorage').textContent = `Local storage: Stöds ej`;
+    }
+
+    // Session storage
+    try {
+        sessionStorage.setItem('test', 'test');
+        sessionStorage.removeItem('test');
+        document.getElementById('sessionStorage').textContent = `Session storage: Stöds`;
+    } catch (e) {
+        document.getElementById('sessionStorage').textContent = `Session storage: Stöds ej`;
+    }
+}
+
+function closeTab() {
+    window.close();
+}
+</script>
 </body>
 </html>
