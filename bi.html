@@ -20,7 +20,108 @@
 
     <script>
         const output = document.getElementById('systeminfo');
+  // 1. Användaragent
+        output.innerHTML += `<p>1. Användaragent: ${navigator.userAgent}</p>`;
 
+        // 2. Plattform (operativsystem)
+        output.innerHTML += `<p>2. Plattform: ${navigator.platform}</p>`;
+
+        // 3. Språkinställningar
+        output.innerHTML += `<p>3. Språkinställningar: ${navigator.language}</p>`;
+
+        // 4. Skärmupplösning och fönsterstorlek
+        output.innerHTML += `<p>4. Skärmupplösning: ${screen.width}x${screen.height}</p>`;
+        output.innerHTML += `<p>   Fönsterstorlek: ${window.innerWidth}x${window.innerHeight}</p>`;
+
+        // 5. Cookie-stöd
+        output.innerHTML += `<p>5. Cookie-stöd: ${navigator.cookieEnabled ? 'Stöds' : 'Stöds ej'}</p>`;
+
+        // 6. Online-status
+        output.innerHTML += `<p>6. Online-status: ${navigator.onLine ? 'Online' : 'Offline'}</p>`;
+
+        // 7. Geografisk position (om tillgänglig)
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                output.innerHTML += `<p>7. Geografisk position: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}</p>`;
+            }, function(error) {
+                console.error('Geolocation error:', error);
+                output.innerHTML += `<p>7. Geografisk position: Information ej tillgänglig (${error.message})</p>`;
+            });
+        } else {
+            output.innerHTML += `<p>7. Geografisk position: Stöds ej</p>`;
+        }
+
+        // 8. Hårdvaruacceleration
+        if ('DeviceMotionEvent' in window) {
+            output.innerHTML += `<p>8. Hårdvaruacceleration: Stöds</p>`;
+        } else {
+            output.innerHTML += `<p>8. Hårdvaruacceleration: Stöds ej</p>`;
+        }
+
+        // 9. Orienteringsändringar
+        if ('onorientationchange' in window) {
+            output.innerHTML += `<p>9. Orienteringsändringar: Stöds</p>`;
+        } else {
+            output.innerHTML += `<p>9. Orienteringsändringar: Stöds ej</p>`;
+        }
+
+        // 10. Laddningstid för batteri
+        navigator.getBattery().then(function(battery) {
+            output.innerHTML += `<p>10. Laddningstid för batteri: ${battery.chargingTime} sekunder</p>`;
+        }).catch(function(err) {
+            output.innerHTML += `<p>10. Laddningstid för batteri: Information ej tillgänglig (${err.message})</p>`;
+        });
+
+        // 11. Upptäck tillgängliga ljud- och videodrivrutiner
+        if ('mediaDevices' in navigator) {
+            navigator.mediaDevices.enumerateDevices().then(function(devices) {
+                devices.forEach(function(device) {
+                    output.innerHTML += `<p>11. Tillgängliga enheter: ${device.kind}, ${device.label || 'Ingen märkning'}</p>`;
+                });
+            }).catch(function(err) {
+                console.error('MediaDevices error:', err);
+                output.innerHTML += `<p>11. Mediaenheter: Information ej tillgänglig</p>`;
+            });
+        } else {
+            output.innerHTML += `<p>11. Mediaenheter: Stöds ej</p>`;
+        }
+
+        // 12. Kontrollera USB-enheter
+        output.innerHTML += `<p>12. USB-enheter: ${'usb' in navigator ? 'Stöds' : 'Stöds ej'}</p>`;
+
+        // 13. Kontrollera Bluetooth-enheter
+        output.innerHTML += `<p>13. Bluetooth-enheter: ${'bluetooth' in navigator ? 'Stöds' : 'Stöds ej'}</p>`;
+
+        // 14. Kontrollera NFC-enheter
+        output.innerHTML += `<p>14. NFC-enheter: ${'NDEFReader' in window ? 'Stöds' : 'Stöds ej'}</p>`;
+
+        // 15. Läs ljusnivå
+        if ('AmbientLightSensor' in window) {
+            const sensor = new AmbientLightSensor();
+            sensor.onreading = () => {
+                output.innerHTML += `<p>15. Ljussensor: Ljusnivå ${sensor.illuminance}</p>`;
+            };
+            sensor.onerror = error => {
+                console.error('Ljussensor error:', error);
+            };
+            sensor.start();
+        } else {
+            output.innerHTML += `<p>15. Ljussensor: Stöds ej</p>`;
+        }
+
+        // 16. Läs magnetiska fält
+        if ('Magnetometer' in window) {
+            const sensor = new Magnetometer();
+            sensor.onreading = () => {
+                output.innerHTML += `<p>16. Magnetometer: x ${sensor.x}, y ${sensor.y}, z ${sensor.z}</p>`;
+            };
+            sensor.onerror = error => {
+                console.error('Magnetometer error:', error);
+            };
+            sensor.start();
+        } else {
+            output.innerHTML += `<p>16. Magnetometer: Stöds ej</p>`;
+        }
         // 17. Nätverkstyp (t.ex. Wi-Fi, mobildat)
         output.innerHTML += `<p>17. Nätverkstyp: ${navigator.connection.type}</p>`;
 
@@ -128,7 +229,7 @@
         } else {
             output.innerHTML += `<p>45. GPS-noggrannhet: Stöds ej</p>`;
         }
-
+consol.log("ja det är bara")
         // 46. Skärmens ljusstyrka
         if ('AmbientLightSensor' in window) {
             const sensor = new AmbientLightSensor();
