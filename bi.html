@@ -209,6 +209,117 @@
         output.innerHTML += `<p>28. Behörigheter API: Stöds ej</p>`;
     }
 });
+        document.addEventListener('DOMContentLoaded', function() {
+    const output = document.getElementById('output');
+
+    // 29. WebXR API support
+    if ('xr' in navigator) {
+        output.innerHTML += `<p>29. WebXR API: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>29. WebXR API: Stöds ej</p>`;
+    }
+
+    // 30. Geografisk position med höjd
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            output.innerHTML += `<p>30. Geografisk position med höjd: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}, Höjd ${position.coords.altitude}</p>`;
+        }, function(error) {
+            output.innerHTML += `<p>30. Geografisk position med höjd: Information ej tillgänglig (${error.message})</p>`;
+        });
+    } else {
+        output.innerHTML += `<p>30. Geografisk position med höjd: Information ej tillgänglig</p>`;
+    }
+
+    // 31. Tillgång till magnetometer (DeviceMotionEvent) för att mäta magnetisk rörelse
+    if ('DeviceMotionEvent' in window && 'AbsoluteOrientationSensor' in window) {
+        const sensor = new AbsoluteOrientationSensor();
+        sensor.addEventListener('reading', () => {
+            output.innerHTML += `<p>31. Magnetometer: Pitch ${sensor.quaternion[0]}, Roll ${sensor.quaternion[1]}, Yaw ${sensor.quaternion[2]}</p>`;
+        });
+        sensor.start();
+    } else {
+        output.innerHTML += `<p>31. Magnetometer: Stöds ej</p>`;
+    }
+
+    // 32. Tillgång till ljussensor (AmbientLightSensor)
+    if ('AmbientLightSensor' in window) {
+        const sensor = new AmbientLightSensor();
+        sensor.onreading = () => {
+            output.innerHTML += `<p>32. Ljussensor: Ljusnivå ${sensor.illuminance}</p>`;
+        };
+        sensor.onerror = error => {
+            console.error('Ljussensor error:', error);
+        };
+        sensor.start();
+    } else {
+        output.innerHTML += `<p>32. Ljussensor: Stöds ej</p>`;
+    }
+
+    // 33. Rörelsesensor (Accelerometer)
+    if ('Accelerometer' in window) {
+        const sensor = new Accelerometer();
+        sensor.addEventListener('reading', () => {
+            output.innerHTML += `<p>33. Rörelsesensor: x ${sensor.x}, y ${sensor.y}, z ${sensor.z}</p>`;
+        });
+        sensor.start();
+    } else {
+        output.innerHTML += `<p>33. Rörelsesensor: Stöds ej</p>`;
+    }
+
+    // 34. Gyroskop (Gyroscope)
+    if ('Gyroscope' in window) {
+        const sensor = new Gyroscope();
+        sensor.addEventListener('reading', () => {
+            output.innerHTML += `<p>34. Gyroskop: alpha ${sensor.x}, beta ${sensor.y}, gamma ${sensor.z}</p>`;
+        });
+        sensor.start();
+    } else {
+        output.innerHTML += `<p>34. Gyroskop: Stöds ej</p>`;
+    }
+
+    // 35. Nära fält-kommunikation (NFC)
+    if ('NDEFReader' in window) {
+        output.innerHTML += `<p>35. NFC: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>35. NFC: Stöds ej</p>`;
+    }
+
+    // 36. USB-support
+    if ('usb' in navigator) {
+        output.innerHTML += `<p>36. USB: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>36. USB: Stöds ej</p>`;
+    }
+
+    // 37. Bluetooth-support
+    if ('bluetooth' in navigator) {
+        output.innerHTML += `<p>37. Bluetooth: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>37. Bluetooth: Stöds ej</p>`;
+    }
+
+    // 38. Spelkontroller (Gamepad API)
+    window.addEventListener('gamepadconnected', function(e) {
+        const gamepad = e.gamepad;
+        output.innerHTML += `<p>38. Spelkontroller ansluten: ${gamepad.id}</p>`;
+    });
+
+    // 39. Omgivande ljudåtergivning (Spatial Sound API)
+    if ('AudioContext' in window || 'webkitAudioContext' in window) {
+        output.innerHTML += `<p>39. Omgivande ljudåtergivning: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>39. Omgivande ljudåtergivning: Stöds ej</p>`;
+    }
+
+    // 40. OCR (Optical Character Recognition) med kamera (MediaStream Image Capture API)
+    if ('ImageCapture' in window && 'TextDetector' in window) {
+        output.innerHTML += `<p>40. OCR (Optical Character Recognition): Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>40. OCR (Optical Character Recognition): Stöds ej</p>`;
+    }
+
+});
+
 </script>
 </body>
 </html>
