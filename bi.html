@@ -1,45 +1,143 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>Data Systems Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systeminformation</title>
+     <link rel="stylesheet" href="index.chat.openai.com.css">
+          <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
 </head>
 <body>
-    <h1>Data Systems Information</h1>
+    <h1>Systeminformation</h1>
 
-    <div id="system-info">
-        <!-- Här kommer systeminformationen att visas -->
+    <div id="systeminfo">
+        <!-- Här kommer JavaScript att fylla på med systeminformation -->
     </div>
 
     <script>
-        // Exempeldata för olika system
-        var systems = [
-            { name: "System A", time: "12:00", load: 25, cpu: 30 },
-            { name: "System B", time: "13:30", load: 40, cpu: 45 },
-            { name: "System C", time: "10:45", load: 15, cpu: 20 },
-            { name: "System D", time: "11:15", load: 20, cpu: 35 },
-            { name: "System E", time: "14:00", load: 50, cpu: 50 }
-        ];
+        // Din JavaScript-kod för att hämta och visa information
+        const output = document.getElementById('systeminfo');
 
-        // Funktion för att skapa HTML för varje system och visa det på sidan
-        function displaySystemInfo(systems) {
-            var systemInfoContainer = document.getElementById("system-info");
-            systems.forEach(function(system) {
-                var systemDiv = document.createElement("div");
-                systemDiv.innerHTML = `
-                    <h3>${system.name}</h3>
-                    <p>Time: ${system.time}</p>
-                    <p>Load: ${system.load}%</p>
-                    <p>CPU: ${system.cpu}%</p>
-                    <hr>
-                `;
-                systemInfoContainer.appendChild(systemDiv);
-            });
-        }
+      // Hitta output-elementet
+const output = document.getElementById('systeminfo');
 
-        // Anropa funktionen för att visa informationen
-        displaySystemInfo(systems);
+// 1. Webbläsarens användaragent
+output.innerHTML += <p>1. Användaragent: ${navigator.userAgent}</p>;
+
+// 2. Plattform (operativsystem)
+output.innerHTML += <p>2. Plattform: ${navigator.platform}</p>;
+
+// 3. Språkinställningar
+output.innerHTML += <p>3. Språkinställningar: ${navigator.language}</p>;
+
+// 4. Skärmupplösning och fönsterstorlek
+output.innerHTML += <p>4. Skärmupplösning: ${screen.width}x${screen.height}</p>;
+output.innerHTML += <p>   Fönsterstorlek: ${window.innerWidth}x${window.innerHeight}</p>;
+
+// 5. Cookie-stöd
+output.innerHTML += <p>5. Cookie-stöd: ${navigator.cookieEnabled ? 'Stöds' : 'Stöds ej'}</p>;
+
+// 6. Online-status
+output.innerHTML += <p>6. Online-status: ${navigator.onLine ? 'Online' : 'Offline'}</p>;
+
+// 7. Geografisk position (om tillgänglig)
+if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        output.innerHTML += <p>7. Geografisk position: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}</p>;
+    }, function(error) {
+        console.error('Geolocation error:', error);
+        output.innerHTML += <p>7. Geografisk position: Information ej tillgänglig (${error.message})</p>;
+    });
+} else {
+    output.innerHTML += <p>7. Geografisk position: Stöds ej</p>;
+}
+
+// 8. Hårdvaruacceleration
+if ('DeviceMotionEvent' in window) {
+    output.innerHTML += <p>8. Hårdvaruacceleration: Stöds</p>;
+} else {
+    output.innerHTML += <p>8. Hårdvaruacceleration: Stöds ej</p>;
+}
+
+// 9. Orienteringsändringar
+if ('onorientationchange' in window) {
+    output.innerHTML += <p>9. Orienteringsändringar: Stöds</p>;
+} else {
+    output.innerHTML += <p>9. Orienteringsändringar: Stöds ej</p>;
+}
+
+// 10. Laddningstid för batteri
+navigator.getBattery().then(function(battery) {
+    output.innerHTML += <p>10. Laddningstid för batteri: ${battery.chargingTime} sekunder</p>;
+}).catch(function(err) {
+    output.innerHTML += <p>10. Laddningstid för batteri: Information ej tillgänglig (${err.message})</p>;
+});
+
+// 11. Upptäck tillgängliga ljud- och videodrivrutiner
+if ('mediaDevices' in navigator) {
+    navigator.mediaDevices.enumerateDevices().then(function(devices) {
+        devices.forEach(function(device) {
+            output.innerHTML += <p>11. Tillgängliga enheter: ${device.kind}, ${device.label || 'Ingen märkning'}</p>;
+        });
+    }).catch(function(err) {
+        console.error('MediaDevices error:', err);
+        output.innerHTML += <p>11. Mediaenheter: Information ej tillgänglig</p>;
+    });
+} else {
+    output.innerHTML += <p>11. Mediaenheter: Stöds ej</p>;
+}
+
+// 12. Kontrollera USB-enheter
+output.innerHTML += <p>12. USB-enheter: ${'usb' in navigator ? 'Stöds' : 'Stöds ej'}</p>;
+
+// 13. Kontrollera Bluetooth-enheter
+output.innerHTML += <p>13. Bluetooth-enheter: ${'bluetooth' in navigator ? 'Stöds' : 'Stöds ej'}</p>;
+
+// 14. Kontrollera NFC-enheter
+output.innerHTML += <p>14. NFC-enheter: ${'NDEFReader' in window ? 'Stöds' : 'Stöds ej'}</p>;
+
+// 15. Läs ljusnivå
+if ('AmbientLightSensor' in window) {
+    const sensor = new AmbientLightSensor();
+    sensor.onreading = () => {
+        output.innerHTML += <p>15. Ljussensor: Ljusnivå ${sensor.illuminance}</p>;
+    };
+    sensor.onerror = error => {
+        console.error('Ljussensor error:', error);
+    };
+    sensor.start();
+} else {
+    output.innerHTML += <p>15. Ljussensor: Stöds ej</p>;
+}
+
+// 16. Läs magnetiska fält
+if ('Magnetometer' in window) {
+    const sensor = new Magnetometer();
+    sensor.onreading = () => {
+        output.innerHTML += <p>16. Magnetometer: x ${sensor.x}, y ${sensor.y}, z ${sensor.z}</p>;
+    };
+    sensor.onerror = error => {
+        console.error('Magnetometer error:', error);
+    };
+    sensor.start();
+} else {
+    output.innerHTML += <p>16. Magnetometer: Stöds ej</p>;
+}
+
+// 17. Bedöm enhetens kapacitet för videodekodning
+if ('mediaCapabilities' in navigator) {
+    navigator.mediaCapabilities.decodingInfo({ type: 'video/mp4; codecs="avc1.42E01E"' }).then(function(info) {
+        const smoothPlayback = info.smooth;
+        output.innerHTML += <p>17. MediaCapabilities API: Smidig uppspelning av video/mp4: ${smoothPlayback ? 'Ja' : 'Nej'}</p>;
+    }).catch(function(err) {
+        output.innerHTML += <p>17. MediaCapabilities API: Information ej tillgänglig (${err.message})</p>;
+    });
+} else {
+    output.innerHTML += <p>17. MediaCapabilities API: Stöds ej</p>;
+}
+
+        
+
     </script>
 </body>
 </html>
