@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logain på FÈUE</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <link rel="stylesheet" href="index.chat.openi.com.css">
+
 </head>
 <body>
     <h1>Kontaktformulär</h1>
@@ -25,14 +25,14 @@
         <label for="message">Meddelande:</label>
         <textarea id="message" name="message" required></textarea><br>
 
-        <label for="address">Adress:</label>
+        <label for="address">Adressnamn:</label>
         <input type="text" id="address" name="address" required><br>
 
         <label for="city">Stad:</label>
         <input type="text" id="city" name="city" required><br>
 
-        <label for="file">Din FÈUE jobbevis (valfri):</label>
-        <input type="file" name="upload" id="upload"><br>
+        <label for="number">Ardesnummer:</label>
+        <input type="number" name="number" id="number"><br>
 
         <label for="zip">Postnummer:</label>
         <input type="text" id="zip" name="zip" required><br>
@@ -69,6 +69,7 @@
                 if (response.ok) {
                     alert('Formuläret har skickats!');
                     form.reset();
+                    window.href="index.html";
                 } else {
                     alert('Ett fel uppstod vid skickandet av formuläret');
                     form.reset();
