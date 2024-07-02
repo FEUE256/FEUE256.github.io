@@ -1,325 +1,45 @@
+
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systeminformation</title>
-    <link rel="stylesheet" href="index.chat.openai.com.css">
+    <title>Data Systems Information</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Systeminformation</h1>
-        <div id="output"></div>
+    <h1>Data Systems Information</h1>
+
+    <div id="system-info">
+        <!-- Här kommer systeminformationen att visas -->
     </div>
 
-    <script>document.addEventListener('DOMContentLoaded', function() {
-    const output = document.getElementById('output');
+    <script>
+        // Exempeldata för olika system
+        var systems = [
+            { name: "System A", time: "12:00", load: 25, cpu: 30 },
+            { name: "System B", time: "13:30", load: 40, cpu: 45 },
+            { name: "System C", time: "10:45", load: 15, cpu: 20 },
+            { name: "System D", time: "11:15", load: 20, cpu: 35 },
+            { name: "System E", time: "14:00", load: 50, cpu: 50 }
+        ];
 
-    // 1. Användarens webbläsaragent
-    output.innerHTML += `<p>1. Användarens webbläsaragent: ${navigator.userAgent}</p>`;
-
-    // 2. Operativsystemets plattform
-    output.innerHTML += `<p>2. Operativsystemets plattform: ${navigator.platform}</p>`;
-
-    // 3. Användarens föredragna språk
-    output.innerHTML += `<p>3. Användarens föredragna språk: ${navigator.language}</p>`;
-
-    // 4. Antal CPU-kärnor
-    output.innerHTML += `<p>4. Antal CPU-kärnor: ${navigator.hardwareConcurrency}</p>`;
-
-    // 5. RAM-minne i gigabyte
-    output.innerHTML += `<p>5. RAM-minne i gigabyte: ${navigator.deviceMemory} GB</p>`;
-
-    // 6. Antal touchpunkter för pekskärmen
-    output.innerHTML += `<p>6. Antal touchpunkter för pekskärmen: ${navigator.maxTouchPoints}</p>`;
-
-    // 7. Internetanslutningens status
-    output.innerHTML += `<p>7. Internetanslutningens status: ${navigator.onLine ? 'Online' : 'Offline'}</p>`;
-
-    // 8. Detaljerad information om nätverksanslutningen
-    if (navigator.connection) {
-        output.innerHTML += `<p>8. Nätverkstyp: ${navigator.connection.effectiveType}</p>`;
-        output.innerHTML += `<p>8. Nerladdningshastighet: ${navigator.connection.downlink} Mbps</p>`;
-    } else {
-        output.innerHTML += `<p>8. Detaljerad nätverksinformation ej tillgänglig</p>`;
-    }
-
-    // 9. Tillgång till användarens geografiska position
-    if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            output.innerHTML += `<p>9. Plats: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}</p>`;
-        }, function(error) {
-            output.innerHTML += `<p>9. Platsinformation ej tillgänglig (${error.message})</p>`;
-        });
-    } else {
-        output.innerHTML += `<p>9. Platsinformation ej tillgänglig</p>`;
-    }
-
-    // 10. Tillgång till batteristatus
-    if ('getBattery' in navigator) {
-        navigator.getBattery().then(function(battery) {
-            output.innerHTML += `<p>10. Batteristatus: ${Math.round(battery.level * 100)}%</p>`;
-            output.innerHTML += `<p>10. Laddar: ${battery.charging ? 'Ja' : 'Nej'}</p>`;
-        });
-    } else {
-        output.innerHTML += `<p>10. Batteriinformation ej tillgänglig</p>`;
-    }
-
-    // 11. Local storage support
-    try {
-        if (typeof localStorage !== 'undefined') {
-            localStorage.setItem('test', 'test');
-            localStorage.removeItem('test');
-            output.innerHTML += `<p>11. Local storage: Stöds</p>`;
-        } else {
-            output.innerHTML += `<p>11. Local storage: Stöds ej</p>`;
+        // Funktion för att skapa HTML för varje system och visa det på sidan
+        function displaySystemInfo(systems) {
+            var systemInfoContainer = document.getElementById("system-info");
+            systems.forEach(function(system) {
+                var systemDiv = document.createElement("div");
+                systemDiv.innerHTML = `
+                    <h3>${system.name}</h3>
+                    <p>Time: ${system.time}</p>
+                    <p>Load: ${system.load}%</p>
+                    <p>CPU: ${system.cpu}%</p>
+                    <hr>
+                `;
+                systemInfoContainer.appendChild(systemDiv);
+            });
         }
-    } catch (e) {
-        output.innerHTML += `<p>11. Local storage: Stöds ej</p>`;
-    }
 
-    // 12. Session storage support
-    try {
-        if (typeof sessionStorage !== 'undefined') {
-            sessionStorage.setItem('test', 'test');
-            sessionStorage.removeItem('test');
-            output.innerHTML += `<p>12. Session storage: Stöds</p>`;
-        } else {
-            output.innerHTML += `<p>12. Session storage: Stöds ej</p>`;
-        }
-    } catch (e) {
-        output.innerHTML += `<p>12. Session storage: Stöds ej</p>`;
-    }
-
-    // 13. Dokumentkakor
-    output.innerHTML += `<p>13. Dokumentkakor: ${document.cookie}</p>`;
-
-    // 14. Notification API support
-    if ('Notification' in window) {
-        output.innerHTML += `<p>14. Notification API: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>14. Notification API: Stöds ej</p>`;
-    }
-
-    // 15. Performance API timing information
-    if ('performance' in window && 'timing' in performance) {
-        const timing = performance.timing;
-        output.innerHTML += `<p>15. Laddningstider (ms):
-            <br> Total laddningstid: ${timing.loadEventEnd - timing.navigationStart}
-            <br> DNS-resolvertid: ${timing.domainLookupEnd - timing.domainLookupStart}
-            <br> TCP-anslutningstid: ${timing.connectEnd - timing.connectStart}
-            <br> Serverresponstid: ${timing.responseEnd - timing.requestStart}
-            </p>`;
-    } else {
-        output.innerHTML += `<p>15. Performance API: Stöds ej</p>`;
-    }
-
-    // 16. Information om skärmen
-    output.innerHTML += `<p>16. Skärmens bredd: ${window.screen.width}</p>`;
-    output.innerHTML += `<p>16. Skärmens höjd: ${window.screen.height}</p>`;
-    output.innerHTML += `<p>16. Fysisk skärmstorlek: ${window.screen.width} x ${window.screen.height} pixlar</p>`;
-
-    // 17. DeviceOrientationEvent och DeviceMotionEvent
-    if ('DeviceOrientationEvent' in window) {
-        output.innerHTML += `<p>17. DeviceOrientationEvent: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>17. DeviceOrientationEvent: Stöds ej</p>`;
-    }
-
-    if ('DeviceMotionEvent' in window) {
-        output.innerHTML += `<p>17. DeviceMotionEvent: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>17. DeviceMotionEvent: Stöds ej</p>`;
-    }
-
-    // 18. Mediaenheter (ljud och video)
-    if ('mediaDevices' in navigator) {
-        output.innerHTML += `<p>18. Mediaenheter (audio/video): Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>18. Mediaenheter (audio/video): Stöds ej</p>`;
-    }
-
-    // 19. Permissions API support
-    if ('permissions' in navigator) {
-        output.innerHTML += `<p>19. Permissions API: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>19. Permissions API: Stöds ej</p>`;
-    }
-
-    // 20. IP-adress via extern API
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            const ipAddress = data.ip;
-            output.innerHTML += `<p>20. IP-adress: ${ipAddress}</p>`;
-        })
-        .catch(error => {
-            console.error('Fel vid hämtning av IP-adress:', error);
-            output.innerHTML += `<p>20. IP-adress: Information ej tillgänglig</p>`;
-        });
-
-    // 21. WebGL support
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (gl) {
-        output.innerHTML += `<p>21. WebGL: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>21. WebGL: Stöds ej</p>`;
-    }
-
-    // 22. Service Workers support
-    if ('serviceWorker' in navigator) {
-        output.innerHTML += `<p>22. Service Workers: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>22. Service Workers: Stöds ej</p>`;
-    }
-
-    // 23. Push API support
-    if ('PushManager' in window) {
-        output.innerHTML += `<p>23. Push API: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>23. Push API: Stöds ej</p>`;
-    }
-
-    // 24. window.location information
-    output.innerHTML += `<p>24. Aktuell URL: ${window.location.href}</p>`;
-    output.innerHTML += `<p>24. Navigationshistorik: ${window.history.length} steg</p>`;
-
-    // 25. Virtual Keyboard support
-    if ('Keyboard' in navigator) {
-        output.innerHTML += `<p>25. Skärmtangentbord: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>25. Skärmtangentbord: Stöds ej</p>`;
-    }
-
-    // 26. navigator.cookieEnabled information
-    output.innerHTML += `<p>26. Kakor aktiverade: ${navigator.cookieEnabled ? 'Ja' : 'Nej'}</p>`;
-
-    // 27. navigator.serviceWorker information
-    if ('serviceWorker' in navigator) {
-        output.innerHTML += `<p>27. Service Worker API: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>27. Service Worker API: Stöds ej</p>`;
-    }
-
-    // 28. navigator.permissions information
-    if ('permissions' in navigator) {
-        output.innerHTML += `<p>28. Behörigheter API: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>28. Behörigheter API: Stöds ej</p>`;
-    }
-});
-        document.addEventListener('DOMContentLoaded', function() {
-    const output = document.getElementById('output');
-
-    // 29. WebXR API support
-    if ('xr' in navigator) {
-        output.innerHTML += `<p>29. WebXR API: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>29. WebXR API: Stöds ej</p>`;
-    }
-
-    // 30. Geografisk position med höjd
-    if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            output.innerHTML += `<p>30. Geografisk position med höjd: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}, Höjd ${position.coords.altitude}</p>`;
-        }, function(error) {
-            output.innerHTML += `<p>30. Geografisk position med höjd: Information ej tillgänglig (${error.message})</p>`;
-        });
-    } else {
-        output.innerHTML += `<p>30. Geografisk position med höjd: Information ej tillgänglig</p>`;
-    }
-
-    // 31. Tillgång till magnetometer (DeviceMotionEvent) för att mäta magnetisk rörelse
-    if ('DeviceMotionEvent' in window && 'AbsoluteOrientationSensor' in window) {
-        const sensor = new AbsoluteOrientationSensor();
-        sensor.addEventListener('reading', () => {
-            output.innerHTML += `<p>31. Magnetometer: Pitch ${sensor.quaternion[0]}, Roll ${sensor.quaternion[1]}, Yaw ${sensor.quaternion[2]}</p>`;
-        });
-        sensor.start();
-    } else {
-        output.innerHTML += `<p>31. Magnetometer: Stöds ej</p>`;
-    }
-
-    // 32. Tillgång till ljussensor (AmbientLightSensor)
-    if ('AmbientLightSensor' in window) {
-        const sensor = new AmbientLightSensor();
-        sensor.onreading = () => {
-            output.innerHTML += `<p>32. Ljussensor: Ljusnivå ${sensor.illuminance}</p>`;
-        };
-        sensor.onerror = error => {
-            console.error('Ljussensor error:', error);
-        };
-        sensor.start();
-    } else {
-        output.innerHTML += `<p>32. Ljussensor: Stöds ej</p>`;
-    }
-
-    // 33. Rörelsesensor (Accelerometer)
-    if ('Accelerometer' in window) {
-        const sensor = new Accelerometer();
-        sensor.addEventListener('reading', () => {
-            output.innerHTML += `<p>33. Rörelsesensor: x ${sensor.x}, y ${sensor.y}, z ${sensor.z}</p>`;
-        });
-        sensor.start();
-    } else {
-        output.innerHTML += `<p>33. Rörelsesensor: Stöds ej</p>`;
-    }
-
-    // 34. Gyroskop (Gyroscope)
-    if ('Gyroscope' in window) {
-        const sensor = new Gyroscope();
-        sensor.addEventListener('reading', () => {
-            output.innerHTML += `<p>34. Gyroskop: alpha ${sensor.x}, beta ${sensor.y}, gamma ${sensor.z}</p>`;
-        });
-        sensor.start();
-    } else {
-        output.innerHTML += `<p>34. Gyroskop: Stöds ej</p>`;
-    }
-
-    // 35. Nära fält-kommunikation (NFC)
-    if ('NDEFReader' in window) {
-        output.innerHTML += `<p>35. NFC: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>35. NFC: Stöds ej</p>`;
-    }
-
-    // 36. USB-support
-    if ('usb' in navigator) {
-        output.innerHTML += `<p>36. USB: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>36. USB: Stöds ej</p>`;
-    }
-
-    // 37. Bluetooth-support
-    if ('bluetooth' in navigator) {
-        output.innerHTML += `<p>37. Bluetooth: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>37. Bluetooth: Stöds ej</p>`;
-    }
-
-    // 38. Spelkontroller (Gamepad API)
-    window.addEventListener('gamepadconnected', function(e) {
-        const gamepad = e.gamepad;
-        output.innerHTML += `<p>38. Spelkontroller ansluten: ${gamepad.id}</p>`;
-    });
-
-    // 39. Omgivande ljudåtergivning (Spatial Sound API)
-    if ('AudioContext' in window || 'webkitAudioContext' in window) {
-        output.innerHTML += `<p>39. Omgivande ljudåtergivning: Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>39. Omgivande ljudåtergivning: Stöds ej</p>`;
-    }
-
-    // 40. OCR (Optical Character Recognition) med kamera (MediaStream Image Capture API)
-    if ('ImageCapture' in window && 'TextDetector' in window) {
-        output.innerHTML += `<p>40. OCR (Optical Character Recognition): Stöds</p>`;
-    } else {
-        output.innerHTML += `<p>40. OCR (Optical Character Recognition): Stöds ej</p>`;
-    }
-
-});
-
-</script>
+        // Anropa funktionen för att visa informationen
+        displaySystemInfo(systems);
+    </script>
 </body>
 </html>
