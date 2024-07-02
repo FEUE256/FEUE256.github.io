@@ -9,125 +9,206 @@
 <body>
     <div class="container">
         <h1>Systeminformation</h1>
-        <div class="info" id="internetStatus"></div>
-        <div class="info" id="userAgent"></div>
-        <div class="info" id="platform"></div>
-        <div class="info" id="cpu"></div>
-        <div class="info" id="memory"></div>
-        <div class="info" id="battery"></div>
-        <div class="info" id="charging"></div>
-        <div class="info" id="location"></div>
-        <div class="info" id="network"></div>
-        <div class="info" id="ipAddress"></div>
-        <div class="info" id="localStorage"></div>
-        <div class="info" id="sessionStorage"></div>
-        <button id="updateButton">Uppdatera information</button>
-        <button id="closeButton">Stäng flik</button>
+        <div id="output"></div>
     </div>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>document.addEventListener('DOMContentLoaded', function() {
-    const updateButton = document.getElementById('updateButton');
-    const closeButton = document.getElementById('closeButton');
+    const output = document.getElementById('output');
 
-    updateButton.addEventListener('click', updateSystemInfo);
-    closeButton.addEventListener('click', closeTab);
+    // 1. Användarens webbläsaragent
+    output.innerHTML += `<p>1. Användarens webbläsaragent: ${navigator.userAgent}</p>`;
 
-    // Uppdatera informationen när sidan laddas
-    updateSystemInfo();
+    // 2. Operativsystemets plattform
+    output.innerHTML += `<p>2. Operativsystemets plattform: ${navigator.platform}</p>`;
 
-    // Hantera ändringar i internetanslutningens status
-    window.addEventListener('online', updateSystemInfo);
-    window.addEventListener('offline', updateSystemInfo);
-});
+    // 3. Användarens föredragna språk
+    output.innerHTML += `<p>3. Användarens föredragna språk: ${navigator.language}</p>`;
 
-function updateSystemInfo() {
-    // Internetanslutningens status
-    const internetStatus = navigator.onLine ? "Online" : "Offline";
-    document.getElementById('internetStatus').textContent = `Internetanslutning: ${internetStatus}`;
+    // 4. Antal CPU-kärnor
+    output.innerHTML += `<p>4. Antal CPU-kärnor: ${navigator.hardwareConcurrency}</p>`;
 
-    // Användaragent
-    const userAgent = navigator.userAgent;
-    document.getElementById('userAgent').textContent = `Användaragent: ${userAgent}`;
+    // 5. RAM-minne i gigabyte
+    output.innerHTML += `<p>5. RAM-minne i gigabyte: ${navigator.deviceMemory} GB</p>`;
 
-    // Operativsystem
-    const platform = navigator.platform;
-    document.getElementById('platform').textContent = `Operativsystem: ${platform}`;
+    // 6. Antal touchpunkter för pekskärmen
+    output.innerHTML += `<p>6. Antal touchpunkter för pekskärmen: ${navigator.maxTouchPoints}</p>`;
 
-    // CPU (approximation via userAgent)
-    const cpu = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} kärnor` : "Information ej tillgänglig";
-    document.getElementById('cpu').textContent = `CPU: ${cpu}`;
+    // 7. Internetanslutningens status
+    output.innerHTML += `<p>7. Internetanslutningens status: ${navigator.onLine ? 'Online' : 'Offline'}</p>`;
 
-    // RAM (approximation)
-    if (navigator.deviceMemory) {
-        document.getElementById('memory').textContent = `RAM: ${navigator.deviceMemory} GB`;
+    // 8. Detaljerad information om nätverksanslutningen
+    if (navigator.connection) {
+        output.innerHTML += `<p>8. Nätverkstyp: ${navigator.connection.effectiveType}</p>`;
+        output.innerHTML += `<p>8. Nerladdningshastighet: ${navigator.connection.downlink} Mbps</p>`;
     } else {
-        document.getElementById('memory').textContent = `RAM: Information ej tillgänglig`;
+        output.innerHTML += `<p>8. Detaljerad nätverksinformation ej tillgänglig</p>`;
     }
 
-    // Batteristatus
-    navigator.getBattery().then(function(battery) {
-        const batteryLevel = Math.round(battery.level * 100);
-        document.getElementById('battery').textContent = `Batteriprocent: ${batteryLevel}%`;
-        document.getElementById('charging').textContent = battery.charging ? "Laddar: Ja" : "Laddar: Nej";
-    });
-
-    // Geolocation
+    // 9. Tillgång till användarens geografiska position
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            document.getElementById('location').textContent = `Plats: Latitud ${latitude}, Longitud ${longitude}`;
+            output.innerHTML += `<p>9. Plats: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}</p>`;
         }, function(error) {
-            document.getElementById('location').textContent = `Plats: Information ej tillgänglig (${error.message})`;
+            output.innerHTML += `<p>9. Platsinformation ej tillgänglig (${error.message})</p>`;
         });
     } else {
-        document.getElementById('location').textContent = "Plats: Information ej tillgänglig";
+        output.innerHTML += `<p>9. Platsinformation ej tillgänglig</p>`;
     }
 
-    // Nätverksinformation (Network Information API)
-    if ('connection' in navigator) {
-        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        const type = connection.effectiveType;
-        document.getElementById('network').textContent = `Nätverkstyp: ${type}`;
+    // 10. Tillgång till batteristatus
+    if ('getBattery' in navigator) {
+        navigator.getBattery().then(function(battery) {
+            output.innerHTML += `<p>10. Batteristatus: ${Math.round(battery.level * 100)}%</p>`;
+            output.innerHTML += `<p>10. Laddar: ${battery.charging ? 'Ja' : 'Nej'}</p>`;
+        });
     } else {
-        document.getElementById('network').textContent = "Nätverkstyp: Information ej tillgänglig";
+        output.innerHTML += `<p>10. Batteriinformation ej tillgänglig</p>`;
     }
 
-    // IP-adress
+    // 11. Local storage support
+    try {
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('test', 'test');
+            localStorage.removeItem('test');
+            output.innerHTML += `<p>11. Local storage: Stöds</p>`;
+        } else {
+            output.innerHTML += `<p>11. Local storage: Stöds ej</p>`;
+        }
+    } catch (e) {
+        output.innerHTML += `<p>11. Local storage: Stöds ej</p>`;
+    }
+
+    // 12. Session storage support
+    try {
+        if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('test', 'test');
+            sessionStorage.removeItem('test');
+            output.innerHTML += `<p>12. Session storage: Stöds</p>`;
+        } else {
+            output.innerHTML += `<p>12. Session storage: Stöds ej</p>`;
+        }
+    } catch (e) {
+        output.innerHTML += `<p>12. Session storage: Stöds ej</p>`;
+    }
+
+    // 13. Dokumentkakor
+    output.innerHTML += `<p>13. Dokumentkakor: ${document.cookie}</p>`;
+
+    // 14. Notification API support
+    if ('Notification' in window) {
+        output.innerHTML += `<p>14. Notification API: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>14. Notification API: Stöds ej</p>`;
+    }
+
+    // 15. Performance API timing information
+    if ('performance' in window && 'timing' in performance) {
+        const timing = performance.timing;
+        output.innerHTML += `<p>15. Laddningstider (ms):
+            <br> Total laddningstid: ${timing.loadEventEnd - timing.navigationStart}
+            <br> DNS-resolvertid: ${timing.domainLookupEnd - timing.domainLookupStart}
+            <br> TCP-anslutningstid: ${timing.connectEnd - timing.connectStart}
+            <br> Serverresponstid: ${timing.responseEnd - timing.requestStart}
+            </p>`;
+    } else {
+        output.innerHTML += `<p>15. Performance API: Stöds ej</p>`;
+    }
+
+    // 16. Information om skärmen
+    output.innerHTML += `<p>16. Skärmens bredd: ${window.screen.width}</p>`;
+    output.innerHTML += `<p>16. Skärmens höjd: ${window.screen.height}</p>`;
+    output.innerHTML += `<p>16. Fysisk skärmstorlek: ${window.screen.width} x ${window.screen.height} pixlar</p>`;
+
+    // 17. DeviceOrientationEvent och DeviceMotionEvent
+    if ('DeviceOrientationEvent' in window) {
+        output.innerHTML += `<p>17. DeviceOrientationEvent: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>17. DeviceOrientationEvent: Stöds ej</p>`;
+    }
+
+    if ('DeviceMotionEvent' in window) {
+        output.innerHTML += `<p>17. DeviceMotionEvent: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>17. DeviceMotionEvent: Stöds ej</p>`;
+    }
+
+    // 18. Mediaenheter (ljud och video)
+    if ('mediaDevices' in navigator) {
+        output.innerHTML += `<p>18. Mediaenheter (audio/video): Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>18. Mediaenheter (audio/video): Stöds ej</p>`;
+    }
+
+    // 19. Permissions API support
+    if ('permissions' in navigator) {
+        output.innerHTML += `<p>19. Permissions API: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>19. Permissions API: Stöds ej</p>`;
+    }
+
+    // 20. IP-adress via extern API
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
             const ipAddress = data.ip;
-            document.getElementById('ipAddress').textContent = `IP-adress: ${ipAddress}`;
+            output.innerHTML += `<p>20. IP-adress: ${ipAddress}</p>`;
         })
         .catch(error => {
             console.error('Fel vid hämtning av IP-adress:', error);
-            document.getElementById('ipAddress').textContent = "IP-adress: Information ej tillgänglig";
+            output.innerHTML += `<p>20. IP-adress: Information ej tillgänglig</p>`;
         });
 
-    // Local storage
-    try {
-        localStorage.setItem('test', 'test');
-        localStorage.removeItem('test');
-        document.getElementById('localStorage').textContent = `Local storage: Stöds`;
-    } catch (e) {
-        document.getElementById('localStorage').textContent = `Local storage: Stöds ej`;
+    // 21. WebGL support
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (gl) {
+        output.innerHTML += `<p>21. WebGL: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>21. WebGL: Stöds ej</p>`;
     }
 
-    // Session storage
-    try {
-        sessionStorage.setItem('test', 'test');
-        sessionStorage.removeItem('test');
-        document.getElementById('sessionStorage').textContent = `Session storage: Stöds`;
-    } catch (e) {
-        document.getElementById('sessionStorage').textContent = `Session storage: Stöds ej`;
+    // 22. Service Workers support
+    if ('serviceWorker' in navigator) {
+        output.innerHTML += `<p>22. Service Workers: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>22. Service Workers: Stöds ej</p>`;
     }
-}
 
-function closeTab() {
-    window.close();
-}
+    // 23. Push API support
+    if ('PushManager' in window) {
+        output.innerHTML += `<p>23. Push API: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>23. Push API: Stöds ej</p>`;
+    }
+
+    // 24. window.location information
+    output.innerHTML += `<p>24. Aktuell URL: ${window.location.href}</p>`;
+    output.innerHTML += `<p>24. Navigationshistorik: ${window.history.length} steg</p>`;
+
+    // 25. Virtual Keyboard support
+    if ('Keyboard' in navigator) {
+        output.innerHTML += `<p>25. Skärmtangentbord: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>25. Skärmtangentbord: Stöds ej</p>`;
+    }
+
+    // 26. navigator.cookieEnabled information
+    output.innerHTML += `<p>26. Kakor aktiverade: ${navigator.cookieEnabled ? 'Ja' : 'Nej'}</p>`;
+
+    // 27. navigator.serviceWorker information
+    if ('serviceWorker' in navigator) {
+        output.innerHTML += `<p>27. Service Worker API: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>27. Service Worker API: Stöds ej</p>`;
+    }
+
+    // 28. navigator.permissions information
+    if ('permissions' in navigator) {
+        output.innerHTML += `<p>28. Behörigheter API: Stöds</p>`;
+    } else {
+        output.innerHTML += `<p>28. Behörigheter API: Stöds ej</p>`;
+    }
+});
 </script>
 </body>
 </html>
