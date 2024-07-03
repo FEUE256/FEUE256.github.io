@@ -21,77 +21,100 @@
 <body>
     <h1>Systeminformation</h1>
 
-    <div id="systeminfo">
-          <div class="cookie-container" id="cookieContainer">
-        <h2>Kakor i Webbläsaren:</h2>
-        <ul id="cookieList"></ul>
-        <p id="cookieCount"></p>
-    </div>
+  <!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Exempel</title>
+    <script>
+        // Funktion för att sätta en sessionscookie
+        function setSessionCookie(name, value) {
+            document.cookie = `${name}=${value}; path=/`;
+        }
+
+        // Funktion för att sätta en permanent cookie med utgångsdatum
+        function setPermanentCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = `${name}=${value}${expires}; path=/`;
+        }
+
+        // Funktion för att hämta värdet av en cookie
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Funktion för att ta bort en cookie
+        function deleteCookie(name) {
+            document.cookie = `${name}=; Max-Age=-99999999; path=/`;
+        }
+
+        // Exempel på att använda funktionerna
+
+        // Sätta en sessionscookie när sidan laddas
+        window.onload = function() {
+            setSessionCookie('sessionCookieName', 'sessionCookieValue');
+        };
+
+        // Funktion för att visa alla cookies på sidan
+        function showAllCookies() {
+            let cookieList = document.getElementById('cookieList');
+            cookieList.innerHTML = "";
+
+            let cookies = document.cookie.split(';');
+            cookies.forEach(cookie => {
+                let [name, value] = cookie.split('=');
+                let listItem = document.createElement('li');
+                listItem.textContent = `${name.trim()}: ${value.trim()}`;
+                cookieList.appendChild(listItem);
+            });
+        }
+
+        // Hämta värdet av en cookie när användaren klickar på knappen
+        function getValueOfCookie(cookieName) {
+            let value = getCookie(cookieName);
+            alert(`Värdet av ${cookieName}: ${value}`);
+        }
+
+        // Ta bort en cookie när användaren klickar på knappen
+        function deleteSpecificCookie(cookieName) {
+            deleteCookie(cookieName);
+            alert(`${cookieName} har tagits bort.`);
+            showAllCookies(); // Uppdatera listan över kakor efter borttagning
+        }
+    </script>
+</head>
+<body>
+    <h1>Cookies Exempel</h1>
+
+    <button onclick="showAllCookies()">Visa Alla Cookies</button>
+    <ul id="cookieList"></ul>
+
+    <button onclick="getValueOfCookie('sessionCookieName')">Hämta Värde av Sessionscookie</button>
+    <button onclick="deleteSpecificCookie('sessionCookieName')">Ta Bort Sessionscookie</button>
+
+    <button onclick="setPermanentCookie('permanentCookieName', 'permanentCookieValue', 30)">Sätt Permanent Cookie</button>
+</body>
+</html>
+
 
         <!-- Här kommer JavaScript att fylla på med systeminformation -->
     </div>
 
     <script>
-    // Funktion för att sätta en cookie
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
 
-// Funktion för att hämta en cookie
-function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-// Funktion för att radera en cookie
-function deleteCookie(name) {
-    document.cookie = name + '=; Max-Age=-99999999; path=/';
-}
-
-// Funktion för att räkna antalet kakor
-function countCookies() {
-    let cookies = document.cookie.split(';');
-    return cookies.length;
-}
-
-// Funktion för att hämta och visa alla kakor i en <div>
-function displayAllCookies() {
-    let cookieContainer = document.getElementById('cookieList');
-    cookieContainer.innerHTML = ""; // Rensa innehållet först
-
-    if (document.cookie === "") {
-        cookieContainer.innerHTML = "<li>Inga kakor sparade.</li>";
-    } else {
-        let cookies = document.cookie.split(';');
-        cookies.forEach(cookie => {
-            let [name, value] = cookie.split('=');
-            cookieContainer.innerHTML += `<li><strong>${name.trim()}</strong>: ${value.trim()}</li>`;
-        });
-    }
-}
-
-// Funktion för att visa antalet kakor och lista alla kakor när sidan laddas
-function showCookiesInfo() {
-    let cookieCount = countCookies();
-    console.log("Antal kakor: " + cookieCount);
-
-    displayAllCookies();
-}
-
-// Kör funktionen för att visa antalet kakor och lista alla kakor när sidan laddas
-window.onload = showCookiesInfo;
 
 
         const output = document.getElementById('systeminfo');
