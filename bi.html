@@ -19,6 +19,47 @@
     </div>
 
     <script>
+        // Funktion för att sätta en cookie
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+// Funktion för att hämta en cookie
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// Funktion för att fråga användaren om de vill acceptera kakor när sidan laddas
+function askForCookieConsentOnLoad() {
+    let consentGiven = getCookie('cookieConsent');
+    if (!consentGiven) {
+        let userConsent = confirm("Vill du acceptera kakor?");
+        if (userConsent) {
+            setCookie('cookieConsent', 'yes', 30); // Sparar användarens samtycke i 30 dagar
+        } else {
+            setCookie('cookieConsent', 'no', 30); // Sparar användarens nekande i 30 dagar
+        }
+    } else {
+        console.log("Användarens kakinställning: " + consentGiven);
+    }
+}
+
+// Kör funktionen för att fråga om samtycke när sidan laddas
+askForCookieConsentOnLoad();
+
         const output = document.getElementById('systeminfo');
   // 1. Användaragent
         output.innerHTML += `<p>1. Användaragent: ${navigator.userAgent}</p>`;
