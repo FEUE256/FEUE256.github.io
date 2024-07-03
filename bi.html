@@ -95,11 +95,75 @@
   <!-- Battery Status Information -->
   <h2>Battery Status Information</h2>
   <p id="batteryStatus"></p>
+
+            
+  <!-- Väderprognos -->
+  <h2>Weather Forecast</h2>
+  <button onclick="getWeather()">Get Weather</button>
+  <p id="weather"></p>
+
+  <!-- Kollektivtrafik (Tåg, Bussar, Flyg) -->
+  <h2>Transport Information</h2>
+  <button onclick="getTransport()">Get Transport Info</button>
+  <div id="transport"></div>
+
+  <!-- Operativsystem -->
+  <h2>Operating System</h2>
+  <p id="os"></p>
+
 </ul>
     </div>
     
     <!-- JavaScript för att hämta och visa systeminformation och cookies -->
     <script>
+         // Function to get weather information
+    async function getWeather() {
+      const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+      const city = 'YOUR_CITY';
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        document.getElementById('weather').innerHTML = 
+          `Temperature: ${data.main.temp}°C<br>
+          Weather: ${data.weather[0].description}`;
+      } catch (error) {
+        document.getElementById('weather').innerText = 'Unable to fetch weather data.';
+      }
+    }
+
+    // Function to get transport information (example with dummy data)
+    async function getTransport() {
+      const transportInfo = {
+        trains: 'Next train in 10 minutes.',
+        buses: 'Next bus in 5 minutes.',
+        flights: 'Next flight in 2 hours.'
+      };
+
+      const transportDiv = document.getElementById('transport');
+      transportDiv.innerHTML = `
+        <p>Trains: ${transportInfo.trains}</p>
+        <p>Buses: ${transportInfo.buses}</p>
+        <p>Flights: ${transportInfo.flights}</p>
+      `;
+    }
+
+    // Function to get OS information
+    function getOS() {
+      const userAgent = navigator.userAgent;
+      let os = 'Unknown OS';
+
+      if (userAgent.indexOf('Win') !== -1) os = 'Windows';
+      if (userAgent.indexOf('Mac') !== -1) os = 'MacOS';
+      if (userAgent.indexOf('X11') !== -1) os = 'UNIX';
+      if (userAgent.indexOf('Linux') !== -1) os = 'Linux';
+
+      document.getElementById('os').innerText = `Operating System: ${os}`;
+    }
+
+    // Get OS information on load
+    window.onload = getOS;
          // Platsinformation
     function getLocation() {
       if (navigator.geolocation) {
