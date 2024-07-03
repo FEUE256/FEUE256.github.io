@@ -10,16 +10,29 @@
     <title>Systeminformation</title>
          <link rel="stylesheet" href="index.chat.openai.com.css">
           <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
+        <style>
+        .cookie-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Systeminformation</h1>
 
     <div id="systeminfo">
+          <div class="cookie-container" id="cookieContainer">
+        <h2>Kakor i Webbläsaren:</h2>
+        <ul id="cookieList"></ul>
+        <p id="cookieCount"></p>
+    </div>
+
         <!-- Här kommer JavaScript att fylla på med systeminformation -->
     </div>
 
     <script>
-        // Funktion för att sätta en cookie
+    // Funktion för att sätta en cookie
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -42,23 +55,44 @@ function getCookie(name) {
     return null;
 }
 
-// Funktion för att fråga användaren om de vill acceptera kakor när sidan laddas
-function askForCookieConsentOnLoad() {
-    let consentGiven = getCookie('cookieConsent');
-    if (!consentGiven) {
-        let userConsent = confirm("Vill du acceptera kakor?");
-        if (userConsent) {
-            setCookie('cookieConsent', 'yes', 30); // Sparar användarens samtycke i 30 dagar
-        } else {
-            setCookie('cookieConsent', 'no', 1); // Sparar användarens nekande i 1 dag
-        }
+// Funktion för att radera en cookie
+function deleteCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999; path=/';
+}
+
+// Funktion för att räkna antalet kakor
+function countCookies() {
+    let cookies = document.cookie.split(';');
+    return cookies.length;
+}
+
+// Funktion för att hämta och visa alla kakor i en <div>
+function displayAllCookies() {
+    let cookieContainer = document.getElementById('cookieList');
+    cookieContainer.innerHTML = ""; // Rensa innehållet först
+
+    if (document.cookie === "") {
+        cookieContainer.innerHTML = "<li>Inga kakor sparade.</li>";
     } else {
-        console.log("Användarens kakinställning: " + consentGiven);
+        let cookies = document.cookie.split(';');
+        cookies.forEach(cookie => {
+            let [name, value] = cookie.split('=');
+            cookieContainer.innerHTML += `<li><strong>${name.trim()}</strong>: ${value.trim()}</li>`;
+        });
     }
 }
 
-// Kör funktionen för att fråga om samtycke när sidan laddas
-askForCookieConsentOnLoad();
+// Funktion för att visa antalet kakor och lista alla kakor när sidan laddas
+function showCookiesInfo() {
+    let cookieCount = countCookies();
+    console.log("Antal kakor: " + cookieCount);
+
+    displayAllCookies();
+}
+
+// Kör funktionen för att visa antalet kakor och lista alla kakor när sidan laddas
+window.onload = showCookiesInfo;
+
 
         const output = document.getElementById('systeminfo');
   // 1. Användaragent
