@@ -1,531 +1,114 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systeminformation</title>
-         <link rel="stylesheet" href="index.chat.openai.com.css">
-          <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
-        <style>
-        .cookie-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Systeminformation</h1>
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visa Alla Cookies</title>
+    <link rel="stylesheet" href="index.chat.openai.com.css">
+    <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
     <style>
+        /* Stilar för sidan */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 20px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        h1, h2, h3 {
+            color: #333;
         }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .info-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
         }
-        th {
-            background-color: #f2f2f2;
+        .info-section h2 {
+            margin-top: 0;
+        }
+        .info-section p {
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     </style>
-    <script>
-        // Funktion för att hämta och visa alla cookies
-        function showAllCookies() {
-            let cookies = document.cookie.split(';');
-            let tableBody = document.getElementById('cookieTableBody');
-            tableBody.innerHTML = '';
-
-            cookies.forEach(cookie => {
-                let [name, value] = cookie.split('=');
-                name = name.trim();
-                let row = `<tr><td>${name}</td><td>${value}</td></tr>`;
-                tableBody.innerHTML += row;
-            });
-
-            if (cookies.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="2">Inga cookies hittades.</td></tr>';
-            }
-        }
-
-        // Funktion för att visa information om tredjepartscookies
-        function showThirdPartyCookies() {
-            alert('Information om tredjepartscookies: Tredjepartscookies kan användas av andra webbplatser för reklamändamål eller spårning över olika webbplatser.');
-        }
-    </script>
 </head>
 <body>
-    <h1>Visa Alla Cookies</h1>
+    <h1>Systeminformation</h1>
 
-    <button onclick="showAllCookies()">Visa Alla Cookies</button>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Namn</th>
-                <th>Värde</th>
-            </tr>
-        </thead>
-        <tbody id="cookieTableBody">
-            <!-- Tabellens innehåll fylls dynamiskt av JavaScript -->
-        </tbody>
-    </table>
-
-    <button onclick="showThirdPartyCookies()">Visa Information om Tredjepartscookies</button>
-
-</body>
-</html>
-
-
-
-        <!-- Här kommer JavaScript att fylla på med systeminformation -->
+    <!-- Systeminformation -->
+    <div class="info-section">
+        <h2>Systeminformation</h2>
+        <div id="systeminfo">
+            <!-- Här kommer JavaScript att fylla på med systeminformation -->
+        </div>
     </div>
 
+    <!-- Cookies -->
+    <div class="info-section">
+        <h2>Cookies</h2>
+        <div class="cookie-container">
+            <button onclick="showAllCookies()">Visa Alla Cookies</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namn</th>
+                        <th>Värde</th>
+                    </tr>
+                </thead>
+                <tbody id="cookieTableBody">
+                    <!-- Tabellens innehåll fylls dynamiskt av JavaScript -->
+                </tbody>
+            </table>
+            <button onclick="showThirdPartyCookies()">Visa Information om Tredjepartscookies</button>
+        </div>
+    </div>
+
+    <!-- JavaScript för att hämta och visa systeminformation och cookies -->
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Funktion för att hämta och visa systeminformation
+            function showSystemInfo() {
+                const systemInfoDiv = document.getElementById('systeminfo');
+                // Exempel på systeminformation - kan anpassas efter behov
+                const systemInfo = {
+                    UserAgent: navigator.userAgent,
+                    Platform: navigator.platform,
+                    Language: navigator.language,
+                    ScreenResolution: `${screen.width}x${screen.height}`,
+                    CookieEnabled: navigator.cookieEnabled,
+                    OnlineStatus: navigator.onLine ? 'Online' : 'Offline'
+                    // Fortsätt med andra systeminformation som behövs
+                };
 
+                let systemInfoHTML = '<ul>';
+                for (let key in systemInfo) {
+                    systemInfoHTML += `<li><strong>${key}:</strong> ${systemInfo[key]}</li>`;
+                }
+                systemInfoHTML += '</ul>';
 
+                systemInfoDiv.innerHTML = systemInfoHTML;
+            }
 
-        const output = document.getElementById('systeminfo');
-  // 1. Användaragent
-        output.innerHTML += `<p>1. Användaragent: ${navigator.userAgent}</p>`;
+            // Funktion för att visa alla cookies
+            function showAllCookies() {
+                const cookieTableBody = document.getElementById('cookieTableBody');
+                cookieTableBody.innerHTML = '';
 
-        // 2. Plattform (operativsystem)
-        output.innerHTML += `<p>2. Plattform: ${navigator.platform}</p>`;
-
-        // 3. Språkinställningar
-        output.innerHTML += `<p>3. Språkinställningar: ${navigator.language}</p>`;
-
-        // 4. Skärmupplösning och fönsterstorlek
-        output.innerHTML += `<p>4. Skärmupplösning: ${screen.width}x${screen.height}</p>`;
-        output.innerHTML += `<p>   Fönsterstorlek: ${window.innerWidth}x${window.innerHeight}</p>`;
-
-        // 5. Cookie-stöd
-        output.innerHTML += `<p>5. Cookie-stöd: ${navigator.cookieEnabled ? 'Stöds' : 'Stöds ej'}</p>`;
-
-        // 6. Online-status
-        output.innerHTML += `<p>6. Online-status: ${navigator.onLine ? 'Online' : 'Offline'}</p>`;
-
-        // 7. Geografisk position (om tillgänglig)
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                output.innerHTML += `<p>7. Geografisk position: Latitud ${position.coords.latitude}, Longitud ${position.coords.longitude}</p>`;
-            }, function(error) {
-                console.error('Geolocation error:', error);
-                output.innerHTML += `<p>7. Geografisk position: Information ej tillgänglig (${error.message})</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>7. Geografisk position: Stöds ej</p>`;
-        }
-
-        // 8. Hårdvaruacceleration
-        if ('DeviceMotionEvent' in window) {
-            output.innerHTML += `<p>8. Hårdvaruacceleration: Stöds</p>`;
-        } else {
-            output.innerHTML += `<p>8. Hårdvaruacceleration: Stöds ej</p>`;
-        }
-
-        // 9. Orienteringsändringar
-        if ('onorientationchange' in window) {
-            output.innerHTML += `<p>9. Orienteringsändringar: Stöds</p>`;
-        } else {
-            output.innerHTML += `<p>9. Orienteringsändringar: Stöds ej</p>`;
-        }
-
-        // 10. Laddningstid för batteri
-        navigator.getBattery().then(function(battery) {
-            output.innerHTML += `<p>10. Laddningstid för batteri: ${battery.chargingTime} sekunder</p>`;
-        }).catch(function(err) {
-            output.innerHTML += `<p>10. Laddningstid för batteri: Information ej tillgänglig (${err.message})</p>`;
-        });
-
-        // 11. Upptäck tillgängliga ljud- och videodrivrutiner
-        if ('mediaDevices' in navigator) {
-            navigator.mediaDevices.enumerateDevices().then(function(devices) {
-                devices.forEach(function(device) {
-                    output.innerHTML += `<p>11. Tillgängliga enheter: ${device.kind}, ${device.label || 'Ingen märkning'}</p>`;
+                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+                cookies.forEach(cookie => {
+                    const [name, value] = cookie.split('=');
+                    const row = `<tr><td>${name}</td><td>${value}</td></tr>`;
+                    cookieTableBody.innerHTML += row;
                 });
-            }).catch(function(err) {
-                console.error('MediaDevices error:', err);
-                output.innerHTML += `<p>11. Mediaenheter: Information ej tillgänglig</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>11. Mediaenheter: Stöds ej</p>`;
-        }
+            }
 
-        // 12. Kontrollera USB-enheter
-        output.innerHTML += `<p>12. USB-enheter: ${'usb' in navigator ? 'Stöds' : 'Stöds ej'}</p>`;
+            // Funktion för att visa information om tredjepartscookies (exempel)
+            function showThirdPartyCookies() {
+                alert('Visar information om tredjepartscookies');
+                // Här kan du implementera logik för att visa specifik information om tredjepartscookies
+            }
 
-        // 13. Kontrollera Bluetooth-enheter
-        output.innerHTML += `<p>13. Bluetooth-enheter: ${'bluetooth' in navigator ? 'Stöds' : 'Stöds ej'}</p>`;
-
-        // 14. Kontrollera NFC-enheter
-        output.innerHTML += `<p>14. NFC-enheter: ${'NDEFReader' in window ? 'Stöds' : 'Stöds ej'}</p>`;
-
-        // 15. Läs ljusnivå
-        if ('AmbientLightSensor' in window) {
-            const sensor = new AmbientLightSensor();
-            sensor.onreading = () => {
-                output.innerHTML += `<p>15. Ljussensor: Ljusnivå ${sensor.illuminance}</p>`;
-            };
-            sensor.onerror = error => {
-                console.error('Ljussensor error:', error);
-            };
-            sensor.start();
-        } else {
-            output.innerHTML += `<p>15. Ljussensor: Stöds ej</p>`;
-        }
-
-        // 16. Läs magnetiska fält
-        if ('Magnetometer' in window) {
-            const sensor = new Magnetometer();
-            sensor.onreading = () => {
-                output.innerHTML += `<p>16. Magnetometer: x ${sensor.x}, y ${sensor.y}, z ${sensor.z}</p>`;
-            };
-            sensor.onerror = error => {
-                console.error('Magnetometer error:', error);
-            };
-            sensor.start();
-        } else {
-            output.innerHTML += `<p>16. Magnetometer: Stöds ej</p>`;
-        }
-        // 17. Nätverkstyp (t.ex. Wi-Fi, mobildat)
-        output.innerHTML += `<p>17. Nätverkstyp: ${navigator.connection.type}</p>`;
-
-        // 18. Webbrowsers typ och version
-        output.innerHTML += `<p>18. Webbrowsers typ och version: ${navigator.appName} ${navigator.appVersion}</p>`;
-
-        // 19. Typ och version av operativsystem
-        output.innerHTML += `<p>19. Typ och version av operativsystem: ${navigator.platform}</p>`;
-
-        // 20. Enhetens tillverkare
-        output.innerHTML += `<p>20. Enhetens tillverkare: ${navigator.vendor}</p>`;
-
-        // 21. Enhetens modell
-        output.innerHTML += `<p>21. Enhetens modell: ${navigator.product}</p>`;
-
-        // 22. Processortyp och hastighet
-        output.innerHTML += `<p>22. Processortyp och hastighet: ${navigator.hardwareConcurrency} cores, ${navigator.deviceMemory} GB RAM</p>`;
-
-        // 23. RAM-storlek
-        output.innerHTML += `<p>23. RAM-storlek: ${navigator.deviceMemory} GB</p>`;
-
-        // 24. Lagringskapacitet och användning
-        navigator.storage.estimate().then(function(storage) {
-            output.innerHTML += `<p>24. Lagringskapacitet: ${storage.quota / (1024 * 1024 * 1024)} GB</p>`;
-            output.innerHTML += `<p>   Användning: ${storage.usage / (1024 * 1024 * 1024)} GB</p>`;
-        }).catch(function(err) {
-            console.error('Lagringsinformation error:', err);
-            output.innerHTML += `<p>24. Lagringsinformation: Information ej tillgänglig</p>`;
+            // Initial anrop för att visa systeminformation när sidan laddas
+            showSystemInfo();
         });
-
-        // 25. Installerade appar och deras versioner (exempelvis endast webb-baserad)
-        output.innerHTML += `<p>25. Installerade appar: Information ej tillgänglig i webbläsare</p>`;
-
-        // 26. Sensordata (t.ex. accelerometer, gyroskop)
-        if ('ondevicemotion' in window) {
-            window.addEventListener('devicemotion', function(event) {
-                output.innerHTML += `<p>26. Accelerometer data: x=${event.accelerationIncludingGravity.x.toFixed(2)}, y=${event.accelerationIncludingGravity.y.toFixed(2)}, z=${event.accelerationIncludingGravity.z.toFixed(2)}</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>26. Accelerometer: Stöds ej</p>`;
-        }
-
-        // 27. Webbläsarens cookies och lokal lagring
-        output.innerHTML += `<p>27. Webbläsarens cookies och lokal lagring: ${navigator.cookieEnabled ? 'Stöds' : 'Stöds ej'}</p>`;
-
-        // 28. Webbläsarhistorik
-        output.innerHTML += `<p>28. Webbläsarhistorik: Information ej tillgänglig</p>`;
-
-        // 29. Appanvändningsmönster
-        output.innerHTML += `<p>29. Appanvändningsmönster: Information ej tillgänglig</p>`;
-
-        // 30. Installerade tillägg och plugins
-        output.innerHTML += `<p>30. Installerade tillägg och plugins: Information ej tillgänglig</p>`;
-
-        // 31. Nätverksfördröjning (latens)
-        output.innerHTML += `<p>31. Nätverksfördröjning (latens): Information ej tillgänglig</p>`;
-
-        // 32. Nätverksbandbredd
-        output.innerHTML += `<p>32. Nätverksbandbredd: Information ej tillgänglig</p>`;
-
-        // 33. IP-adress
-        output.innerHTML += `<p>33. IP-adress: Information ej tillgänglig</p>`;
-
-        // 34. ISP (Internet Service Provider)
-        output.innerHTML += `<p>34. ISP (Internet Service Provider): Information ej tillgänglig</p>`;
-
-        // 35. DNS-information
-        output.innerHTML += `<p>35. DNS-information: Information ej tillgänglig</p>`;
-
-        // 36. Tidsstämpel för användarhandlingar
-        output.innerHTML += `<p>36. Tidsstämpel för användarhandlingar: Information ej tillgänglig</p>`;
-
-        // 37. Enhetsuptime
-        output.innerHTML += `<p>37. Enhetsuptime: Information ej tillgänglig</p>`;
-
-        // 38. Firmwareversion
-        output.innerHTML += `<p>38. Firmwareversion: Information ej tillgänglig</p>`;
-
-        // 39. Mobilbärares information
-        output.innerHTML += `<p>39. Mobilbärares information: Information ej tillgänglig</p>`;
-
-        // 40. Närliggande Wi-Fi-nätverk
-        output.innerHTML += `<p>40. Närliggande Wi-Fi-nätverk: Information ej tillgänglig</p>`;
-
-        // 41. Närliggande Bluetooth-enheter
-        output.innerHTML += `<p>41. Närliggande Bluetooth-enheter: Information ej tillgänglig</p>`;
-
-        // 42. Närliggande NFC-enheter
-        output.innerHTML += `<p>42. Närliggande NFC-enheter: Information ej tillgänglig</p>`;
-
-        // 43. Enhetstemperatur
-        output.innerHTML += `<p>43. Enhetstemperatur: Information ej tillgänglig</p>`;
-
-        // 44. Omgivande ljudnivå
-        output.innerHTML += `<p>44. Omgivande ljudnivå: Information ej tillgänglig</p>`;
-
-        // 45. GPS-noggrannhet
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                output.innerHTML += `<p>45. GPS-noggrannhet: ${position.coords.accuracy} meter</p>`;
-            }, function(error) {
-                console.error('Geolocation error:', error);
-                output.innerHTML += `<p>45. GPS-noggrannhet: Information ej tillgänglig (${error.message})</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>45. GPS-noggrannhet: Stöds ej</p>`;
-        }
-consol.log("ja det är bara")
-        // 46. Skärmens ljusstyrka
-        if ('AmbientLightSensor' in window) {
-            const sensor = new AmbientLightSensor();
-            sensor.onreading = () => {
-                output.innerHTML += `<p>46. Skärmens ljusstyrka: Ljusnivå ${sensor.illuminance}</p>`;
-            };
-            sensor.onerror = error => {
-                console.error('Ljussensor error:', error);
-            };
-            sensor.start();
-        } else {
-            output.innerHTML += `<p>46. Skärmens ljusstyrka: Stöds ej</p>`;
-        }
-
-        // 47. Batteritemperatur
-        if ('getBattery' in navigator) {
-            navigator.getBattery().then(function(battery) {
-                output.innerHTML += `<p>47. Batteritemperatur: ${battery.temperature.toFixed(2)} °C</p>`;
-            }).catch(function(err) {
-                console.error('Battery information error:', err);
-                output.innerHTML += `<p>47. Batteritemperatur: Information ej tillgänglig (${err.message})</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>47. Batteritemperatur: Stöds ej</p>`;
-        }
-
-        // 48. Batterispänning
-        if ('getBattery' in navigator) {
-            navigator.getBattery().then(function(battery) {
-                output.innerHTML += `<p>48. Batterispänning: ${battery.voltage.toFixed(2)} V</p>`;
-            }).catch(function(err) {
-                console.error('Battery information error:', err);
-                output.innerHTML += `<p>48. Batterispänning: Information ej tillgänglig (${err.message})</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>48. Batterispänning: Stöds ej</p>`;
-        }
-
-        // 49. App-tillstånd som beviljats
-        output.innerHTML += `<p>49. App-tillstånd som beviljats: Information ej tillgänglig</p>`;
-
-        // 50. Appaktivitetsloggar
-        output.innerHTML += `<p>50. Appaktivitetsloggar: Information ej tillgänglig</p>`;
-
-        // 51. Tidsstämpel för senaste systemuppdatering
-        output.innerHTML += `<p>51. Tidsstämpel för senaste systemuppdatering: Information ej tillgänglig</p>`;
-
-        // 52. Tillgänglighetsinställningar
-        output.innerHTML += `<p>52. Tillgänglighetsinställningar: Information ej tillgänglig</p>`;
-
-        // 53. Mikrofonåtkomststatus
-        output.innerHTML += `<p>53. Mikrofonåtkomststatus: Information ej tillgänglig</p>`;
-
-        // 54. Kameraåtkomststatus
-        output.innerHTML += `<p>54. Kameraåtkomststatus: Information ej tillgänglig</p>`;
-
-        // 55. Användning av externa skärmar
-        output.innerHTML += `<p>55. Användning av externa skärmar: Information ej tillgänglig</p>`;
-
-        // 56. Enhetskrypteringsstatus
-        output.innerHTML += `<p>56. Enhetskrypteringsstatus: Information ej tillgänglig</p>`;
-
-        // 57. Installerade typsnitt
-        output.innerHTML += `<p>57. Installerade typsnitt: Information ej tillgänglig</p>`;
-
-        // 58. Användning av röstassistent
-        output.innerHTML += `<p>58. Användning av röstassistent: Information ej tillgänglig</p>`;
-
-        // 59. Användarinloggning/utloggningstider
-        output.innerHTML += `<p>59. Användarinloggning/utloggningstider: Information ej tillgänglig</p>`;
-
-        // 60. Systemkraschloggar
-        output.innerHTML += `<p>60. Systemkraschloggar: Information ej tillgänglig</p>`;
-
-        // 61. Systemfelloggar
-        output.innerHTML += `<p>61. Systemfelloggar: Information ej tillgänglig</p>`;
-
-        // 62. Appkraschloggar
-        output.innerHTML += `<p>62. Appkraschloggar: Information ej tillgänglig</p>`;
-
-        // 63. Appfelloggar
-        output.innerHTML += `<p>63. Appfelloggar: Information ej tillgänglig</p>`;
-
-        // 64. Webbläsarcache-storlek
-        output.innerHTML += `<p>64. Webbläsarcache-storlek: Information ej tillgänglig</p>`;
-
-        // 65. Urklippsinnehåll
-        output.innerHTML += `<p>65. Urklippsinnehåll: Information ej tillgänglig</p>`;
-
-        // 66. Appsessionens varaktighet
-        output.innerHTML += `<p>66. Appsessionens varaktighet: Information ej tillgänglig</p>`;
-
-        // 67. Användarinställningar (t.ex. mörkt läge)
-        output.innerHTML += `<p>67. Användarinställningar (t.ex. mörkt läge): Information ej tillgänglig</p>`;
-
-        // 68. Enhetsvibrationsinställningar
-        output.innerHTML += `<p>68. Enhetsvibrationsinställningar: Information ej tillgänglig</p>`;
-
-        // 69. Skärmets timeout-inställningar
-        output.innerHTML += `<p>69. Skärmets timeout-inställningar: Information ej tillgänglig</p>`;
-
-        // 70. Enhetsynkroniseringsstatus
-        output.innerHTML += `<p>70. Enhetsynkroniseringsstatus: Information ej tillgänglig</p>`;
-
-        // 71. Enhetsbackupstatus
-        output.innerHTML += `<p>71. Enhetsbackupstatus: Information ej tillgänglig</p>`;
-
-        // 72. Notifikationshistorik
-        output.innerHTML += `<p>72. Notifikationshistorik: Information ej tillgänglig</p>`;
-
-        // 73. Skärmrotationinställningar
-        output.innerHTML += `<p>73. Skärmrotationinställningar: Information ej tillgänglig</p>`;
-
-        // 74. Samtalshistorik
-        output.innerHTML += `<p>74. Samtalshistorik: Information ej tillgänglig</p>`;
-
-        // 75. SMS/MMS-meddelandeloggar
-        output.innerHTML += `<p>75. SMS/MMS-meddelandeloggar: Information ej tillgänglig</p>`;
-
-        // 76. Konfiguration av e-postkonto
-        output.innerHTML += `<p>76. Konfiguration av e-postkonto: Information ej tillgänglig</p>`;
-
-        // 77. Molnlagringsanvändning
-        output.innerHTML += `<p>77. Molnlagringsanvändning: Information ej tillgänglig</p>`;
-
-        // 78. NFC-tagg läs/skrivhistorik
-        output.innerHTML += `<p>78. NFC-tagg läs/skrivhistorik: Information ej tillgänglig</p>`;
-
-        // 79. Bluetooth-parningshistorik
-        output.innerHTML += `<p>79. Bluetooth-parningshistorik: Information ej tillgänglig</p>`;
-
-        // 80. Närliggande enhetslista
-        output.innerHTML += `<p>80. Närliggande enhetslista: Information ej tillgänglig</p>`;
-
-        // 81. Enhetsströmförbrukning
-        output.innerHTML += `<p>81. Enhetsströmförbrukning: Information ej tillgänglig</p>`;
-
-        // 82. Minnesanvändning av appar
-        output.innerHTML += `<p>82. Minnesanvändning av appar: Information ej tillgänglig</p>`;
-
-        // 83. Termisk throttlingstatus
-        output.innerHTML += `<p>83. Termisk throttlingstatus: Information ej tillgänglig</p>`;
-
-        // 84. Webbläsarens bokmärken
-        output.innerHTML += `<p>84. Webbläsarens bokmärken: Information ej tillgänglig</p>`;
-
-        // 85. Webbläsarflikshistorik
-        output.innerHTML += `<p>85. Webbläsarflikshistorik: Information ej tillgänglig</p>`;
-
-        // 86. Screenshots som tagits
-        output.innerHTML += `<p>86. Screenshots som tagits: Information ej tillgänglig</p>`;
-
-        // 87. Appdatatrafik
-        output.innerHTML += `<p>87. Appdatatrafik: Information ej tillgänglig</p>`;
-
-        // 88. VPN-konfiguration
-        output.innerHTML += `<p>88. VPN-konfiguration: Information ej tillgänglig</p>`;
-
-        // 89. Webbläsarsökhistorik
-        output.innerHTML += `<p>89. Webbläsarsökhistorik: Information ej tillgänglig</p>`;
-
-        // 90. Installerade tangentbordsspråk
-        output.innerHTML += `<p>90. Installerade tangentbordsspråk: Information ej tillgänglig</p>`;
-
-        // 91. App-specifika inställningar
-        output.innerHTML += `<p>91. App-specifika inställningar: Information ej tillgänglig</p>`;
-
-        // 92. Cellulärt signalstyrka
-        output.innerHTML += `<p>92. Cellulärt signalstyrka: Information ej tillgänglig</p>`;
-
-        // 93. Batterihälsostatus
-        if ('getBattery' in navigator) {
-            navigator.getBattery().then(function(battery) {
-                output.innerHTML += `<p>93. Batterihälsostatus: ${battery.health}</p>`;
-            }).catch(function(err) {
-                console.error('Battery information error:', err);
-                output.innerHTML += `<p>93. Batterihälsostatus: Information ej tillgänglig (${err.message})</p>`;
-            });
-        } else {
-            output.innerHTML += `<p>93. Batterihälsostatus: Stöds ej</p>`;
-        }
-
-        // 94. Appuppdateringshistorik
-        output.innerHTML += `<p>94. Appuppdateringshistorik: Information ej tillgänglig</p>`;
-
-        // 95. App-specifika enhetstillstånd
-        output.innerHTML += `<p>95. App-specifika enhetstillstånd: Information ej tillgänglig</p>`;
-
-        // 96. App-specifik användningsstatistik
-        output.innerHTML += `<p>96. App-specifik användningsstatistik: Information ej tillgänglig</p>`;
-
-        // 97. Prenumerationsstatus för push-meddelanden
-        output.innerHTML += `<p>97. Prenumerationsstatus för push-meddelanden: Information ej tillgänglig</p>`;
-
-        // 98. Enhetsproxyinställningar
-        output.innerHTML += `<p>98. Enhetsproxyinställningar: Information ej tillgänglig</p>`;
-
-        // 99. Närliggande magnetiska anomalier
-        output.innerHTML += `<p>99. Närliggande magnetiska anomalier: Information ej tillgänglig</p>`;
-
-        // 100. Omgivande lufttryck
-        if ('Barometer' in window) {
-            const sensor = new Barometer();
-            sensor.onreading = () => {
-                output.innerHTML += `<p>100. Omgivande lufttryck: ${sensor.reading.toFixed(2)} hPa</p>`;
-            };
-            sensor.onerror = error => {
-                console.error('Barometer sensor error:', error);
-            };
-            sensor.start();
-        } else {
-            output.innerHTML += `<p>100. Omgivande lufttryck: Stöds ej</p>`;
-        }
     </script>
 </body>
 </html>
