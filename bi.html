@@ -223,3 +223,163 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #browser-info {
+            list-style-type: none;
+            padding: 0;
+        }
+        #browser-info li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        #browser-info li:last-child {
+            border-bottom: none;
+        }
+        strong {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Browser Information</h1>
+    <ul id="browser-info"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var browserInfoList = document.getElementById('browser-info');
+
+            function addBrowserInfoItem(label, value) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `<strong>${label}:</strong> ${value}`;
+                browserInfoList.appendChild(listItem);
+            }
+
+            // User Agent
+            addBrowserInfoItem('User Agent', navigator.userAgent);
+
+            // Platform
+            addBrowserInfoItem('Platform', navigator.platform);
+
+            // Language settings
+            addBrowserInfoItem('Language', navigator.language);
+
+            // Screen resolution
+            addBrowserInfoItem('Screen Resolution', `${window.screen.width}x${window.screen.height}`);
+
+            // Window size
+            addBrowserInfoItem('Window Size', `${window.innerWidth}x${window.innerHeight}`);
+
+            // Cookie support
+            addBrowserInfoItem('Cookie Support', navigator.cookieEnabled ? 'Enabled' : 'Disabled');
+
+            // Online status
+            addBrowserInfoItem('Online Status', navigator.onLine ? 'Online' : 'Offline');
+
+            // Local storage support
+            addBrowserInfoItem('Local Storage', window.localStorage ? 'Supported' : 'Not Supported');
+
+            // Web history support
+            addBrowserInfoItem('Web History', history ? 'Supported' : 'Not Supported');
+
+            // WebSockets support
+            addBrowserInfoItem('WebSockets Support', window.WebSocket ? 'Supported' : 'Not Supported');
+
+            // WebRTC support
+            addBrowserInfoItem('WebRTC Support', navigator.mediaDevices && navigator.mediaDevices.getUserMedia ? 'Supported' : 'Not Supported');
+
+            // Clipboard access
+            addBrowserInfoItem('Clipboard Access', navigator.clipboard ? 'Supported' : 'Not Supported');
+
+            // Notification support
+            addBrowserInfoItem('Notification Support', window.Notification ? 'Supported' : 'Not Supported');
+
+            // Service Worker support
+            addBrowserInfoItem('Service Worker', 'serviceWorker' in navigator ? 'Supported' : 'Not Supported');
+
+            // DOM Manipulation support
+            addBrowserInfoItem('DOM Manipulation', document ? 'Supported' : 'Not Supported');
+
+            // Geolocation support
+            addBrowserInfoItem('Geolocation Support', 'geolocation' in navigator ? 'Supported' : 'Not Supported');
+
+            // Device Orientation support
+            addBrowserInfoItem('Device Orientation', 'DeviceOrientationEvent' in window ? 'Supported' : 'Not Supported');
+
+            // Accelerometer data support
+            addBrowserInfoItem('Accelerometer Data', 'DeviceMotionEvent' in window ? 'Supported' : 'Not Supported');
+
+            // Ambient Light sensor data support
+            addBrowserInfoItem('Ambient Light Sensor Data', 'AmbientLightSensor' in window ? 'Supported' : 'Not Supported');
+
+            // Magnetometer data support
+            addBrowserInfoItem('Magnetometer Data', 'Magnetometer' in window ? 'Supported' : 'Not Supported');
+
+            // Battery status support
+            addBrowserInfoItem('Battery Status', 'getBattery' in navigator ? 'Supported' : 'Not Supported');
+
+            // CPU cores support
+            addBrowserInfoItem('CPU Cores', navigator.hardwareConcurrency);
+
+            // Timezone offset
+            addBrowserInfoItem('Timezone Offset', new Date().getTimezoneOffset());
+
+            // WebGL support
+            addBrowserInfoItem('WebGL Support', 'WebGLRenderingContext' in window ? 'Supported' : 'Not Supported');
+
+            // Canvas fingerprinting
+            addBrowserInfoItem('Canvas Fingerprinting', document.createElement('canvas').toDataURL ? 'Supported' : 'Not Supported');
+
+            // SVG support
+            addBrowserInfoItem('SVG Support', document.createElementNS && document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect ? 'Supported' : 'Not Supported');
+
+            // IndexedDB support
+            addBrowserInfoItem('IndexedDB Support', 'indexedDB' in window ? 'Supported' : 'Not Supported');
+
+            // Web Audio API support
+            addBrowserInfoItem('Web Audio API Support', 'AudioContext' in window ? 'Supported' : 'Not Supported');
+
+            // Media queries support
+            addBrowserInfoItem('Media Queries Support', 'matchMedia' in window ? 'Supported' : 'Not Supported');
+
+            // CSS features support
+            addBrowserInfoItem('CSS Features Support', 'CSS' in window && window.CSS.supports ? 'Supported' : 'Not Supported');
+
+            // Pointer Events support
+            addBrowserInfoItem('Pointer Events Support', 'PointerEvent' in window ? 'Supported' : 'Not Supported');
+
+            // Touch Events support
+            addBrowserInfoItem('Touch Events Support', 'TouchEvent' in window ? 'Supported' : 'Not Supported');
+
+            // Gamepad support
+            addBrowserInfoItem('Gamepad Support', navigator.getGamepads ? 'Supported' : 'Not Supported');
+
+            // VR headset support
+            addBrowserInfoItem('VR Headset Support', 'xr' in navigator ? 'Supported' : 'Not Supported');
+
+            // Mouse wheel events support
+            addBrowserInfoItem('Mouse Wheel Events Support', 'onwheel' in document ? 'Supported' : 'Not Supported');
+
+            // Speech synthesis support
+            addBrowserInfoItem('Speech Synthesis Support', 'speechSynthesis' in window ? 'Supported' : 'Not Supported');
+
+            // Speech recognition support
+            addBrowserInfoItem('Speech Recognition Support', 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window ? 'Supported' : 'Not Supported');
+
+        });
+    </script>
+</body>
+</html>
