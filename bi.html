@@ -36,45 +36,156 @@
     <!-- Systeminformation -->
     <div class="info-section">
         <h2>Systeminformation</h2>
-        <div id="systeminfo">
-            <!-- Här kommer JavaScript att fylla på med systeminformation -->
+        <div id="systemInfo">
+            <!-- Placeholder för systeminformation -->
         </div>
     </div>
 
     <!-- Cookies -->
     <div class="info-section">
         <h2>Cookies</h2>
-        <div class="cookie-container">
-            <button onclick="showAllCookies()">Visa Alla Cookies</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Namn</th>
-                        <th>Värde</th>
-                    </tr>
-                </thead>
-                <tbody id="cookieTableBody">
-                    <!-- Tabellens innehåll fylls dynamiskt av JavaScript -->
-                </tbody>
-            </table>
-            <button onclick="showThirdPartyCookies()">Visa Information om Tredjepartscookies</button>
+        <div id="cookieInfo">
+            <!-- Placeholder för cookies -->
         </div>
     </div>
+
+    <!-- Geografisk position -->
+    <div class="info-section">
+        <h2>Geografisk position</h2>
+        <div id="geoLocationInfo">
+            <!-- Placeholder för geografisk position -->
+        </div>
+    </div>
+
+    <!-- Hårdvarusensorer -->
+    <div class="info-section">
+        <h2>Hårdvarusensorer</h2>
+        <div id="hardwareSensorsInfo">
+            <!-- Placeholder för hårdvarusensorer -->
+        </div>
+    </div>
+
+    <!-- Nätverksinformation -->
+    <div class="info-section">
+        <h2>Nätverksinformation</h2>
+        <div id="networkInfo">
+            <!-- Placeholder för nätverksinformation -->
+        </div>
+    </div>
+
+    <!-- Enhetsinformation -->
+    <div class="info-section">
+        <h2>Enhetsinformation</h2>
+        <div id="deviceInfo">
+            <!-- Placeholder för enhetsinformation -->
+        </div>
+    </div>
+
+    <!-- Mediaenheter -->
+    <div class="info-section">
+        <h2>Mediaenheter</h2>
+        <div id="mediaDevicesInfo">
+            <!-- Placeholder för information om mediaenheter -->
+        </div>
+    </div>
+
+    <!-- Andra systemfunktioner -->
+    <div class="info-section">
+        <h2>Andra systemfunktioner</h2>
+        <div id="otherSystemInfo">
+            <!-- Placeholder för andra systemfunktioner -->
+        </div>
+    </div>
+
+    <!-- Skärm- och fönsterinformation -->
+    <div class="info-section">
+        <h2>Skärm- och fönsterinformation</h2>
+        <div id="screenWindowInfo">
+            <!-- Placeholder för skärm- och fönsterinformation -->
+        </div>
+    </div>
+
+    <!-- Miljövariabler -->
+    <div class="info-section">
+        <h2>Miljövariabler</h2>
+        <div id="environmentVariables">
+            <!-- Placeholder för miljövariabler -->
+        </div>
+    </div>
+
+    <!-- Ljud- och videodrivrutiner -->
+    <div class="info-section">
+        <h2>Ljud- och videodrivrutiner</h2>
+        <div id="audioVideoDriversInfo">
+            <!-- Placeholder för ljud- och videodrivrutiner -->
+        </div>
+    </div>
+
+    <!-- Sensorinformation -->
+    <div class="info-section">
+        <h2>Sensorinformation</h2>
+        <div id="sensorInfo">
+            <!-- Placeholder för sensorinformation -->
+        </div>
+    </div>
+
+    <!-- Batteristatus -->
+    <div class="info-section">
+        <h2>Batteristatus</h2>
+        <div id="batteryStatusInfo">
+            <!-- Placeholder för batteristatus -->
+        </div>
+    </div>
+
+    <!-- USB-enheter -->
+    <div class="info-section">
+        <h2>USB-enheter</h2>
+        <div id="usbDevicesInfo">
+            <!-- Placeholder för information om USB-enheter -->
+        </div>
+    </div>
+
+    <!-- Bluetooth-enheter -->
+    <div class="info-section">
+        <h2>Bluetooth-enheter</h2>
+        <div id="bluetoothDevicesInfo">
+            <!-- Placeholder för information om Bluetooth-enheter -->
+        </div>
+    </div>
+
+    <!-- NFC-enheter -->
+    <div class="info-section">
+        <h2>NFC-enheter</h2>
+        <div id="nfcDevicesInfo">
+            <!-- Placeholder för information om NFC-enheter -->
+        </div>
+    </div>
+
+    <!-- Anpassning efter behov, fortsätt fylla på enligt önskemål -->
 
     <!-- JavaScript för att hämta och visa systeminformation och cookies -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Funktion för att hämta och visa systeminformation
             function showSystemInfo() {
-                const systemInfoDiv = document.getElementById('systeminfo');
-                // Exempel på systeminformation - kan anpassas efter behov
+                const systemInfoDiv = document.getElementById('systemInfo');
                 const systemInfo = {
-                    UserAgent: navigator.userAgent,
-                    Platform: navigator.platform,
-                    Language: navigator.language,
-                    ScreenResolution: `${screen.width}x${screen.height}`,
-                    CookieEnabled: navigator.cookieEnabled,
-                    OnlineStatus: navigator.onLine ? 'Online' : 'Offline'
+                    "Användaragent": navigator.userAgent,
+                    "Plattform": navigator.platform,
+                    "Språkinställningar": navigator.language,
+                    "Skärmupplösning och fönsterstorlek": `${screen.width}x${screen.height}`,
+                    "Cookie-stöd": navigator.cookieEnabled ? 'Stöds' : 'Stöds inte',
+                    "Online-status": navigator.onLine ? 'Online' : 'Offline',
+                    "Geografisk position": 'Hämtas via geolocation API',
+                    "Hårdvarusensorer": 'Lista över tillgängliga sensorer',
+                    "Orienteringsändringar": 'Observerar orienteringsändringar',
+                    "Laddningstid för batteri": 'Beräknar batteriladdningstid',
+                    "Upptäck tillgängliga ljud- och videodrivrutiner": 'Lista över enhetens drivrutiner',
+                    "Kontrollera USB-enheter": 'Skannar anslutna USB-enheter',
+                    "Kontrollera Bluetooth-enheter": 'Söker efter Bluetooth-enheter',
+                    "Kontrollera NFC-enheter": 'Söker efter NFC-enheter',
+                    "Läs ljusnivå": 'Mäter ljusnivå i omgivningen',
+                    "Läs magnetiska fält": 'Mäter magnetiska fält i närheten'
                     // Fortsätt med andra systeminformation som behövs
                 };
 
