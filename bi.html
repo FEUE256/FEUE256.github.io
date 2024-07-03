@@ -20,8 +20,7 @@
 </head>
 <body>
     <h1>Systeminformation</h1>
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -65,6 +64,11 @@
                 tableBody.innerHTML = '<tr><td colspan="2">Inga cookies hittades.</td></tr>';
             }
         }
+
+        // Funktion för att visa information om tredjepartscookies
+        function showThirdPartyCookies() {
+            alert('Information om tredjepartscookies: Tredjepartscookies kan användas av andra webbplatser för reklamändamål eller spårning över olika webbplatser.');
+        }
     </script>
 </head>
 <body>
@@ -83,6 +87,8 @@
             <!-- Tabellens innehåll fylls dynamiskt av JavaScript -->
         </tbody>
     </table>
+
+    <button onclick="showThirdPartyCookies()">Visa Information om Tredjepartscookies</button>
 
 </body>
 </html>
