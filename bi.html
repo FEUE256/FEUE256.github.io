@@ -50,7 +50,7 @@ function askForCookieConsentOnLoad() {
         if (userConsent) {
             setCookie('cookieConsent', 'yes', 30); // Sparar användarens samtycke i 30 dagar
         } else {
-            setCookie('cookieConsent', 'no', 30); // Sparar användarens nekande i 30 dagar
+            setCookie('cookieConsent', 'no', 1); // Sparar användarens nekande i 1 dag
         }
     } else {
         console.log("Användarens kakinställning: " + consentGiven);
