@@ -75,11 +75,106 @@
     <!-- Webbläsarinformation -->
     <div class="info-section">
         <h2>Webbläsarinformation</h2>
-        <ul id="browser-info"></ul>
+        <ul id="browser-info">  <!-- Platsinformation -->
+  <h2>Geolocation</h2>
+  <button onclick="getLocation()">Get Location</button>
+  <p id="location"></p>
+
+  <!-- User Agent Information -->
+  <h2>User Agent Information</h2>
+  <p id="userAgent"></p>
+
+  <!-- Network Information -->
+  <h2>Network Information</h2>
+  <p id="networkInfo"></p>
+
+  <!-- Media Devices Information -->
+  <h2>Media Devices Information</h2>
+  <ul id="mediaDevices"></ul>
+
+  <!-- Battery Status Information -->
+  <h2>Battery Status Information</h2>
+  <p id="batteryStatus"></p>
+</ul>
     </div>
     
     <!-- JavaScript för att hämta och visa systeminformation och cookies -->
     <script>
+         // Platsinformation
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      document.getElementById("location").innerHTML = 
+        "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          document.getElementById("location").innerHTML = "User denied the request for Geolocation.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          document.getElementById("location").innerHTML = "Location information is unavailable.";
+          break;
+        case error.TIMEOUT:
+          document.getElementById("location").innerHTML = "The request to get user location timed out.";
+          break;
+        case error.UNKNOWN_ERROR:
+          document.getElementById("location").innerHTML = "An unknown error occurred.";
+          break;
+      }
+    }
+
+    // User Agent Information
+    document.getElementById("userAgent").innerText = navigator.userAgent;
+
+    // Network Information
+    if ('connection' in navigator) {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      function updateNetworkInfo() {
+        document.getElementById('networkInfo').innerText = `Type: ${connection.effectiveType}, Downlink: ${connection.downlink}Mbps`;
+      }
+      connection.addEventListener('change', updateNetworkInfo);
+      updateNetworkInfo();
+    } else {
+      document.getElementById('networkInfo').innerText = 'Network Information API not supported.';
+    }
+
+    // Media Devices Information
+    navigator.mediaDevices.enumerateDevices()
+      .then(devices => {
+        const mediaDevicesList = document.getElementById('mediaDevices');
+        devices.forEach(device => {
+          const li = document.createElement('li');
+          li.textContent = `${device.kind}: ${device.label}`;
+          mediaDevicesList.appendChild(li);
+        });
+      })
+      .catch(error => {
+        console.error('Error accessing media devices:', error);
+      });
+
+    // Battery Status Information
+    if ('getBattery' in navigator) {
+      navigator.getBattery().then(battery => {
+        function updateBatteryStatus() {
+          document.getElementById('batteryStatus').innerText = 
+            `Level: ${(battery.level * 100).toFixed(0)}%, Charging: ${battery.charging ? 'Yes' : 'No'}`;
+        }
+        battery.addEventListener('chargingchange', updateBatteryStatus);
+        battery.addEventListener('levelchange', updateBatteryStatus);
+        updateBatteryStatus();
+      });
+    } else {
+      document.getElementById('batteryStatus').innerText = 'Battery Status API not supported.';
+    }
          document.addEventListener("DOMContentLoaded", function() {
       if (localStorage.getItem('formData')) {
         const formData = JSON.parse(localStorage.getItem('formData'));
