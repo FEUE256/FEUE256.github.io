@@ -39,6 +39,9 @@
         </div>
     </div>
 
+    <!-- Kakor -->
+     <div id="cookieDisplay"></div>
+    
     <!-- Webbläsarinformation -->
     <div class="info-section">
         <h2>Webbläsarinformation</h2>
@@ -47,6 +50,40 @@
 
     <!-- JavaScript för att hämta och visa systeminformation och cookies -->
     <script>
+        // Function to get all cookies and display them in a div
+function displayCookies() {
+    // Get the div where cookies will be displayed
+    const cookieDiv = document.getElementById('cookieDisplay');
+
+    // Get all cookies as a single string
+    const cookies = document.cookie;
+
+    // Check if there are any cookies
+    if (cookies) {
+        // Split cookies into an array of individual cookies
+        const cookieArray = cookies.split('; ');
+
+        // Create a list to display cookies
+        const ul = document.createElement('ul');
+
+        // Loop through the array and create a list item for each cookie
+        cookieArray.forEach(cookie => {
+            const li = document.createElement('li');
+            li.textContent = cookie;
+            ul.appendChild(li);
+        });
+
+        // Append the list to the div
+        cookieDiv.appendChild(ul);
+    } else {
+        // If no cookies are found, display a message
+        cookieDiv.textContent = 'Inga cookies hittades.';
+    }
+}
+
+// Call the function to display cookies
+displayCookies();
+
         document.addEventListener('DOMContentLoaded', function() {
             // Funktion för att hämta och visa systeminformation
             function showSystemInfo() {
