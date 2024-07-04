@@ -11,3 +11,5 @@ function FE() {
          function message (input) {
    alert(message);
          }
+
+message()
