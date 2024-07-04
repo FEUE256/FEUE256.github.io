@@ -8,6 +8,15 @@
 <body>
     <header>
         <h1>Välkommen till FÈUE</h1>
+           <form>
+        <p>
+            För att fortsätta, vänligen godkänn våra villkor:
+        </p>
+        <input type="checkbox" id="termsCheckbox" onclick="checkTerms()">
+        <label for="termsCheckbox">Jag har läst och godkänner villkoren</label>
+        <br><br>
+        <button type="submit" id="submitButton" disabled>Fortsätt</button>
+    </form>
         <nav>
             <ul>
                 <li><a href="about.chat.openai.com.html">Om</a></li>
