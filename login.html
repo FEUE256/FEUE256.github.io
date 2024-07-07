@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logain på FÈUE</title>
+    <title>Logga in på FÈUE</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-XXXXX-Y');
-    </script>
-    <link rel="stylesheet" href="index.chat.openai.com.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,44 +75,6 @@
         <p id="message"></p>
     </div>
 
-    <h1>Kontaktformulär</h1>
-    <form id="contactForm" action="https://formspree.io/f/manwyebo" method="POST" enctype="multipart/form-data">
-        <label for="name">Namn:</label>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="email">E-postadress:</label>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="phone">Telefonnummer:</label>
-        <input type="tel" id="phone" name="phone" required><br>
-
-        <label for="subject">Ämne:</label>
-        <input type="text" id="subject" name="subject" required><br>
-
-        <label for="message">Meddelande:</label>
-        <textarea id="message" name="message" required></textarea><br>
-
-        <label for="address">Adressnamn:</label>
-        <input type="text" id="address" name="address" required><br>
-
-        <label for="city">Stad:</label>
-        <input type="text" id="city" name="city" required><br>
-
-        <label for="number">Adressnummer:</label>
-        <input type="number" name="number" id="number"><br>
-
-        <label for="zip">Postnummer:</label>
-        <input type="text" id="zip" name="zip" required><br>
-
-        <label for="country">Land:</label>
-        <input type="text" id="country" name="country" required><br>
-
-        <div class="g-recaptcha" data-sitekey="6Lfc-gUqAAAAAO9yCXVSon_Mzkie7YjDYveOOrJs" data-callback="onSubmit" required></div>
-        <br>
-
-        <button type="submit">Skicka</button>
-    </form>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
         function generateRandomCode(length) {
@@ -140,7 +92,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             randomCode = generateRandomCode(10);
             const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: randomCode,
+                text: `https://example.com/VER.html?code=${randomCode}`,
                 width: 128,
                 height: 128,
             });
@@ -153,41 +105,11 @@
             if (code === randomCode) {
                 document.getElementById("message").textContent = "Koden är korrekt!";
                 document.getElementById("message").style.color = "green";
+                window.location.href = `contact.html?code=${randomCode}`;
             } else {
                 document.getElementById("message").textContent = "Fel kod, försök igen.";
                 document.getElementById("message").style.color = "red";
             }
-        });
-
-        function onSubmit(token) {
-            document.getElementById("contactForm").submit();
-        }
-
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: formData
-            }).then(response => {
-                if (response.ok) {
-                    alert('Formuläret har skickats!');
-                    form.reset();
-                    window.location.href = "index.html";
-                } else {
-                    alert('Ett fel uppstod vid skickandet av formuläret');
-                    form.reset();
-                }
-            }).catch(error => {
-                console.error('Fel:', error);
-                alert('Ett fel uppstod vid skickandet av formuläret');
-            });
         });
     </script>
 </body>
