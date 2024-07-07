@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifieringssida</title>
+    <title>Verifiera kod</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
     <style>
         body {
@@ -11,35 +11,50 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
             margin: 0;
-            padding: 20px;
             background-color: #f0f0f0;
         }
-
         .container {
             text-align: center;
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        p {
             margin-bottom: 20px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Verifiera din kod</h1>
-        <p id="verificationCode"></p>
+        <h1>Verifierar kod...</h1>
+        <p id="verificationResult"></p>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            if (code) {
-                document.getElementById("verificationCode").textContent = `Din kod är: ${code}`;
+            const verificationCode = urlParams.get('verificationCode');
+
+            const storedCode = localStorage.getItem('verificationCode');
+
+            if (verificationCode === storedCode) {
+                document.getElementById('verificationResult').textContent = "Koden är korrekt!";
+                document.getElementById('verificationResult').classList.add('success');
             } else {
-                document.getElementById("verificationCode").textContent = "Ingen kod hittades.";
+                document.getElementById('verificationResult').textContent = "Fel kod. Försök igen.";
+                document.getElementById('verificationResult').classList.add('error');
             }
         });
     </script>
