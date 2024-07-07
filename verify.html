@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>Verify Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifiering</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
     <link rel="stylesheet" href="index.chat.openai.com.css">
 </head>
 <body>
-    <h1>Verify Code</h1>
-    <input type="text" id="codeInput" placeholder="Enter code">
-    <button onclick="verifyCode()">Verify</button>
-    <script src="qrcode.min.js"></script>
+    <h1>Verifierar...</h1>
     <script>
-        function verifyCode() {
-            const inputCode = document.getElementById('codeInput').value;
-            const storedCode = localStorage.getItem('uniqueCode');
-            if (inputCode === storedCode) {
-                window.location.href = 'https://feue256.github.io/login.html';
-            } else {
-                alert('Incorrect code. Please try again.');
-            }
+        // Hämta koden från URL:en
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        
+        // Unik 10-siffrig kod
+        const correctCode = "2024256";
+
+        if (code === correctCode) {
+            window.location.href = "login.html";
+        } else {
+            document.body.innerHTML = '<h1>Fel kod! Försök igen.</h1>';
         }
     </script>
 </body>
