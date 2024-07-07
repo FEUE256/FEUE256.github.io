@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>QR Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generera QR-kod</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
     <link rel="stylesheet" href="index.chat.openai.com.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 </head>
 <body>
-    <h1>QR Code</h1>
+    <h1>QR-kod Generator</h1>
     <div id="qrcode"></div>
-    <script src="qrcode.min.js"></script>
+
     <script>
-        const uniqueCode = localStorage.getItem('uniqueCode');
-        if (uniqueCode) {
-            const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: `https://feue256.github.io/verify.html?code=${uniqueCode}`,
-                width: 128,
-                height: 128
-            });
-        } else {
-            alert('No code found. Please generate a code first.');
-        }
+        // Unik 10-siffrig kod
+        const uniqueCode = "2024256";
+        const qrCodeUrl = `https://feue256.github.io/verify.html?code=${uniqueCode}`;
+
+        // Skapa QR-koden
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: qrCodeUrl,
+            width: 128,
+            height: 128
+        });
     </script>
 </body>
 </html>
