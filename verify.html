@@ -8,25 +8,19 @@
 </head>
 <body>
     <h1>Verify Code</h1>
-    <form id="verifyForm">
-        <label for="code">Enter Code:</label>
-        <input type="text" id="code" name="code">
-        <button type="submit">Verify</button>
-    </form>
-    <div id="result"></div>
+    <input type="text" id="codeInput" placeholder="Enter code">
+    <button onclick="verifyCode()">Verify</button>
+    <script src="qrcode.min.js"></script>
     <script>
-        document.getElementById('verifyForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const userCode = document.getElementById('code').value;
-            const urlParams = new URLSearchParams(window.location.search);
-            const codeParam = urlParams.get('code');
+        function verifyCode() {
+            const inputCode = document.getElementById('codeInput').value;
             const storedCode = localStorage.getItem('uniqueCode');
-            if (userCode === storedCode || userCode === codeParam) {
-                window.location.href = 'login.html';
+            if (inputCode === storedCode) {
+                window.location.href = 'https://feue256.github.io/login.html';
             } else {
-                document.getElementById('result').textContent = 'Invalid code. Please try again.';
+                alert('Incorrect code. Please try again.');
             }
-        });
+        }
     </script>
 </body>
 </html>
