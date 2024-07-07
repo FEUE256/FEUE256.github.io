@@ -2,21 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QR Code Page</title>
+    <title>QR Code Display</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
     <link rel="stylesheet" href="index.chat.openai.com.css">
 </head>
 <body>
+    <h1>Your QR Code</h1>
     <div id="qrcode"></div>
-
     <script src="qrcode.min.js"></script>
     <script>
-        let code = generateUniqueCode();
-        let qr = new QRCode(document.getElementById("qrcode"), {
-            text: code,
-            width: 128,
-            height: 128
-        });
+        // Retrieve the code from local storage
+        const storedCode = localStorage.getItem('uniqueCode');
+        if (storedCode) {
+            const qrCode = new QRCode(document.getElementById("qrcode"), {
+                text: `https://feue256.github.io/verify.html?code=${storedCode}`,
+                width: 128,
+                height: 128
+            });
+        } else {
+            document.getElementById('qrcode').textContent = 'No QR code generated yet.';
+        }
     </script>
 </body>
 </html>
