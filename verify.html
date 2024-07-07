@@ -14,13 +14,14 @@
         <button type="submit">Verify</button>
     </form>
     <div id="result"></div>
-    <script src="qrcode.min.js"></script>
     <script>
         document.getElementById('verifyForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const userCode = document.getElementById('code').value;
+            const urlParams = new URLSearchParams(window.location.search);
+            const codeParam = urlParams.get('code');
             const storedCode = localStorage.getItem('uniqueCode');
-            if (userCode === storedCode) {
+            if (userCode === storedCode || userCode === codeParam) {
                 window.location.href = 'login.html';
             } else {
                 document.getElementById('result').textContent = 'Invalid code. Please try again.';
