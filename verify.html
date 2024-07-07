@@ -8,20 +8,19 @@
     <link rel="stylesheet" href="index.chat.openai.com.css">
 </head>
 <body>
-    <h1>Verifierar...</h1>
+    <h1>Verifiera</h1>
+    <input type="text" id="code">
+    <input type="submit">
     <script>
-        // Hämta koden från URL:en
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-        
-        // Unik 10-siffrig kod
-        const correctCode = "2024256";
+        const code = document.getElementById("code");
 
-        if (code === correctCode) {
-            window.location.href = "login.html";
-        } else {
-            document.body.innerHTML = '<h1>Fel kod! Försök igen.</h1>';
-        }
+const correctCode = "2024256";
+
+if (code === correctCode) {
+    window.location.href = "login.html";
+} else {
+    document.body.innerHTML = '<h1>Fel kod! Försök igen.</h1>';
+}
     </script>
 </body>
 </html>
