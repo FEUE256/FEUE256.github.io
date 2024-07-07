@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logga in på FÈUE</title>
+    <title>Logain på FÈUE</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+    <link rel="stylesheet" href="index.chat.openai.com.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -92,7 +102,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             randomCode = generateRandomCode(10);
             const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: `https://example.com/VER.html?code=${randomCode}`,
+                text: randomCode,
                 width: 128,
                 height: 128,
             });
@@ -105,7 +115,7 @@
             if (code === randomCode) {
                 document.getElementById("message").textContent = "Koden är korrekt!";
                 document.getElementById("message").style.color = "green";
-                window.location.href = `contact.html?code=${randomCode}`;
+                window.location.href = "VER.html?code=" + encodeURIComponent(randomCode);
             } else {
                 document.getElementById("message").textContent = "Fel kod, försök igen.";
                 document.getElementById("message").style.color = "red";
