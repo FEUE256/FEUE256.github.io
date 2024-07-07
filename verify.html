@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifiera kod</title>
+    <title>Start</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,37 +26,37 @@
             width: 100%;
             max-width: 400px;
         }
-        p {
-            margin-bottom: 20px;
-        }
-        .success {
-            color: green;
-        }
-        .error {
-            color: red;
+        #qrcode {
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Verifierar kod...</h1>
-        <p id="verificationResult"></p>
+        <h1>Skanna QR-kod</h1>
+        <div id="qrcode"></div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const verificationCode = urlParams.get('verificationCode');
-
-            const storedCode = localStorage.getItem('verificationCode');
-
-            if (verificationCode === storedCode) {
-                document.getElementById('verificationResult').textContent = "Koden är korrekt!";
-                document.getElementById('verificationResult').classList.add('success');
-            } else {
-                document.getElementById('verificationResult').textContent = "Fel kod. Försök igen.";
-                document.getElementById('verificationResult').classList.add('error');
+        function generateRandomCode(length) {
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+            let code = "";
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                code += charset[randomIndex];
             }
+            return code;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const randomCode = generateRandomCode(10);
+            localStorage.setItem('verificationCode', randomCode);
+
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: `code=${randomCode}`,
+                width: 128,
+                height: 128,
+            });
         });
     </script>
 </body>
