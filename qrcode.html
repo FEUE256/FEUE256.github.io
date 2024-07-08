@@ -6,10 +6,18 @@
     <title>Generera QR-kod</title>
     <link rel="shortcut icon" href="https://tawk.link/thumb/668646e4eaf3bd8d4d17ebc6/kb/logo/_qNc4lzhG5.jpg?width=32&height=32" type="image/x-icon">
     <link rel="stylesheet" href="index.chat.openai.com.css">
+    <style>
+        .qrcode {
+             width: 128
+            height: 128
+        }
+            
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 </head>
 <body>
     <h1>QR-kod Generator</h1>
+      <img src="code.png" class="qrcode" alt="Qr koden">
     <a href="verify.html">Kolla koden</a>
     <script>
         // Unik 10-siffrig kod
