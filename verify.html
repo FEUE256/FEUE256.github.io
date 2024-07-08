@@ -9,18 +9,25 @@
 </head>
 <body>
     <h1>Verifiera</h1>
-    <input type="text" id="code">
-    <input type="submit">
+    <form id="verificationForm">
+        <input type="text" id="code" placeholder="Ange kod" required>
+        <input type="submit" value="Verifiera">
+    </form>
+    <div id="message"></div>
+
     <script>
-        const code = document.getElementById("code");
+        document.getElementById("verificationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Förhindra standard form submission
+            const code = document.getElementById("code").value;
+            const correctCode = "2024256";
+            const messageDiv = document.getElementById("message");
 
-const correctCode = "2024256";
-
-if (code === correctCode) {
-    window.location.href = "login.html";
-} else {
-    document.body.innerHTML = '<h1>Fel kod! Försök igen.</h1>';
-}
+            if (code === correctCode) {
+                window.location.href = "login.html";
+            } else {
+                messageDiv.innerHTML = '<h2>Fel kod! Försök igen.</h2>';
+            }
+        });
     </script>
 </body>
 </html>
