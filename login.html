@@ -56,7 +56,7 @@
         <div class="g-recaptcha" data-sitekey="6Lfc-gUqAAAAAO9yCXVSon_Mzkie7YjDYveOOrJs" data-callback="onSubmit" required></div>
         <br>
         
-        <button type="submit" onclick="Skicka">Skicka</button>
+        <button type="submit" id="WhatsApp">Skicka</button>
     </form>
 
     <script>
@@ -65,9 +65,9 @@
             document.getElementById("contactForm").submit();
         }
 
-  /*      // Skicka med WhatsApp
-        document.getElementById("saveButton").addEventListener("click", function() {
-    // Hämta värden från textfälten
+       // Skicka med WhatsApp
+        document.getElementById("Whats").addEventListener("submit", function() {
+            // Hämta värden från textfälten
     var forname = document.getElementById("forname").value;
     var afeername = document.getElementById("afeername").value;
 
@@ -76,10 +76,17 @@
         // Spara värdena i localStorage
         localStorage.setItem("forname", forname);
         localStorage.setItem("afeername", afeername);
-    }
-});
 
-*/
+        // Skicka WhatsApp-meddelande
+        var whatsappMessage = "En ny användare har loggat in på feue256.github.io. Kolla din mail\n" + 
+                              "Förnamn: " + forname + "\nEfternamn: " + afeername;
+        var whatsappLink = "https://api.whatsapp.com/send?phone=46700144464&text=" + encodeURIComponent(whatsappMessage);
+
+        // Öppna WhatsApp-länken i ny flik
+        window.open(whatsappLink);
+    }
+        }
+
         // Hantera kontaktformuläret
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
