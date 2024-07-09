@@ -19,11 +19,11 @@
 </head>
 <body>
     <h1>Kontaktformulär</h1>
-    <form id="contactForm" action="https://formspree.io/f/manwyebo" method="POST" enctype="multipart/form-data">
+    <form id="contactForm" action="https://formspree.io/f/manwyebo" method="POST" enctype="multipart/form-data" onsubmit="onSubmit(event)">
         <label for="forname">Förnamn</label>
         <input type="text" id="forname" name="forname" required><br>
 
-        <lable for="afeername">Efternamn</lable>
+        <label for="afeername">Efternamn</label>
         <input type="text" id="afeername" name="afeername" required><br>
 
         <label for="email">E-postadress:</label>
@@ -45,7 +45,7 @@
         <input type="text" id="city" name="city" required><br>
 
         <label for="number">Adressnummer:</label>
-        <input type="number" name="number" id="number"><br>
+        <input type="number" id="number" name="number" required><br>
 
         <label for="zip">Postnummer:</label>
         <input type="text" id="zip" name="zip" required><br>
@@ -56,42 +56,35 @@
         <div class="g-recaptcha" data-sitekey="6Lfc-gUqAAAAAO9yCXVSon_Mzkie7YjDYveOOrJs" data-callback="onSubmit" required></div>
         <br>
         
-        <button type="submit" id="WhatsApp">Skicka</button>
+        <button type="submit" id="submit">Skicka</button>
     </form>
 
     <script>
         // Callback-funktion för reCAPTCHA
-        function onSubmit(token) {
-            document.getElementById("contactForm").submit();
-        }
+        function onSubmit(event) {
+            event.preventDefault(); // Förhindra att formuläret skickas direkt
 
-       // Skicka med WhatsApp
-        document.getElementById("Whats").addEventListener("submit", function() {
             // Hämta värden från textfälten
-    var forname = document.getElementById("forname").value;
-    var afeername = document.getElementById("afeername").value;
+            var forname = document.getElementById("forname").value;
+            var afeername = document.getElementById("afeername").value;
 
-    // Kontrollera att fälten inte är tomma
-    if (forname && afeername) {
-        // Spara värdena i localStorage
-        localStorage.setItem("forname", forname);
-        localStorage.setItem("afeername", afeername);
+            // Kontrollera att fälten inte är tomma
+            if (forname && afeername) {
+                // Spara värdena i localStorage (valfritt steg enligt tidigare diskussion)
+                localStorage.setItem("forname", forname);
+                localStorage.setItem("afeername", afeername);
 
-        // Skicka WhatsApp-meddelande
-        var whatsappMessage = "En ny användare har loggat in på feue256.github.io. Kolla din mail\n" + 
-                              "Förnamn: " + forname + "\nEfternamn: " + afeername;
-        var whatsappLink = "https://api.whatsapp.com/send?phone=46700144464&text=" + encodeURIComponent(whatsappMessage);
+                // Skicka WhatsApp-meddelande (detta är en placeholder, behöver ytterligare logik för att fungera)
+                var whatsappMessage = "En ny användare har loggat in på feue256.github.io. Kolla din mail\n" + 
+                                    "Förnamn: " + forname + "\nEfternamn: " + afeername;
+                var whatsappLink = "https://api.whatsapp.com/send?phone=46700144464&text=" + encodeURIComponent(whatsappMessage);
 
-        // Öppna WhatsApp-länken i ny flik
-        window.open(whatsappLink);
-    }
-        }
+                // Öppna WhatsApp-länken i ny flik
+                window.open(whatsappLink);
+            }
 
-        // Hantera kontaktformuläret
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const form = event.target;
+            // Hantera formuläret genom att skicka det via Fetch API
+            const form = document.getElementById('contactForm');
             const formData = new FormData(form);
 
             fetch(form.action, {
@@ -100,20 +93,22 @@
                     'Accept': 'application/json'
                 },
                 body: formData
-            }).then(response => {
+            })
+            .then(response => {
                 if (response.ok) {
                     alert('Formuläret har skickats!');
                     form.reset();
-                    window.location.href = "index.html";  // Korrigering av omdirigering
+                    window.location.href = "index.html";  // Omdirigera till annan sida efter skickande
                 } else {
                     alert('Ett fel uppstod vid skickandet av formuläret');
                     form.reset();
                 }
-            }).catch(error => {
+            })
+            .catch(error => {
                 console.error('Fel:', error);
                 alert('Ett fel uppstod vid skickandet av formuläret');
             });
-        });
+        }
     </script>
 </body>
 </html>
