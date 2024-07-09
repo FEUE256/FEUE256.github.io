@@ -16,6 +16,34 @@
     </script>
     <!-- End Google Analytics -->
     <link rel="stylesheet" href="index.chat.openai.com.css">
+    <style>
+        .info-icon {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 5px; /* Justera efter behov */
+}
+
+.info-tooltip {
+    font-size: 20px;
+}
+
+.info-text {
+    display: none;
+    margin-top: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.info-text.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+    </style>
 </head>
 <body>
     <h1>Kontaktformulär</h1>
@@ -55,11 +83,22 @@
 
         <div class="g-recaptcha" data-sitekey="6Lfc-gUqAAAAAO9yCXVSon_Mzkie7YjDYveOOrJs" data-callback="onSubmit" required></div>
         <br>
-        
+                 <div class="info-icon" onclick="toggleInfo()">
+        <span class="info-tooltip">ℹ️</span> <!-- ℹ️ är Unicode för ett info-tecken -->
+    </div>
+
+    <div class="info-text hidden" id="infoText">
+         <span class="info-text">När du klicka på "Skicka" knappen kommer du att skicka och i en ny flik kommer WhatsApp (webbveriskition) att komma upp klicka Stara chatt sen klicka skicka 0700144464 är FÈUE:s nummer (Ändra inte texten)/span>
+    </div>
         <button type="submit" id="submit">Skicka</button>
     </form>
 
     <script>
+        function toggleInfo() {
+    var infoText = document.getElementById('infoText');
+    infoText.classList.toggle('active');
+}
+
         // Callback-funktion för reCAPTCHA
         function onSubmit(event) {
             event.preventDefault(); // Förhindra att formuläret skickas direkt
