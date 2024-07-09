@@ -20,8 +20,11 @@
 <body>
     <h1>Kontaktformulär</h1>
     <form id="contactForm" action="https://formspree.io/f/manwyebo" method="POST" enctype="multipart/form-data">
-        <label for="name">Namn:</label>
-        <input type="text" id="name" name="name" required><br>
+        <label for="forname">Förnamn</label>
+        <input type="text" id="forname" name="forname" required><br>
+
+        <lable for="afeername">Efternamn</lable>
+        <input type="text" id="afeername" name="afeername" required><br>
 
         <label for="email">E-postadress:</label>
         <input type="email" id="email" name="email" required><br>
@@ -52,8 +55,8 @@
 
         <div class="g-recaptcha" data-sitekey="6Lfc-gUqAAAAAO9yCXVSon_Mzkie7YjDYveOOrJs" data-callback="onSubmit" required></div>
         <br>
-
-        <button type="submit">Skicka</button>
+        
+        <button type="submit" onclick="Skicka">Skicka</button>
     </form>
 
     <script>
@@ -62,6 +65,21 @@
             document.getElementById("contactForm").submit();
         }
 
+  /*      // Skicka med WhatsApp
+        document.getElementById("saveButton").addEventListener("click", function() {
+    // Hämta värden från textfälten
+    var forname = document.getElementById("forname").value;
+    var afeername = document.getElementById("afeername").value;
+
+    // Kontrollera att fälten inte är tomma
+    if (forname && afeername) {
+        // Spara värdena i localStorage
+        localStorage.setItem("forname", forname);
+        localStorage.setItem("afeername", afeername);
+    }
+});
+
+*/
         // Hantera kontaktformuläret
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
