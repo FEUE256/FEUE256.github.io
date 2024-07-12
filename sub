@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subway Surfers Clone</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Player {
+            constructor() {
+                this.width = 50;
+                this.height = 50;
+                this.x = canvas.width / 2 - this.width / 2;
+                this.y = canvas.height - this.height - 10;
+                this.speed = 5;
+                this.dx = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+
+            update() {
+                this.x += this.dx;
+
+                // Boundary detection
+                if (this.x < 0) this.x = 0;
+                if (this.x + this.width > canvas.width) this.x = canvas.width - this.width;
+            }
+
+            moveRight() {
+                this.dx = this.speed;
+            }
+
+            moveLeft() {
+                this.dx = -this.speed;
+            }
+
+            stop() {
+                this.dx = 0;
+            }
+        }
+
+        class Obstacle {
+            constructor(x, y, width, height, speed) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.speed = speed;
+            }
+
+            draw() {
+                ctx.fillStyle = 'red';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+
+            update() {
+                this.y += this.speed;
+            }
+        }
+
+        const player = new Player();
+        const obstacles = [];
+
+        function createObstacle() {
+            const x = Math.random() * (canvas.width - 50);
+            const y = 0;
+            const width = 50;
+            const height = 50;
+            const speed = 3;
+            obstacles.push(new Obstacle(x, y, width, height, speed));
+        }
+
+        function detectCollision(player, obstacle) {
+            return player.x < obstacle.x + obstacle.width &&
+                   player.x + player.width > obstacle.x &&
+                   player.y < obstacle.y + obstacle.height &&
+                   player.y + player.height > obstacle.y;
+        }
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            player.update();
+            player.draw();
+
+            obstacles.forEach((obstacle, index) => {
+                obstacle.update();
+                obstacle.draw();
+
+                if (detectCollision(player, obstacle)) {
+                    console.log('Collision detected!');
+                    obstacles.splice(index, 1); // Remove obstacle on collision
+                }
+
+                // Remove obstacles that are out of view
+                if (obstacle.y > canvas.height) {
+                    obstacles.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+
+        setInterval(createObstacle, 2000);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                player.moveRight();
+            } else if (e.key === 'ArrowLeft') {
+                player.moveLeft();
+            }
+        });
+
+        document.addEventListener('keyup', () => {
+            player.stop();
+        });
+    </script>
+</body>
+</html>
