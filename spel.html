@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        class Player {
+            constructor() {
+                this.width = 50;
+                this.height = 50;
+                this.x = 100;
+                this.y = canvas.height - this.height;
+                this.speed = 0;
+                this.gravity = 0.5;
+                this.jumpPower = -10;
+                this.velocity = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+
+            update() {
+                this.y += this.velocity;
+                this.velocity += this.gravity;
+
+                if (this.y + this.height > canvas.height) {
+                    this.y = canvas.height - this.height;
+                    this.velocity = 0;
+                }
+            }
+
+            jump() {
+                if (this.y + this.height >= canvas.height) {
+                    this.velocity = this.jumpPower;
+                }
+            }
+        }
+
+        class Platform {
+            constructor(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            }
+
+            draw() {
+                ctx.fillStyle = 'green';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+
+        let player = new Player();
+        let platforms = [
+            new Platform(100, 500, 200, 20),
+            new Platform(400, 400, 200, 20),
+            new Platform(700, 300, 200, 20)
+        ];
+
+        function checkCollision(player, platform) {
+            return (player.x < platform.x + platform.width &&
+                    player.x + player.width > platform.x &&
+                    player.y < platform.y + platform.height &&
+                    player.y + player.height > platform.y);
+        }
+
+        let lastTime = 0;
+
+        function gameLoop(timestamp) {
+            let deltaTime = timestamp - lastTime;
+            lastTime = timestamp;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            player.update();
+            player.draw();
+
+            platforms.forEach(platform => {
+                platform.draw();
+                if (checkCollision(player, platform)) {
+                    player.y = platform.y - player.height;
+                    player.velocity = 0;
+                }
+            });
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        requestAnimationFrame(gameLoop);
+
+        window.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                player.jump();
+            }
+        });
+    </script>
+</body>
+</html>
