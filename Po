@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 x 100 Tabell</title>
+</head>
+<body>
+    <table id="largeTable" border="1"></table>
+
+    <script>
+        function generateTable(rows, cols) {
+            let table = document.getElementById('largeTable');
+            let tbody = document.createElement('tbody');
+
+            for (let i = 0; i < rows; i++) {
+                let tr = document.createElement('tr');
+                for (let j = 0; j < cols; j++) {
+                    let td = document.createElement('td');
+                    td.textContent = `(${i+1}, ${j+1})`; // Du kan ändra innehållet här om du vill
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+
+            table.appendChild(tbody);
+        }
+
+        generateTable(100, 100);
+    </script>
+</body>
+</html>
