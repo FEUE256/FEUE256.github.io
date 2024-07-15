@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let startY = y;
     let score = 0;
     let highscore = localStorage.getItem('highscore') || 0;
-    let gamePaused = false;
+    let gamePaused = true; // Ändra initialt till pausat
     let gameMusic = document.getElementById('gameMusic');
     let settingsOpen = false;
     let infoAlertActive = false;
@@ -82,9 +82,16 @@ This is info about the game. The arrow keys right and left are there to go to th
     // Funktion för att återställa spelet
     function resetGame() {
         console.log('Reset game button clicked');
+        score = 0;
+        obstacles = [];
+        x = canvas.width / 2;
+        y = canvas.height / 2;
+        startY = y;
         localStorage.setItem('highscore', 0);
         highscore = 0;
         updateHighscore();
+        drawBall();
+        drawObstacles();
     }
 
     // Funktion för att visa info-alert
@@ -177,9 +184,6 @@ This is info about the game. The arrow keys right and left are there to go to th
 
             // Anropar sig själv med requestAnimationFrame för att skapa en spel-loop
             requestAnimationFrame(gameLoop);
-        } else {
-            // Om spelet är pausat, fortsätt anropa gameLoop utan att göra något annat
-            requestAnimationFrame(gameLoop);
         }
     }
 
@@ -228,7 +232,6 @@ This is info about the game. The arrow keys right and left are there to go to th
                 break;
             case ' ': // Mellanslagstangenten för att hoppa
                 jump();
-                ballRadius += 10;
                 break;
         }
     });
