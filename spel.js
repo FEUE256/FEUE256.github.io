@@ -25,10 +25,15 @@
         let gameMusic = document.getElementById('gameMusic');
         let settingsOpen = false;
         
+        let str = "Detta är en sträng med en radbrytning:\nOch här är en tabulator:\tSlutligen, en backslash: \\";
+        let alertText = "Detta är info om spelet./nPiltangenterna höger och vänster är till för att åka till respektive håll./nMelanslag är till för göra det svårare.";
+        function infoAlert () {
+            
+        }
         
-        
-    
+    alert(str);
         // Knappar för spelkontroll och inställningar
+        const infoButton = documet.getElemtById('info');
         const gameStartButton = document.getElementById('gameStart');
         const gamePauseButton = document.getElementById('gamePause');
         const gameResetButton = document.getElementById('gameReset');
@@ -38,7 +43,11 @@
         gameStartButton.addEventListener("click", function() {
             startGame();
         });
-    
+
+        infoButton.addEventListener("click", function() {
+            
+        });
+        
         gamePauseButton.addEventListener("click", function() {
             pauseGame();
         });
