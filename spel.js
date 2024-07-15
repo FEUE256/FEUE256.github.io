@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', (event) => {
     let lastObstacleTime = Date.now();
 
@@ -25,21 +24,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let gameMusic = document.getElementById('gameMusic');
     let settingsOpen = false;
 
-    let infoAlertText = "Detta är info om spelet.\nPiltangenterna höger och vänster är till för att åka till respektive håll.\nMelanslag är till för att göra det svårare.";
-    let infoClicked = false;
-    
     // Knappar för spelkontroll och inställningar
     const gameStartButton = document.getElementById('gameStart');
     const gamePauseButton = document.getElementById('gamePause');
     const gameResetButton = document.getElementById('gameReset');
     const settingsButton = document.getElementById('settingsButton');
-    const infoButton = document.getElementById('info');
 
     // Lägg till eventlyssnare för knapparna
     gameStartButton.addEventListener("click", startGame);
     gamePauseButton.addEventListener("click", pauseGame);
     gameResetButton.addEventListener("click", resetGame);
-    infoButton.addEventListener("click", infoAlert);
+    settingsButton.addEventListener("click", toggleSettings);
 
     // Funktion för att starta spelet
     function startGame() {
@@ -65,14 +60,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         updateHighscore();
     }
 
-    // Funktion för att ge info
-    function infoAlert() {
-        consol.log('Info button clicked')
-        gameMusic.pause();
-        infoClicked = true;
-        alert(infoAlertText);
-    }
-    
     // Funktion för att rita bollen
     function drawBall() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -137,7 +124,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Huvudspelloopen
     function gameLoop() {
-        if (infoClicked = false) {
         if (!gamePaused) {
             let elapsedTime = Date.now() - lastObstacleTime;
             const obstacleInterval = 2000; // Ersätt med det önskade tidsintervallet i millisekunder
@@ -159,7 +145,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         } else {
             // Om spelet är pausat, fortsätt anropa gameLoop utan att göra något annat
             requestAnimationFrame(gameLoop);
-        }
         }
     }
 
@@ -228,7 +213,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('highscoreValue').textContent = highscore;
     }
 
-
+    // Funktion för att visa inställningar (kan implementeras efter behov)
+    function toggleSettings() {
+        settingsOpen = !settingsOpen;
+        if (settingsOpen) {
+            // Visa inställningar
+        } else {
+            // Dölj inställningar
+        }
+    }
 
     // Funktion för att visa highscore
     function viewHighscore() {
@@ -258,4 +251,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Uppdatera highscore när sidan laddas
     updateHighscore();
 });
-
