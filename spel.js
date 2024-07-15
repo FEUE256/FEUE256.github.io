@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Variabler för bollens position och storlek
     let x = canvas.width / 2;
     let y = canvas.height / 2;
-    const ballRadius = 10;
+    let ballRadius = 10;
 
     // Variabler för hinder
     const obstacleRadius = 10;
@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 break;
             case ' ': // Mellanslagstangenten för att hoppa
                 jump();
+                bollRadius += 10;
                 break;
         }
     });
