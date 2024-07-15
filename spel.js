@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let gameMusic = document.getElementById('gameMusic');
     let settingsOpen = false;
 
-    let infoAlertText = "
+        let infoAlertText = `
         Continued FÈUE Presents
 Online Game: feue256.github.io/spel.html
 
@@ -45,8 +45,8 @@ Avoid: Navigate around the red balls to avoid them and score points.
 Enjoy: Let the AI-generated music enhance your gameplay experience.
 We invite you to dive into the game and test your skills. Share your high scores with friends and see who can master the art of dodging the red balls.
     This is info about the game. The arrow keys right and left are there to go to their respective directions. Space is there to make it more difficult.
+    `;
 
-"
     let infoAlertActive = false;
     
     // Knappar för spelkontroll och inställningar
