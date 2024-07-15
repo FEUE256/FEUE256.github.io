@@ -25,11 +25,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let gameMusic = document.getElementById('gameMusic');
     let settingsOpen = false;
 
+    let infoAlertText = "
+        Continued FÈUE Presents
+Online Game: feue256.github.io/spel.html
+
+We are thrilled to introduce our latest online game, a fun and interactive experience created using YouTube tutorials, ChatGPT, koda.nu, GitHub, and javascript.nu. This game has been meticulously developed with JavaScript, HTML, and CSS, making it not only entertaining but also coder-friendly.
+
+Game Features:
+Objective: The primary goal of the game is to avoid touching the red balls. This simple yet challenging mechanic will keep you engaged as you navigate through the game.
+Controls: Use the arrow keys to maneuver the white ball, which represents you, the player. The controls are intuitive and responsive, ensuring a smooth gameplay experience.
+Scoring System: You earn points for each red ball you successfully avoid. The more agile and precise you are, the higher your score will be.
+AI-Generated Music: Enjoy an immersive gaming experience with AI-generated background music that adapts to the pace of the game.
+Developer-Friendly: Designed with coders in mind, the game’s code is accessible and modifiable. Whether you're a beginner or an experienced developer, you can explore and customize the game to your liking.
+How to Play:
+Visit: Go to feue256.github.io/spel.html.
+Start: The game will load automatically. Press any key to begin.
+Control: Use the arrow keys on your keyboard to move the white ball.
+Avoid: Navigate around the red balls to avoid them and score points.
+Enjoy: Let the AI-generated music enhance your gameplay experience.
+We invite you to dive into the game and test your skills. Share your high scores with friends and see who can master the art of dodging the red balls.
+    This is info about the game. The arrow keys right and left are there to go to their respective directions. Space is there to make it more difficult.
+
+"
+    let infoAlertActive = false;
+    
     // Knappar för spelkontroll och inställningar
     const gameStartButton = document.getElementById('gameStart');
     const gamePauseButton = document.getElementById('gamePause');
     const gameResetButton = document.getElementById('gameReset');
-    const settingsButton = document.getElementById('settingsButton');
+    const settingsButton = document.getElementById('settings');
     const infoButton = document.getElementById('info');
 
     // Lägg till eventlyssnare för knapparna
@@ -37,14 +61,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     gamePauseButton.addEventListener("click", pauseGame);
     gameResetButton.addEventListener("click", resetGame);
     settingsButton.addEventListener("click", toggleSettings);
-    info.addEventListener("click", info
+    info.addEventListener("click", infoAlert);
 
     // Funktion för att starta spelet
     function startGame() {
-        console.log('Start game button clicked');
-        gameMusic.play(); // Spela spelmusik
-        gamePaused = false;
-        gameLoop(); // Starta spelets huvudloop
+            console.log('Start game button clicked');
+            gameMusic.play(); // Spela spelmusik
+            gamePaused = false;
+            if (infoAlertActive = false) {
+                gameLoop(); // Starta spelets huvudloop
+        }
     }
 
     // Funktion för att pausa spelet
@@ -61,6 +87,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         localStorage.setItem('highscore', 0);
         highscore = 0;
         updateHighscore();
+    }
+
+    function infoAlert() {
+        console.log('InfoActive');
+        infoAlertActive = true;
+        alert(infoAlertText);
     }
 
     // Funktion för att rita bollen
