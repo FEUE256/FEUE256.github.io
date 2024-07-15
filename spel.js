@@ -30,13 +30,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const gamePauseButton = document.getElementById('gamePause');
     const gameResetButton = document.getElementById('gameReset');
     const settingsButton = document.getElementById('settingsButton');
-    const info = document.getElementById('')
+    const infoButton = document.getElementById('info');
 
     // Lägg till eventlyssnare för knapparna
     gameStartButton.addEventListener("click", startGame);
     gamePauseButton.addEventListener("click", pauseGame);
     gameResetButton.addEventListener("click", resetGame);
     settingsButton.addEventListener("click", toggleSettings);
+    info.addEventListener("click", info
 
     // Funktion för att starta spelet
     function startGame() {
