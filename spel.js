@@ -1,4 +1,4 @@
-loadScript("https://koda.nu/simple.js", function() {
+
 document.addEventListener('DOMContentLoaded', (event) => {
     let lastObstacleTime = Date.now();
 
@@ -258,4 +258,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Uppdatera highscore när sidan laddas
     updateHighscore();
 });
-};
+
