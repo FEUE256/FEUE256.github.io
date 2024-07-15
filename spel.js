@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const gamePauseButton = document.getElementById('gamePause');
     const gameResetButton = document.getElementById('gameReset');
     const settingsButton = document.getElementById('settingsButton');
-    const info = documet.getElementById('')
+    const info = document.getElementById('')
 
     // Lägg till eventlyssnare för knapparna
     gameStartButton.addEventListener("click", startGame);
