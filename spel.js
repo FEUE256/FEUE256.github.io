@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', (event) => {
     let lastObstacleTime = Date.now();
 
@@ -9,7 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Variabler för bollens position och storlek
     let x = canvas.width / 2;
     let y = canvas.height / 2;
-    let ballRadius = 10;
+    const ballRadius = 10;
 
     // Variabler för hinder
     const obstacleRadius = 10;
@@ -24,8 +23,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let gamePaused = false;
     let gameMusic = document.getElementById('gameMusic');
     let settingsOpen = false;
+    let infoAlertActive = false;
 
-        let infoAlertText = `
+    const infoAlertText = `
         Continued FÈUE Presents
 Online Game: feue256.github.io/spel.html
 
@@ -44,11 +44,9 @@ Control: Use the arrow keys on your keyboard to move the white ball.
 Avoid: Navigate around the red balls to avoid them and score points.
 Enjoy: Let the AI-generated music enhance your gameplay experience.
 We invite you to dive into the game and test your skills. Share your high scores with friends and see who can master the art of dodging the red balls.
-    This is info about the game. The arrow keys right and left are there to go to their respective directions. Space is there to make it more difficult.
+This is info about the game. The arrow keys right and left are there to go to their respective directions. Space is there to make it more difficult.
     `;
 
-    let infoAlertActive = false;
-    
     // Knappar för spelkontroll och inställningar
     const gameStartButton = document.getElementById('gameStart');
     const gamePauseButton = document.getElementById('gamePause');
@@ -61,15 +59,15 @@ We invite you to dive into the game and test your skills. Share your high scores
     gamePauseButton.addEventListener("click", pauseGame);
     gameResetButton.addEventListener("click", resetGame);
     settingsButton.addEventListener("click", toggleSettings);
-    info.addEventListener("click", infoAlert);
+    infoButton.addEventListener("click", showInfoAlert);
 
     // Funktion för att starta spelet
     function startGame() {
-            console.log('Start game button clicked');
-            gameMusic.play(); // Spela spelmusik
-            gamePaused = false;
-            if (infoAlertActive = false) {
-                gameLoop(); // Starta spelets huvudloop
+        console.log('Start game button clicked');
+        gameMusic.play(); // Spela spelmusik
+        gamePaused = false;
+        if (!infoAlertActive) {
+            gameLoop(); // Starta spelets huvudloop
         }
     }
 
@@ -89,10 +87,12 @@ We invite you to dive into the game and test your skills. Share your high scores
         updateHighscore();
     }
 
-    function infoAlert() {
-        console.log('InfoActive');
+    // Funktion för att visa info-alert
+    function showInfoAlert() {
+        console.log('Info button clicked');
         infoAlertActive = true;
         alert(infoAlertText);
+        infoAlertActive = false;
     }
 
     // Funktion för att rita bollen
@@ -228,7 +228,7 @@ We invite you to dive into the game and test your skills. Share your high scores
                 break;
             case ' ': // Mellanslagstangenten för att hoppa
                 jump();
-                bollRadius += 10;
+                ballRadius += 10;
                 break;
         }
     });
@@ -261,7 +261,7 @@ We invite you to dive into the game and test your skills. Share your high scores
 
     // Funktion för att visa highscore
     function viewHighscore() {
-        let highscore = localStorage.getItem('highscore') || 0;
+        highscore = localStorage.getItem('highscore') || 0;
         alert(`Highscore: ${highscore}`);
     }
 
