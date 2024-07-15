@@ -25,19 +25,20 @@
         let gameMusic = document.getElementById('gameMusic');
         let settingsOpen = false;
         
-    
-const gameStartButton = document.getElementById('gameStart');
-const gamePauseButton = document.getElementById('gamePause');
-const gameResetButton = document.getElementById('gameReset');
-const settingsButton = document.getElementById('settingsButton');
-
-// Lägg till eventlyssnare för knapparna
-gameStartButton.addEventListener("click", function() {
-    startGame();
-});
-
-
         
+        
+    
+        // Knappar för spelkontroll och inställningar
+        const gameStartButton = document.getElementById('gameStart');
+        const gamePauseButton = document.getElementById('gamePause');
+        const gameResetButton = document.getElementById('gameReset');
+        const settingsButton = document.getElementById('settingsButton');
+    
+        // Lägg till eventlyssnare för knapparna
+        gameStartButton.addEventListener("click", function() {
+            startGame();
+        });
+    
         gamePauseButton.addEventListener("click", function() {
             pauseGame();
         });
@@ -271,3 +272,4 @@ document.addEventListener('keyup', function(event) {
         // Uppdatera highscore när sidan laddas
         updateHighscore();
     });
+
