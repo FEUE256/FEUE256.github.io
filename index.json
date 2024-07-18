@@ -1,0 +1,36 @@
+[
+    {
+        "namn": "Emma",
+        "ålder": 28,
+        "ärAktiv": true,
+        "hobbies": ["läsa", "resa", "simma"],
+        "adress": {
+            "gata": "Storgatan 1",
+            "stad": "Stockholm",
+            "postnummer": "12345"
+        },
+        "relationer": [
+            {
+                "relation": "bror",
+                "namn": "Oscar"
+            }
+        ]
+    },
+    {
+        "namn": "Oscar",
+        "ålder": 30,
+        "ärAktiv": true,
+        "hobbies": ["engelska", "resa", "kameror"],
+        "adress": {
+            "gata": "Storgatan 2",
+            "stad": "Stockholm",
+            "postnummer": "12345"
+        },
+        "relationer": [
+            {
+                "relation": "syster",
+                "namn": "Emma"
+            }
+        ]
+    }
+]
