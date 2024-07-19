@@ -1203,35 +1203,39 @@
         ];
 
         // Funktion för att visa persondata på sidan
-        function displayPersonData() {
+         function displayPersonData() {
             try {
-                // Filtrera ut Emma
-                const person = jsonData.find(person => person.namn === "Emma" && person => person.namn === "Oscar");
+                // Filtrera ut personer med namnen "Emma" och "Oscar"
+                const filteredPersons = jsonData.filter(person => person.namn === "Emma" || person.namn === "Oscar");
 
-                if (person) {
-                    // Använd personens data i din HTML
+                if (filteredPersons.length > 0) {
+                    // Hämta det element där vi vill visa information
                     const personInfoDiv = document.getElementById('person-info');
-                    const relationer = person.relationer.map(rel => `${rel.relation}: ${rel.namn}`).join(', ');
-                    personInfoDiv.innerHTML = `
-                        <div>
-                            <h2>${person.namn}</h2>
-                            <p>Ålder: ${person.ålder}</p>
-                            <p>Är aktiv: ${person.ärAktiv}</p>
-                            <p>Hobbies: ${person.hobbies.join(', ')}</p>
-                            <p>Adress: ${person.adress.gata}, ${person.adress.stad}, ${person.adress.postnummer}</p>
-                            <p>Relationer: ${relationer}</p>
-                        </div>
-                    `;
+                    
+                    // Bygg upp HTML-innehåll för varje person
+                    const content = filteredPersons.map(person => {
+                        const relationer = person.relationer.map(rel => `${rel.relation}: ${rel.namn}`).join(', ');
+                        return `
+                            <div>
+                                <h2>${person.namn}</h2>
+                                <p>Ålder: ${person.ålder}</p>
+                                <p>Är aktiv: ${person.ärAktiv}</p>
+                                <p>Hobbies: ${person.hobbies.join(', ')}</p>
+                                <p>Adress: ${person.adress.gata}, ${person.adress.stad}, ${person.adress.postnummer}</p>
+                                <p>Relationer: ${relationer}</p>
+                            </div>
+                        `;
+                    }).join('<br>'); // Lägg till en radbrytning mellan personerna
+
+                    // Sätt innehållet i div-elementet
+                    personInfoDiv.innerHTML = content;
                 } else {
-                    console.log("Personen hittades inte i datan.");
+                    console.log("Personerna hittades inte i datan.");
                 }
             } catch (error) {
                 console.error('Fel vid visning av data:', error);
             }
         }
-
-        // Anropa funktionen för att visa persondata när sidan har laddats
-        window.onload = displayPersonData;
     </script>
 </body>
 </html>
