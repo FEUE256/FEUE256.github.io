@@ -11,6 +11,7 @@
     <script>
         // Asynkron funktion för att kombinera strängar och objekt
         async function combineStringsAndObjects() {
+            let br = `<br>`;
              // Funktion för att skapa och lägga till en knapp
         function createButton() {
             // Skapa knappen
@@ -32,10 +33,10 @@
             let element = document.getElementById("JSON");
 
             if (element) {
-                element.innerHTML += '<br>';
+                element.innerHTML += br;
             }
 
-            let br = ´<br>´;
+            
             
             try {
                 // Steg 1: Ta emot två strängar från användaren
