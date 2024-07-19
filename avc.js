@@ -1,5 +1,13 @@
 // Asynkron funktion för att kombinera strängar och objekt
 async function combineStringsAndObjects() {
+  // Funktion för att uppdatera innerHTML på ett element med ID "JSON"
+function updateInnerHTML(content) {
+  let element = document.getElementById('JSON');
+  if (element) {
+    element.innerHTML += content + '<br>';
+  }
+}
+
   try {
     // Steg 1: Ta emot två strängar från användaren
     let str1 = await promptAsync('Ange första strängen:');
@@ -119,13 +127,6 @@ function deepMerge(target, source) {
   return target;
 }
 
-// Funktion för att uppdatera innerHTML på ett element med ID "JSON"
-function updateInnerHTML(content) {
-  let element = document.getElementById('JSON');
-  if (element) {
-    element.innerHTML += content + '<br>';
-  }
-}
 
 // Anropa funktionen
 combineStringsAndObjects();
