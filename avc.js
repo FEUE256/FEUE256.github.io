@@ -1,3 +1,4 @@
+// Asynkron funktion för att kombinera strängar och objekt
 async function combineStringsAndObjects() {
   try {
     // Steg 1: Ta emot två strängar från användaren
@@ -6,7 +7,7 @@ async function combineStringsAndObjects() {
 
     // Steg 2: Hantera om användaren klickar på "Avbryt" eller lämnar fält tomma
     if (!str1 || !str2) {
-      console.error('Fel: En eller båda strängar är ogiltiga eller tomma.');
+      updateInnerHTML('Fel: En eller båda strängar är ogiltiga eller tomma.');
       return;
     }
 
@@ -24,19 +25,19 @@ async function combineStringsAndObjects() {
     // Steg 6: Använd Object.entries() för att få en array med nyckel-värde-par
     let entries = Object.entries(combinedObj);
 
-    // Visa nycklar, värden och nyckel-värde-par i konsolen
-    console.log('Sammanfogat objekt:');
-    console.log('Nycklar:', keys); // ['str1', 'str2']
-    console.log('Värden:', values); // [värdet av str1, värdet av str2]
-    console.log('Nyckel-värde-par:', entries); // [['str1', värdet av str1], ['str2', värdet av str2]]
+    // Visa nycklar, värden och nyckel-värde-par
+    updateInnerHTML('Sammanfogat objekt:');
+    updateInnerHTML('Nycklar: ' + JSON.stringify(keys)); // ['str1', 'str2']
+    updateInnerHTML('Värden: ' + JSON.stringify(values)); // [värdet av str1, värdet av str2]
+    updateInnerHTML('Nyckel-värde-par: ' + JSON.stringify(entries)); // [['str1', värdet av str1], ['str2', värdet av str2]]
 
     // Steg 7: Använd concat() för att kombinera de två ursprungliga strängarna
     let combinedStr = str1.concat(' ', str2);
-    console.log('Kombinerad sträng:', combinedStr); // 'FörstaSträng AndraSträng'
+    updateInnerHTML('Kombinerad sträng: ' + combinedStr); // 'FörstaSträng AndraSträng'
 
     // Steg 8: Skapa ett nytt objekt som använder Object.fromEntries() för att skapa ett objekt från nyckel-värde-par
     let newObjFromEntries = Object.fromEntries(entries);
-    console.log('Objekt från nyckel-värde-par:', newObjFromEntries);
+    updateInnerHTML('Objekt från nyckel-värde-par: ' + JSON.stringify(newObjFromEntries));
 
     // Steg 9: Lägg till ytterligare egenskaper till det sammanfogade objektet
     combinedObj.timestamp = new Date().toISOString(); // Lägg till aktuell tid
@@ -56,38 +57,39 @@ async function combineStringsAndObjects() {
     let deepCombinedObj = deepMerge(combinedObj, additionalProps);
 
     // Visa det uppdaterade objektet
-    console.log('Uppdaterat sammanfogat objekt med extra egenskaper (djup sammanfogning):');
-    console.log(deepCombinedObj);
+    updateInnerHTML('Uppdaterat sammanfogat objekt med extra egenskaper (djup sammanfogning):');
+    updateInnerHTML(JSON.stringify(deepCombinedObj));
 
     // Steg 11: Visa alla egenskaper i objektet med en loop
-    console.log('Alla egenskaper i det sammanfogade objektet:');
+    let properties = 'Alla egenskaper i det sammanfogade objektet:<br>';
     for (const [key, value] of Object.entries(deepCombinedObj)) {
-      console.log(`${key}: ${value}`);
+      properties += `${key}: ${value}<br>`;
     }
+    updateInnerHTML(properties);
 
     // Steg 12: Använd `Object.freeze()` för att frysa det sammanfogade objektet
     Object.freeze(deepCombinedObj);
-    console.log('Sammanfogat objekt efter frysning:', deepCombinedObj);
+    updateInnerHTML('Sammanfogat objekt efter frysning: ' + JSON.stringify(deepCombinedObj));
 
     // Försök att ändra en egenskap efter att objektet har frysts
     deepCombinedObj.newProperty = 'Ny egenskap';
-    console.log('Försök att lägga till ny egenskap efter frysning:', deepCombinedObj);
+    updateInnerHTML('Försök att lägga till ny egenskap efter frysning: ' + JSON.stringify(deepCombinedObj));
 
     // Steg 13: Regex-operationer på strängar
     let regex = /[a-zA-Z]+/g; // Regex för att hitta alla ord
     let str1Matches = str1.match(regex);
     let str2Matches = str2.match(regex);
-    console.log('Str1 matches:', str1Matches);
-    console.log('Str2 matches:', str2Matches);
+    updateInnerHTML('Str1 matches: ' + JSON.stringify(str1Matches));
+    updateInnerHTML('Str2 matches: ' + JSON.stringify(str2Matches));
 
     // Steg 14: Avancerad strängersättning
     let replacedStr1 = str1.replace(/(\s+)/g, '-'); // Ersätt mellanslag med bindestreck
     let replacedStr2 = str2.replace(/(\s+)/g, '-'); // Ersätt mellanslag med bindestreck
-    console.log('Första strängen med ersatta mellanslag:', replacedStr1);
-    console.log('Andra strängen med ersatta mellanslag:', replacedStr2);
+    updateInnerHTML('Första strängen med ersatta mellanslag: ' + replacedStr1);
+    updateInnerHTML('Andra strängen med ersatta mellanslag: ' + replacedStr2);
 
   } catch (error) {
-    console.error('Ett fel inträffade:', error);
+    updateInnerHTML('Ett fel inträffade: ' + error);
   }
 }
 
@@ -115,6 +117,14 @@ function deepMerge(target, source) {
     }
   }
   return target;
+}
+
+// Funktion för att uppdatera innerHTML på ett element med ID "JSON"
+function updateInnerHTML(content) {
+  let element = document.getElementById('JSON');
+  if (element) {
+    element.innerHTML += content + '<br>';
+  }
 }
 
 // Anropa funktionen
