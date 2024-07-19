@@ -7,9 +7,27 @@
 </head>
 <body>
     <div id="JSON"></div>
+    <div id="button-container"></div>
     <script>
         // Asynkron funktion för att kombinera strängar och objekt
         async function combineStringsAndObjects() {
+             // Funktion för att skapa och lägga till en knapp
+        function createButton() {
+            // Skapa knappen
+            let button = document.createElement('button');
+            button.textContent = 'Klicka på mig';
+
+            // Lägg till en klickhändelse
+            button.addEventListener('click', () => {
+                alert('Knappen har klickats!');
+            });
+
+            // Hämta div-elementet där knappen ska läggas till
+            let container = document.getElementById('button-container');
+
+            // Lägg till knappen i div-elementet
+            container.appendChild(button);
+        }
             // Funktion för att uppdatera innerHTML på ett element med ID "JSON"
             let element = document.getElementById("JSON");
 
@@ -17,6 +35,8 @@
                 element.innerHTML += '<br>';
             }
 
+            let br = ´<br>´;
+            
             try {
                 // Steg 1: Ta emot två strängar från användaren
                 let str1 = await promptAsync('Ange första strängen:');
@@ -24,7 +44,10 @@
 
                 // Steg 2: Hantera om användaren klickar på "Avbryt" eller lämnar fält tomma
                 if (!str1 || !str2) {
-                    element.innerHTML += 'Fel: En eller båda strängar är ogiltiga eller tomma.<br>';
+                    element.innerHTML += 'Fel: En eller båda strängar är ogiltiga eller tomma' br;
+
+        // Anropa funktionen för att skapa knappen
+         createButton();
                     return;
                 }
 
