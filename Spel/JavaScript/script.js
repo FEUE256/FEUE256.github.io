@@ -27,8 +27,8 @@ const blueFigure = {
     y: window.innerHeight / 2 + 5
 };
 
-redFigure.image.src = 'katt.jpg'; // Ladda bilden
-blueFigure.image.src = 'mus.jpg'; // Ladda bilden
+redFigure.image.src = 'Katt.jpg'; // Ladda bilden
+blueFigure.image.src = 'Mus.jpg'; // Ladda bilden
 
 let speedMultiplier = 1;
 let settingsIsActivated = false;
