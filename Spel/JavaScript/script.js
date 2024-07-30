@@ -26,8 +26,17 @@ const blueFigure = {
     y: window.innerHeight / 2 + 5
 };
 
-redFigure.image.src = 'Katt.jpg'; // Ladda bilden
-blueFigure.image.src = 'Mus.jpg'; // Ladda bilden
+// Hantera bildladdningsfel
+redFigure.image.onerror = function() {
+    console.error('Kunde inte ladda Katt.jpg');
+};
+
+blueFigure.image.onerror = function() {
+    console.error('Kunde inte ladda Mus.jpg');
+};
+
+redFigure.image.src = 'https://feue256.github.io/Spel/katt.jpg'; // Ladda bilden
+blueFigure.image.src = 'https://feue256.github.io/Spel/mus.jpg'; // Ladda bilden
 
 let speedMultiplier = 1;
 let settingsIsActivated = false;
@@ -94,8 +103,17 @@ function drawFigures() {
     cameraOffset.x = canvas.width / 2 - centerX;
     cameraOffset.y = canvas.height / 2 - centerY;
 
-    context.drawImage(redFigure.image, redFigure.x + cameraOffset.x, redFigure.y + cameraOffset.y, redFigure.size, redFigure.size);
-    context.drawImage(blueFigure.image, blueFigure.x + cameraOffset.x, blueFigure.y + cameraOffset.y, blueFigure.size, blueFigure.size);
+    if (redFigure.image.complete && redFigure.image.naturalHeight !== 0) {
+        context.drawImage(redFigure.image, redFigure.x + cameraOffset.x, redFigure.y + cameraOffset.y, redFigure.size, redFigure.size);
+    } else {
+        console.error('Kunde inte rita Katt.jpg');
+    }
+
+    if (blueFigure.image.complete && blueFigure.image.naturalHeight !== 0) {
+        context.drawImage(blueFigure.image, blueFigure.x + cameraOffset.x, blueFigure.y + cameraOffset.y, blueFigure.size, blueFigure.size);
+    } else {
+        console.error('Kunde inte rita Mus.jpg');
+    }
 }
 
 // Funktion för att flytta röda figuren
@@ -192,7 +210,7 @@ function jumpRedFigure() {
         redFigure.y += jumpHeight; // Återställ figuren till sin ursprungliga position efter hoppet
         redFigure.y = Math.min(canvas.height - redFigure.size, redFigure.y);
         drawFigures();
-    }, 300); // Specificera hur länge figuren ska vara i hoppstatus (300 ms)
+    }, 300); // Specifika hur länge figuren ska vara i hoppstatus (300 ms)
 }
 
 // Event-lyssnare för klick på canvas
