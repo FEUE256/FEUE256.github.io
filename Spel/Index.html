@@ -1,9 +1,30 @@
-<DOCTYPE html>
-  <html>
-    <head>
-      <titel>FÈUE:s spel | Spel #1</titel>
-      <style href="style.css">
-    </head>
-        <canvas></canvas>
-        <script src="script.js></script>
-  </html>
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <canvas id="game"></canvas>
+    <nav id="bar">
+        <div id="fps"></div>
+        <div id="score">Poäng: 0</div>
+        <div id="settings"><b>Player settings</b></div>
+        <div id="rank"><i></i></div>
+        <div id="reset">Reseta score</div>
+    </nav>
+    <div class="button-container">
+        <button class="arrow-button" id="left-button"><i class="fas fa-arrow-left"></i></button>
+        <button class="arrow-button" id="up-button"><i class="fas fa-arrow-up"></i></button>
+        <button class="arrow-button" id="down-button"><i class="fas fa-arrow-down"></i></button>
+        <button class="arrow-button" id="right-button"><i class="fas fa-arrow-right"></i></button>
+        <button class="speed-button, line" id="speed-button">Double Speed</button>
+        <button class="start-button, arrow-button, line" id="start-button">Start</button>
+        <button class="jump-button, arrow-button, line" id="jump-button">Hoppa</button>
+    </div>
+    <div id="error-message">Kollision! Poäng: +1</div>
+    <script src="JavaScript/script.js"></script>
+</body>
