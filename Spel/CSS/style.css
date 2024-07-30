@@ -79,6 +79,10 @@ button.jump-button {
         padding: 8px;
     }
 
+    body {
+          background-color: #f0f0f0;
+    }
+
     button.arrow-button {
         width: 40px;
         height: 40px;
