@@ -1,0 +1,140 @@
+
+/* Grundläggande stilar */
+body, canvas {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+canvas {
+    display: block;
+}
+
+#fps, #score {
+    position: absolute;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 24px;
+}
+
+#fps {
+    top: 10px;
+    left: 10px;
+}
+
+#score {
+    top: 10px;
+    right: 10px;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.button-container button {
+    background-color: #007bff; /* Blå färg */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px; /* Rundade hörn */
+}
+
+.button-container button:hover {
+    background-color: #0056b3; /* Mörkblå färg */
+}
+
+#bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #f00; /* Röd färg */
+    color: black;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#settings {
+    color: black;
+}
+
+#error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.8); /* Röd bakgrund */
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    display: none; /* Dold initialt */
+    font-size: 16px;
+}
+
+#reset {
+    background-color: green;
+    border: 5px solid #4B0082; /* Mörk lila kant */
+}
+
+/* Responsiva stilar */
+@media (max-width: 1024px) { /* För plattor */
+    .button-container button {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+
+    #fps, #score {
+        font-size: 18px;
+        padding: 4px;
+    }
+
+    #error-message {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) { /* För mobil och mindre plattor */
+    .button-container button {
+        font-size: 18px;
+        padding: 6px 12px;
+    }
+
+    #fps, #score {
+        font-size: 16px;
+        padding: 3px;
+    }
+
+    #error-message {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) { /* För mobiltelefoner */
+    .button-container button {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+
+    #fps, #score {
+        font-size: 14px;
+        padding: 2px;
+    }
+
+    #error-message {
+        padding: 8px;
+        font-size: 12px;
+    }
+} 
