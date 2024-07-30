@@ -1,4 +1,3 @@
-
 // Hämta element från DOM
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
@@ -193,7 +192,7 @@ function jumpRedFigure() {
         redFigure.y += jumpHeight; // Återställ figuren till sin ursprungliga position efter hoppet
         redFigure.y = Math.min(canvas.height - redFigure.size, redFigure.y);
         drawFigures();
-    }, 300); // Specifika hur länge figuren ska vara i hoppstatus (300 ms)
+    }, 300); // Specificera hur länge figuren ska vara i hoppstatus (300 ms)
 }
 
 // Event-lyssnare för klick på canvas
@@ -238,8 +237,9 @@ function rankScore() {
     rankDisplay.textContent = `Rank: ${currentRank.name}`; // Uppdatera rankdisplay
 }
 
-function fusk(){
+function fusk() {
     score += 150;
+    rankScore();
 }
 
 // Sätt canvas storlek och starta spelet
