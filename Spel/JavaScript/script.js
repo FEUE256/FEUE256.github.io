@@ -8,9 +8,14 @@ const errorMessage = document.getElementById('error-message');
 const playerSettingsDisplay = document.getElementById('settings');
 const rankDisplay = document.getElementById('rank');
 
+// Kontrollera om alla nödvändiga element finns
+if (!canvas || !context || !fpsDisplay || !scoreDisplay || !errorMessage || !playerSettingsDisplay || !rankDisplay) {
+    console.error('Ett eller flera DOM-element saknas.');
+}
+
+// Visa informationsmeddelande
 alert(`Click the Start button at the Control Panel to start.
 More info on feue256.github.io/spel/info.html`);
-
 
 // Definiera figurer
 const redFigure = {
@@ -31,16 +36,11 @@ const blueFigure = {
 };
 
 // Hantera bildladdningsfel
-redFigure.image.onerror = function() {
-    console.error('Kunde inte ladda Katt.jpg');
-};
+redFigure.image.onerror = () => console.error('Kunde inte ladda Katt.jpg');
+blueFigure.image.onerror = () => console.error('Kunde inte ladda Mus.jpg');
 
-blueFigure.image.onerror = function() {
-    console.error('Kunde inte ladda Mus.jpg');
-};
-
-redFigure.image.src = 'https://feue256.github.io/Spel/katt.jpg'; // Ladda bilden
-blueFigure.image.src = 'https://feue256.github.io/Spel/mus.jpg'; // Ladda bilden
+redFigure.image.src = 'https://feue256.github.io/Spel/Katt.jpg'; // Ladda bilden
+blueFigure.image.src = 'https://feue256.github.io/Spel/Mus.jpg'; // Ladda bilden
 
 let speedMultiplier = 1;
 let settingsIsActivated = false;
@@ -66,17 +66,12 @@ const ranks = [
     { name: "Eternal", threshold: 2250 },
     { name: "Infinite", threshold: 2500 },
     { name: "Transcendent", threshold: 2750 },
-    { name: "Omnipotent", threshold: 3000 },
+    { name: "Omnipotent", threshold: 3000 }
 ];
 
 // Funktion för att få aktuell rank baserat på poäng
 function getRank(score) {
-    for (let i = ranks.length - 1; i >= 0; i--) {
-        if (score >= ranks[i].threshold) {
-            return ranks[i];
-        }
-    }
-    return ranks[0];
+    return ranks.slice().reverse().find(rank => score >= rank.threshold) || ranks[0];
 }
 
 // Funktion för att justera canvasstorlek
@@ -176,18 +171,18 @@ function gameLoop() {
 }
 
 // Event-lyssnare för knapptryckningar
-document.getElementById('left-button').addEventListener('click', () => moveRedFigure(-moveAmount, 0));
-document.getElementById('up-button').addEventListener('click', () => moveRedFigure(0, -moveAmount));
-document.getElementById('down-button').addEventListener('click', () => moveRedFigure(0, moveAmount));
-document.getElementById('right-button').addEventListener('click', () => moveRedFigure(moveAmount, 0));
-document.getElementById('speed-button').addEventListener('click', () => {
+document.getElementById('left-button')?.addEventListener('click', () => moveRedFigure(-moveAmount, 0));
+document.getElementById('up-button')?.addEventListener('click', () => moveRedFigure(0, -moveAmount));
+document.getElementById('down-button')?.addEventListener('click', () => moveRedFigure(0, moveAmount));
+document.getElementById('right-button')?.addEventListener('click', () => moveRedFigure(moveAmount, 0));
+document.getElementById('speed-button')?.addEventListener('click', () => {
     speedMultiplier = speedMultiplier === 1 ? 2 : 1;
     document.getElementById('speed-button').textContent = speedMultiplier === 1 ? 'Double Speed' : 'Normal Speed';
 });
 
-document.getElementById('reset').addEventListener('click', resetScore);
-document.getElementById('start-button').addEventListener('click', startGame);
-document.getElementById('jump-button').addEventListener('click', jumpRedFigure);
+document.getElementById('reset')?.addEventListener('click', resetScore);
+document.getElementById('start-button')?.addEventListener('click', startGame);
+document.getElementById('jump-button')?.addEventListener('click', jumpRedFigure);
 
 // Funktion för att återställa poängen
 function resetScore() {
@@ -245,7 +240,7 @@ console.log(redFigure.image.src); // Logga källan till bilden som tilldelats re
 canvas.addEventListener("mousedown", (e) => {
     const mouseX = e.clientX;
     const mouseY = e.clientY;
-    if (mouseX === 370 && mouseY === 270 || XY === true) {
+    if ((mouseX === 370 && mouseY === 270) || XY) {
         console.log(`Game started mouse position X: ${mouseX} and Y position: ${mouseY}`);
     }
     console.log(e);
@@ -259,6 +254,7 @@ function rankScore() {
     rankDisplay.textContent = `Rank: ${currentRank.name}`; // Uppdatera rankdisplay
 }
 
+// Fuskfunktion
 function fusk() {
     score += 150;
     rankScore();
