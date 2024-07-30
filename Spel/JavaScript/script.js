@@ -8,6 +8,9 @@ const errorMessage = document.getElementById('error-message');
 const playerSettingsDisplay = document.getElementById('settings');
 const rankDisplay = document.getElementById('rank');
 
+let alertForClick = alert("Click the Start button at the Control Panel to start.
+More info on feue256.github.io/spel/info.html");
+
 // Definiera figurer
 const redFigure = {
     image: new Image(),
