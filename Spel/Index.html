@@ -25,6 +25,14 @@
         <button class="speed-button, line" id="speed-button">Double Speed</button>
         <button class="start-button, arrow-button, line" id="start-button">Start</button>
         <button class="jump-button, arrow-button, line" id="jump-button">Jump</button>
+        <audio id="background-music" loop>
+        <source src="https://suno.com/song/c612c5b7-eca5-4268-a4a9-8a70c2b3ffd3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button onclick="playMusic()" class="arrow-button" >Play Music</button>
+    <button onclick="pauseMusic()" class="arrow-button" >Pause Music</button>
+
     </div>
     <div id="error-message">Collision! Score: +1</div>
     <script src="JavaScript/script.js"></script>
