@@ -260,6 +260,17 @@ function fusk() {
     rankScore();
 }
 
+// script.js
+function playMusic() {
+    const music = document.getElementById('background-music');
+    music.play();
+}
+
+function pauseMusic() {
+    const music = document.getElementById('background-music');
+    music.pause();
+}
+
 // Sätt canvas storlek och starta spelet
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
