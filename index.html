@@ -83,18 +83,22 @@ alert('Vibrationer stöds inte på denna enhet.');
     <div id="status"></div>
 
     <script>
-        let microbitDevice;
+        let microbitDevice = null;
 
         async function connectToMicrobit() {
             try {
-                // Begär tillgång till micro:bit via HID
+                if (microbitDevice) {
+                    document.getElementById("status").textContent = "Micro:bit är redan ansluten.";
+                    return;
+                }
+
                 const devices = await navigator.hid.requestDevice({
                     filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Justera vendorId och productId för din micro:bit
                 });
 
                 if (devices.length > 0) {
                     microbitDevice = devices[0];
-                    await microbitDevice.open(); // Öppna enheten för kommunikation
+                    await microbitDevice.open(); // Försök öppna enheten
                     document.getElementById("status").textContent = "Ansluten till micro:bit!";
                     document.getElementById("sendButton").disabled = false;
                 } else {
