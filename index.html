@@ -53,6 +53,80 @@ alert('Vibrationer stöds inte på denna enhet.');
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro:bit HID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Micro:bit HID</h1>
+    <button id="connectButton">Anslut till micro:bit</button>
+    <button id="sendButton" disabled>Skicka Check-tecken</button>
+    <div id="status"></div>
+
+    <script>
+        let microbitDevice;
+
+        async function connectToMicrobit() {
+            try {
+                // Begär tillgång till micro:bit
+                microbitDevice = await navigator.hid.requestDevice({
+                    filters: [{ vendorId: 0x0d28, productId: 0x0204 }]
+                });
+
+                // Open the device
+                await microbitDevice.open();
+
+                // Bekräfta anslutningen
+                document.getElementById("status").textContent = "Ansluten till micro:bit!";
+                document.getElementById("sendButton").disabled = false;
+            } catch (error) {
+                document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error;
+            }
+        }
+
+        async function sendCheckMark() {
+            if (!microbitDevice) {
+                document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!";
+                return;
+            }
+
+            try {
+                const command = new Uint8Array([0x01, 0x00, 0x01]); // Skicka kommando
+                await microbitDevice.sendReport(0, command); // Skicka rapport till micro:bit
+                document.getElementById("status").textContent = "Check-tecken skickat till micro:bit!";
+            } catch (error) {
+                document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
+            }
+        }
+
+        document.getElementById("connectButton").addEventListener("click", connectToMicrobit);
+        document.getElementById("sendButton").addEventListener("click", sendCheckMark);
+    </script>
+</body>
+</html>
+
+  
 <h2>Fill index</h2>
 <li><a href="https://feue256.github.io/Spel/Index.html">Mobil spel</a></li>
 <li><a href="https://feue256.github.io/Spel/info.html">Info</a></li>
