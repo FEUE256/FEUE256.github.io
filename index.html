@@ -93,6 +93,7 @@ alert('Vibrationer stöds inte på denna enhet.');
 
                 if (devices.length > 0) {
                     microbitDevice = devices[0];
+                    await microbitDevice.open(); // Öppna enheten för kommunikation
                     document.getElementById("status").textContent = "Ansluten till micro:bit!";
                     document.getElementById("sendButton").disabled = false;
                 } else {
@@ -125,6 +126,7 @@ alert('Vibrationer stöds inte på denna enhet.');
     </script>
 </body>
 </html>
+
 
 
   
