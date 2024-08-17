@@ -87,6 +87,7 @@ alert('Vibrationer stöds inte på denna enhet.');
 
         async function connectToMicrobit() {
             try {
+                // Begär tillgång till micro:bit via HID
                 const devices = await navigator.hid.requestDevice({
                     filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Justera vendorId och productId för din micro:bit
                 });
@@ -113,7 +114,7 @@ alert('Vibrationer stöds inte på denna enhet.');
             try {
                 // Skicka en rapport. Justera med rätt rapportID och data för din micro:bit.
                 const reportId = 0; // Rapport-ID måste justeras
-                const command = new Uint8Array([0x01, 0x00, 0x01]); // Exempelkommando
+                const command = new Uint8Array([0x01]); // Kommando för att visa check-tecken
                 await microbitDevice.sendReport(reportId, command);
                 document.getElementById("status").textContent = "Check-tecken skickat till micro:bit!";
             } catch (error) {
@@ -126,8 +127,6 @@ alert('Vibrationer stöds inte på denna enhet.');
     </script>
 </body>
 </html>
-
-
 
   
 <h2>Fill index</h2>
