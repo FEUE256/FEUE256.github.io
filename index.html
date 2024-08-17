@@ -56,7 +56,7 @@ alert('Vibrationer stöds inte på denna enhet.');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro:bit Serial</title>
+    <title>Micro:bit WebUSB</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -77,37 +77,45 @@ alert('Vibrationer stöds inte på denna enhet.');
     </style>
 </head>
 <body>
-    <h1>Micro:bit Serial</h1>
+    <h1>Micro:bit WebUSB</h1>
     <button id="connectButton">Anslut till micro:bit</button>
     <button id="sendButton" disabled>Skicka Check-tecken</button>
     <div id="status"></div>
 
     <script>
-        let port;
-        let writer;
+        let microbitDevice = null;
 
         async function connectToMicrobit() {
             try {
-                // Be om enheten via Web Serial API
-                port = await navigator.serial.requestPort();
-                await port.open({ baudRate: 9600 });
-                writer = port.writable.getWriter();
-                document.getElementById("status").textContent = "Ansluten till micro:bit!";
-                document.getElementById("sendButton").disabled = false;
+                const devices = await navigator.usb.requestDevice({
+                    filters: [{ vendorId: 0x0d28 }] // Vendor ID för micro:bit
+                });
+
+                microbitDevice = devices[0];
+                if (microbitDevice) {
+                    await microbitDevice.open(); // Öppna enheten för kommunikation
+                    await microbitDevice.selectConfiguration(1); // Välj konfiguration
+                    await microbitDevice.claimInterface(0); // Kräv åtkomst till gränssnittet
+                    document.getElementById("status").textContent = "Ansluten till micro:bit!";
+                    document.getElementById("sendButton").disabled = false;
+                } else {
+                    document.getElementById("status").textContent = "Ingen micro:bit hittades.";
+                }
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error;
             }
         }
 
         async function sendCheckMark() {
-            if (!writer) {
+            if (!microbitDevice) {
                 document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!";
                 return;
             }
 
             try {
-                const command = new Uint8Array([0x53, 0x48, 0x4F, 0x57, 0x5F, 0x43, 0x48, 0x45, 0x43, 0x4B, 0x5F, 0x4D, 0x41, 0x52, 0x4B]); // Kommando för "SHOW_CHECK_MARK"
-                await writer.write(command);
+                // Skicka ett kommando över WebUSB
+                const command = new Uint8Array([0x01]); // Kommando för att visa check-tecken
+                await microbitDevice.transferOut(1, command); // Skicka data till endpoint 1
                 document.getElementById("status").textContent = "Check-tecken skickat till micro:bit!";
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
