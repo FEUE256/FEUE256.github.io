@@ -29,12 +29,12 @@
     <p>Välkommen till FÈUE!<br><br>Vi är glada att du har hittat till oss på FÈUE, där vårt mål är att göra det möjligt för alla att skapa sin egen hemsida. Med vår expertis och passion hjälper vi dig att ta dina första steg mot en stark online-närvaro.<br><br>På FÈUE tror vi på att allt blir bra. Oavsett om du är en nybörjare eller en erfaren användare, är vi här för att ge dig verktygen och stödet du behöver för att skapa en hemsida .<br><br>Vårt dedikerade team står redo att assistera dig genom hela processen – från idé till färdig hemsida. Om du har några frågor, besök gärna vår hjälpsida på feue256.tawk.help. <br> <br> Tack för att du valde FÈUE. Vi ser fram emot att hjälpa dig att skapa något fantastiskt!<br><br>Villkor för användning:<br>. Användaren får inte använda tjänsten för olagliga aktiviteter.<br> Användaren ansvarar för säkerheten av sitt konto och lösenord.<br> FÈUE ansvarar inte för förluster eller skador som uppstår från användning av tjänsten.<br> FÈUE förbehåller sig rätten att ändra eller avsluta tjänsten när som helst utan föregående meddelande...<br>. Genom att använda tjänsten godkänner användaren att följa alla lokala, statliga och internationella lagar och regler.<br><br>Vänliga hälsningar,Teamet på FÈUE<br>Slogan: Allt blir bra</p>
     <a href="qrcode.html">Logga in</a>
     <a href="add_weebsite.html">Skapa hemsida</a>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro:bit BLE</title>
+    <title>Micro:bit WebUSB</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,22 +55,25 @@
     </style>
 </head>
 <body>
+    <h1>Micro:bit WebUSB</h1>
     <button id="connectButton">Anslut till micro:bit</button>
     <button id="checkButton" disabled>Visa Check-tecken</button>
     <div id="status"></div>
 
     <script>
         let microbitDevice;
-        let microbitCharacteristic;
 
         async function connectToMicrobit() {
             try {
-                const device = await navigator.bluetooth.requestDevice({
-                    filters: [{ services: ['battery_service'] }]
+                // Begär tillgång till micro:bit
+                microbitDevice = await navigator.usb.requestDevice({
+                    filters: [{ vendorId: 0x0d28, productId: 0x0204 }]
                 });
-                microbitDevice = await device.gatt.connect();
-                const server = await microbitDevice.getPrimaryService('battery_service');
-                microbitCharacteristic = await server.getCharacteristic('battery_level');
+                await microbitDevice.open();
+                await microbitDevice.selectConfiguration(1);
+                await microbitDevice.claimInterface(0);
+
+                // Bekräfta anslutningen
                 document.getElementById("status").textContent = "Ansluten till micro:bit!";
                 document.getElementById("checkButton").disabled = false;
             } catch (error) {
@@ -81,14 +84,15 @@
         document.getElementById("connectButton").addEventListener("click", connectToMicrobit);
 
         document.getElementById("checkButton").addEventListener("click", async function() {
-            if (!microbitDevice || !microbitCharacteristic) {
+            if (!microbitDevice) {
                 document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!";
                 return;
             }
 
+            // Skicka kommando till micro:bit
             try {
-                const command = new TextEncoder().encode('show_check');
-                await microbitCharacteristic.writeValue(command);
+                const command = new Uint8Array([0x01, 0x00, 0x01]); // Exempelkommando
+                await microbitDevice.transferOut(1, command);
                 document.getElementById("status").textContent = "Check-tecken visat på micro:bit!";
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
@@ -97,6 +101,7 @@
     </script>
 </body>
 </html>
+
 
 
 <!DOCTYPE html>
