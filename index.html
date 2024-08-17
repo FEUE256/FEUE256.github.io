@@ -96,8 +96,7 @@ alert('Vibrationer stöds inte på denna enhet.');
                     filters: [
                         {
                             vendorId: 0x0d28, // Vendor ID för micro:bit
-                            productId: 0x0204, // Product ID för micro:bit
-                            // Om enheten är unik, kan du även använda det unika ID:t i filtret
+                            productId: 0x0204  // Product ID för micro:bit
                         }
                     ]
                 });
@@ -125,8 +124,8 @@ alert('Vibrationer stöds inte på denna enhet.');
 
             try {
                 // Skicka en rapport. Justera med rätt rapportID och data för din micro:bit.
-                const reportId = 0; // Rapport-ID måste justeras
-                const command = new Uint8Array([0x01]); // Kommando för att visa check-tecken
+                const reportId = 0; // Rapport-ID kan vara olika för olika enheter
+                const command = new Uint8Array([0x01]); // Testkommando, kan behöva ändras
                 await microbitDevice.sendReport(reportId, command);
                 document.getElementById("status").textContent = "Check-tecken skickat till micro:bit!";
             } catch (error) {
@@ -139,7 +138,6 @@ alert('Vibrationer stöds inte på denna enhet.');
     </script>
 </body>
 </html>
-
 
   
 <h2>Fill index</h2>
