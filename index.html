@@ -67,8 +67,9 @@
             try {
                 // Begär tillgång till micro:bit
                 microbitDevice = await navigator.usb.requestDevice({
-                    filters: [{ vendorId: 0x0d28, productId: 0x0204 }]
+                    filters: [{ vendorId: 0x0d28 }] // Vendor ID för micro:bit
                 });
+                
                 await microbitDevice.open();
                 await microbitDevice.selectConfiguration(1);
                 await microbitDevice.claimInterface(0);
@@ -78,6 +79,7 @@
                 document.getElementById("checkButton").disabled = false;
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error;
+                console.error(error); // Logga detaljer för felsökning
             }
         }
 
@@ -96,12 +98,12 @@
                 document.getElementById("status").textContent = "Check-tecken visat på micro:bit!";
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
+                console.error(error); // Logga detaljer för felsökning
             }
         });
     </script>
 </body>
 </html>
-
 
 
 <!DOCTYPE html>
