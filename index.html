@@ -56,7 +56,7 @@ alert('Vibrationer stöds inte på denna enhet.');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro:bit HID</title>
+    <title>Micro:bit Serial</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -77,56 +77,37 @@ alert('Vibrationer stöds inte på denna enhet.');
     </style>
 </head>
 <body>
-    <h1>Micro:bit HID</h1>
+    <h1>Micro:bit Serial</h1>
     <button id="connectButton">Anslut till micro:bit</button>
     <button id="sendButton" disabled>Skicka Check-tecken</button>
     <div id="status"></div>
 
     <script>
-        let microbitDevice = null;
+        let port;
+        let writer;
 
         async function connectToMicrobit() {
             try {
-                if (microbitDevice) {
-                    document.getElementById("status").textContent = "Micro:bit är redan ansluten.";
-                    return;
-                }
-
-                const devices = await navigator.hid.requestDevice({
-                    filters: [
-                        {
-                            vendorId: 0x0d28, // Vendor ID för micro:bit
-                            productId: 0x0204  // Product ID för micro:bit
-                        }
-                    ]
-                });
-
-                // Filtrera enheten baserat på det unika ID:t
-                microbitDevice = devices.find(device => device.productId === 0x0204);
-
-                if (microbitDevice) {
-                    await microbitDevice.open(); // Öppna enheten för kommunikation
-                    document.getElementById("status").textContent = "Ansluten till micro:bit!";
-                    document.getElementById("sendButton").disabled = false;
-                } else {
-                    document.getElementById("status").textContent = "Ingen micro:bit hittades.";
-                }
+                // Be om enheten via Web Serial API
+                port = await navigator.serial.requestPort();
+                await port.open({ baudRate: 9600 });
+                writer = port.writable.getWriter();
+                document.getElementById("status").textContent = "Ansluten till micro:bit!";
+                document.getElementById("sendButton").disabled = false;
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error;
             }
         }
 
         async function sendCheckMark() {
-            if (!microbitDevice) {
+            if (!writer) {
                 document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!";
                 return;
             }
 
             try {
-                // Skicka en rapport. Justera med rätt rapportID och data för din micro:bit.
-                const reportId = 0; // Rapport-ID kan vara olika för olika enheter
-                const command = new Uint8Array([0x01]); // Testkommando, kan behöva ändras
-                await microbitDevice.sendReport(reportId, command);
+                const command = new Uint8Array([0x53, 0x48, 0x4F, 0x57, 0x5F, 0x43, 0x48, 0x45, 0x43, 0x4B, 0x5F, 0x4D, 0x41, 0x52, 0x4B]); // Kommando för "SHOW_CHECK_MARK"
+                await writer.write(command);
                 document.getElementById("status").textContent = "Check-tecken skickat till micro:bit!";
             } catch (error) {
                 document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
@@ -138,6 +119,7 @@ alert('Vibrationer stöds inte på denna enhet.');
     </script>
 </body>
 </html>
+
 
   
 <h2>Fill index</h2>
