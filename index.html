@@ -1,79 +1,1020 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro:bit HID</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
+<html lang="sv" id="minElement"><head><style>
+        @font-face {
+            font-family: 'NotoSans_online_security'; 
+            src: url(chrome-extension://jcpgbnbdnakoblgfkbgggankeidkfcdl/assets/fonts/noto-sans-regular.woff);
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
+
+        @font-face {
+            font-family: 'NotoSans_medium_online_security'; 
+            src: url(chrome-extension://jcpgbnbdnakoblgfkbgggankeidkfcdl/assets/fonts/noto-sans-medium.ttf);
         }
-        #status {
-            margin-top: 20px;
-            font-size: 16px;
-            color: green;
+
+        @font-face {
+            font-family: 'NotoSans_bold_online_security'; 
+            src: url(chrome-extension://jcpgbnbdnakoblgfkbgggankeidkfcdl/assets/fonts/noto-sans-bold.woff);
+        }
+
+        @font-face {
+            font-family: 'NotoSans_semibold_online_security'; 
+            src: url(chrome-extension://jcpgbnbdnakoblgfkbgggankeidkfcdl/assets/fonts/noto-sans-semibold.ttf);
+        }
+</style><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-bf24a88e.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-71978bb6.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-f1565420.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-7c2f6ba4.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-48f3b594.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-4fe9d5dd.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-2d0b9454.js"></script><script charset="utf-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/js/twk-chunk-24d8db78.js"></script><style type="text/css">#cmgimgpc6rjo1723899044326 {outline:none !important;
+visibility:visible !important;
+resize:none !important;
+box-shadow:none !important;
+overflow:visible !important;
+background:none !important;
+opacity:1 !important;
+filter:alpha(opacity=100) !important;
+-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity 1}) !important;
+-mz-opacity:1 !important;
+-khtml-opacity:1 !important;
+top:auto !important;
+right:0px !important;
+bottom:0px !important;
+left:auto !important;
+position:fixed !important;
+border:0 !important;
+min-height:0px  !important;
+min-width:0px  !important;
+max-height:none  !important;
+max-width:none  !important;
+padding:0px !important;
+margin:0px !important;
+-moz-transition-property:none !important;
+-webkit-transition-property:none !important;
+-o-transition-property:none !important;
+transition-property:none !important;
+transform:none !important;
+-webkit-transform:none !important;
+-ms-transform:none !important;
+width:auto !important;
+height:auto  !important;
+display:none !important;
+z-index:2000000000 !important;
+background-color:transparent !important;
+cursor:none !important;
+float:none !important;
+border-radius:unset !important;
+pointer-events:auto !important;
+clip:auto !important;
+color-scheme:light !important;}#cmgimgpc6rjo1723899044326.widget-hidden {display: none !important;}#cmgimgpc6rjo1723899044326.widget-visible {display: block !important;}
+@media print{
+ #cmgimgpc6rjo1723899044326.widget-visible { 
+display: none !important;
+ }
+}</style><script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js" type="text/javascript" async="" defer=""></script><script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js" type="text/javascript" async="" defer=""></script><style type="text/css">@keyframes tawkMaxOpen{0%{opacity:0;transform:translate(0, 30px);;}to{opacity:1;transform:translate(0, 0px);}}@-moz-keyframes tawkMaxOpen{0%{opacity:0;transform:translate(0, 30px);;}to{opacity:1;transform:translate(0, 0px);}}@-webkit-keyframes tawkMaxOpen{0%{opacity:0;transform:translate(0, 30px);;}to{opacity:1;transform:translate(0, 0px);}}#itl0tvjhovmo1723899044436.open{animation : tawkMaxOpen .25s ease!important;}@keyframes tawkMaxClose{from{opacity: 1;transform:translate(0, 0px);;}to{opacity: 0;transform:translate(0, 30px);;}}@-moz-keyframes tawkMaxClose{from{opacity: 1;transform:translate(0, 0px);;}to{opacity: 0;transform:translate(0, 30px);;}}@-webkit-keyframes tawkMaxClose{from{opacity: 1;transform:translate(0, 0px);;}to{opacity: 0;transform:translate(0, 30px);;}}#itl0tvjhovmo1723899044436.closed{animation: tawkMaxClose .25s ease!important}</style></head><body style="color: black"><doctype html="">
+    
+    
+    <title>FÈUE</title>
+    <link rel="stylesheet" href="index.chat.openai.com.css">
+          <link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+        /* CSS-regler här */
+        .no-bullets {
+            list-style-type: none; /* Tar bort prickarna eller numreringen */
+            padding: 0; /* Tar bort inre marginaler */
+            margin: 0; /* Tar bort yttre marginaler */
         }
     </style>
-</head>
-<body>
-    <h1>Micro:bit HID</h1>
-    <button id="connectButton">Anslut till micro:bit</button>
-    <button id="sendButton" disabled>Skicka Check-tecken</button>
-    <div id="status"></div>
+
+
+    <header>
+        <h1>Välkommen till FÈUE</h1>
+        <nav>
+            <ul>
+                <li><a href="about.chat.openai.com.html">Om</a></li>
+                <li><a href="projects.chat.openai.com.html">Projekt</a></li>
+                <li><a href="contact.chat.openai.com.html">Kontakt</a></li>
+                <li><a href="DR19.html">Davingi Resolve 19 DR19.html (Gratis versionen)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <p>Välkommen till FÈUE!<br><br>Vi är glada att du har hittat till oss på FÈUE, där vårt mål är att göra det möjligt för alla att skapa sin egen hemsida. Med vår expertis och passion hjälper vi dig att ta dina första steg mot en stark online-närvaro.<br><br>På FÈUE tror vi på att allt blir bra. Oavsett om du är en nybörjare eller en erfaren användare, är vi här för att ge dig verktygen och stödet du behöver för att skapa en hemsida .<br><br>Vårt dedikerade team står redo att assistera dig genom hela processen – från idé till färdig hemsida. Om du har några frågor, besök gärna vår hjälpsida på feue256.tawk.help. <br> <br> Tack för att du valde FÈUE. Vi ser fram emot att hjälpa dig att skapa något fantastiskt!<br><br>Villkor för användning:<br>. Användaren får inte använda tjänsten för olagliga aktiviteter.<br> Användaren ansvarar för säkerheten av sitt konto och lösenord.<br> FÈUE ansvarar inte för förluster eller skador som uppstår från användning av tjänsten.<br> FÈUE förbehåller sig rätten att ändra eller avsluta tjänsten när som helst utan föregående meddelande...<br>. Genom att använda tjänsten godkänner användaren att följa alla lokala, statliga och internationella lagar och regler.<br><br>Vänliga hälsningar,Teamet på FÈUE<br>Slogan: Allt blir bra</p>
+    <a href="qrcode.html">Logga in</a>
+    <a href="add_weebsite.html">Skapa hemsida</a>
+
+
+
+ <!DOCTYPE html> <html lang="sv"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Micro:bit HID</title> <style> body { font-family: Arial, sans-serif; text-align: center; margin: 20px; } button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 10px; } #status { margin-top: 20px; font-size: 16px; color: green; } </style> </head> <body> <h1>Micro:bit HID</h1> <button id="connectButton">Anslut till micro:bit</button> <button id="sendButton" disabled>Skicka Check-tecken</button> <div id="status"></div> <script> let microbitDevice; async function connectToMicrobit() { try { // Begär tillgång till micro:bit via HID microbitDevice = await navigator.hid.requestDevice({ filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Använd vendorId och productId för micro:bit }); if (microbitDevice.length === 0) { document.getElementById("status").textContent = "Ingen micro:bit hittades."; return; } microbitDevice = microbitDevice[0]; await microbitDevice.open(); // Bekräfta anslutningen document.getElementById("status").textContent = "Ansluten till micro:bit!"; document.getElementById("sendButton").disabled = false; } catch (error) { document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error; console.error(error); // Logga detaljer för felsökning } } document.getElementById("connectButton").addEventListener("click", connectToMicrobit); document.getElementById("sendButton").addEventListener("click", async function() { if (!microbitDevice) { document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!"; return; } // Skicka kommando till micro:bit try { const command = new Uint8Array([0x01, 0x00, 0x01]); // Exempelkommando, justera efter behov await microbitDevice.sendReport(0, command); document.getElementById("status").textContent = "Check-tecken visat på micro:bit!"; } catch (error) { document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error; console.error(error); // Logga detaljer för felsökning } }); </script> </body> </html>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrationstest</title>
+
+
+    <button id="vibrateButton">Vibrera</button>
 
     <script>
-        let microbitDevice;
-
-        async function connectToMicrobit() {
-            try {
-                // Begär tillgång till micro:bit via HID
-                microbitDevice = await navigator.hid.requestDevice({
-                    filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Använd vendorId och productId för micro:bit
-                });
-
-                if (microbitDevice.length === 0) {
-                    document.getElementById("status").textContent = "Ingen micro:bit hittades.";
-                    return;
-                }
-
-                microbitDevice = microbitDevice[0];
-                await microbitDevice.open();
-
-                // Bekräfta anslutningen
-                document.getElementById("status").textContent = "Ansluten till micro:bit!";
-                document.getElementById("sendButton").disabled = false;
-            } catch (error) {
-                document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error;
-                console.error(error); // Logga detaljer för felsökning
-            }
-        }
-
-        document.getElementById("connectButton").addEventListener("click", connectToMicrobit);
-
-        document.getElementById("sendButton").addEventListener("click", async function() {
-            if (!microbitDevice) {
-                document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!";
-                return;
-            }
-
-            // Skicka kommando till micro:bit
-            try {
-                const command = new Uint8Array([0x01, 0x00, 0x01]); // Exempelkommando, justera efter behov
-                await microbitDevice.sendReport(0, command);
-                document.getElementById("status").textContent = "Check-tecken visat på micro:bit!";
-            } catch (error) {
-                document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
-                console.error(error); // Logga detaljer för felsökning
+        document.getElementById('vibrateButton').addEventListener('click', function() {
+            // Kontrollera om Vibrations-API stöds
+            if (navigator.vibrate) {
+                // Vibrera med ett mönster för "jätte mycket" vibration
+                navigator.vibrate([500, 100, 500, 100, 500, 100, 500, 100, 500]);
+            } else {
+                alert('Vibrationer stöds inte på denna enhet.');
             }
         });
     </script>
-</body>
-</html>
+
+
+
+    <h2>Fill index</h2>
+        <li><a href="https://feue256.github.io/Spel/Index.html">Mobil spel</a></li>
+        <li><a href="https://feue256.github.io/Spel/info.html">Info</a></li>
+        <li><a href="Spel.html">Online spel</a></li>
+        <li><a href="Po.html">Poäng</a>
+        </li><li><a href="sub">Subway klon</a></li>
+        <li><a href="PowerPoint.html">PowerPoint.html</a></li><li>
+        </li><li><a href="bi.html">System.html</a></li>
+        <li><a href="chat.open.com.html">Chat GPS 4.0/3.5.html</a></li>
+        <li><a href="fill.html">Fill.html</a></li>
+        <li><a href="404.html">404.html</a></li>
+        <li><a href="Adim.html">Adim.html</a></li>
+        <li><a href="Databas.accbd">Databas.accbd</a></li>
+        <li><a href="Databas.accdb">Databas.accdb</a></li>
+        <li><a href="FE-Notepad.html">FE-Notepad.html</a></li>
+        <li><a href="DR19.html">FÈUE Davinci Resolve 19 DR19.html (Gratis versionen)</a></li>
+        <li><a href="DR19.css">DR19.css</a></li>
+        <li><a href="DR19.js">DR19.js</a></li>
+        <li><a href="FE.bat">FE.bat</a></li>
+        <li><a href="FE.bin">FE.bin</a></li>
+        <li><a href="FE.class">FE.class</a></li>
+        <li><a href="FE.css">FE.css</a></li>
+        <li><a href="FE.dat">FE.dat</a></li>
+        <li><a href="FE.dll">FE.dll</a></li>
+        <li><a href="FE.exe">FE.exe</a></li>
+        <li><a href="FE.html">FE.html</a></li>
+        <li><a href="FE.ini">FE.ini</a></li>
+        <li><a href="FE.json">FE.json</a></li>
+        <li><a href="FE.jsonc">FE.jsonc</a></li>
+        <li><a href="FE.jsx">FE.jsx</a></li>
+        <li><a href="FE.log">FE.log</a></li>
+        <li><a href="FE.mp4">FE.mp4</a></li>
+        <li><a href="FE.ns.txt">FE.ns.txt</a></li>
+        <li><a href="FE.php">FE.php</a></li>
+        <li><a href="FE.pptx">FE.pptx</a></li>
+        <li><a href="FE.pug">FE.pug</a></li>
+        <li><a href="FE.rb">FE.rb</a></li>
+        <li><a href="FE.ts">FE.ts</a></li>
+        <li><a href="FE.vb">FE.vb</a></li>
+        <li><a href="FE.wmv">FE.wmv</a></li>
+        <li><a href="FE.woff.txt">FE.woff.txt</a></li>
+        <li><a href="FE.xml">FE.xml</a></li>
+        <li><a href="FE2.html">FE2.html</a></li>
+        <li><a href="Hjälp.html">Hjälp.html</a></li>
+        <li><a href="OBS main.json">OBS main.json</a></li>
+        <li><a href="POST">POST</a></li>
+        <li><a href="POST.html">POST.html</a></li>
+        <li><a href="README.md">README.md</a></li>
+        <li><a href="UE.css">UE.css</a></li>
+        <li><a href="UE.html">UE.html</a></li>
+        <li><a href="UeFE.js.lua">UeFE.js.lua</a></li>
+        <li><a href="about.chat.openai.com.html">about.chat.openai.com.html</a></li>
+        <li><a href="aldim.html">aldim.html</a></li>
+        <li><a href="app.js">app.js</a></li>
+        <li><a href="avtal.html">avtal.html</a></li>
+        <li><a href="contact.chat.openai.com.html">contact.chat.openai.com.html</a></li>
+        <li><a href="fe.aspx">fe.aspx</a></li>
+        <li><a href="fe.c++">fe.c++</a></li>
+        <li><a href="fe.gif">fe.gif</a></li>
+        <li><a href="fe.java">fe.java</a></li>
+        <li><a href="fe.js">fe.js</a></li>
+        <li><a href="fe.jsno.txt">fe.jsno.txt</a></li>
+        <li><a href="fe.no.txt">fe.no.txt</a></li>
+        <li><a href="fe.pub">fe.pub</a></li>
+        <li><a href="fe.py">fe.py</a></li>
+        <li><a href="fe.sql">fe.sql</a></li>
+        <li><a href="fe3.js">fe3.js</a></li>
+        <li><a href="gmail.js">gmail.js</a></li>
+        <li><a href="index.c">index.c</a></li>
+        <li><a href="index.c++">index.c++</a></li>
+        <li><a href="index.chat.openai.com.css">index.chat.openai.com.css</a></li>
+        <li><a href="index.chat.openai.com.html">index.chat.openai.com.html</a></li>
+        <li><a href="index.chat.openai.com.js">index.chat.openai.com.js</a></li>
+        <li><a href="index.php">index.php</a></li>
+        <li><a href="info.html">info.html</a></li>
+        <li><a href="kontakt.html">kontakt.html</a></li>
+        <li><a href="library.xml">library.xml</a></li>
+        <li><a href="loggain.html">loggain.html</a></li>
+        <li><a href="qrcode.html">login.html</a></li>
+        <li><a href="login2.html">login2.html</a></li>
+        <li><a href="mailto">mailto</a></li>
+        <li><a href="node.js">node.js</a></li>
+        <li><a href="projects.chat.openai.com.html">projects.chat.openai.com.html</a></li>
+        <li><a href="pvp.js">pvp.js</a></li>
+        <li><a href="reg.css">reg.css</a></li>
+        <li><a href="reg.html">reg.html</a></li>
+        <li><a href="reg.js">reg.js</a></li>
+        <li><a href="search.php">search.php</a></li>
+        <li><a href="sirkel.html">sirkel.html</a></li>
+        <li><a href="sirkel.js">sirkel.js</a></li>
+        <li><a href="test.html">test.html</a></li>
+        <li><a href="ue.class">ue.class</a></li>
+        <li><a href="ue.mp4">ue.mp4</a></li>
+        <li><a href="vilkor.py">vilkor.py</a></li>
+    
+    <main>
+        <p>Välkommen till min personliga hemsida. Klicka på länkarna ovan för att utforska mer eller skrolla ner.</p>
+    </main>
+    <script src="index.chat.openai.com.js"></script>
+
+
+
+
+
+<div id="main2">
+
+
+      <noscript src="app.js"></noscript>
+<script src="pvp.js" type="text/javascript"></script>
+<link rel="manifest" href="FE.jsonc">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta charset="UTF-8">
+<noscript src="FE.jsonc"></noscript>
+<meta rel="manifest" href="FE.jsonc">
+<script src="FE.jsonc"></script>
+      <link rel="stylesheet" href="UE.css">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Dena FE-html css och javascript hemsida kommer att ha nya saker för FE-HCJ. (FE står för: 'Förenta Evelutionerna- HTML CSS och Javascript')">
+      <meta name="author" content="Nils Efverman och FEUE">
+      <meta property="og:title" content="FE © ® ™">
+      <meta property="og:description" content="FE är ett socialt nätvärk i Linköping. Förenta Evelutionerna i samarbete betalt med FE-HCJ">
+      <meta property="og:image" content="imgs/Free_Sample_By_Wix.jpg">
+      <meta property="og:type" content="FE och FE-HCJ">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="FES">
+      <meta name="theme-color" content="red">
+      <meta name="robots" content="index, follow">
+      <meta name="generator" content="WordPress">
+      <meta http-equiv="content-language" content="sv">
+      <meta http-equiv="refresh" content="6000000; URL='https://feue.webber.se'">
+      <link rel="icon" sizes="32x32" href="Icon/Free_Sample_By_Wix.ico" type="image/icon">
+      <link rel="icon" sizes="32x32" href="Icon/Free_Sample_By_Wix.ico">
+      
+
+     
+
+
+      
+     
+
+
+      <div style="font:size 12px;"> </div>
+            <title style="color: green">FÈUE © ® ™</title>
+
+
+
+<sidhud>FE</sidhud>
+<div id="history">
+      <div id="mailBox" class="text">
+<p class="rattFE"></p>
+<br>
+<br>
+<header>FE 2021 © ® ™ <a href="README.md" class="Startsida"><img src="https://github.com/FEUE256/FEUE256.github.io/assets/171849528/66383d65-c258-42cb-9519-cec44cb5932d"></a><a href="mailto:feue.com1@outlook.com?subject=FE post från FE.html&amp;body=FE mdelande Skriv ditt medelade här under:" onclick="mail()">E-posta FE</a>
+<div id="sidoBar">SidoBar</div>
+<div class="dot-container">Laddar</div></header>
+  
+      <div class="dot">FÈUE</div>
+      <div class="dot">FÈUE</div>
+      <div class="dot">FÈUE</div>
+      <div class="dot">FÈUE</div>
+      <div class="dot">FÈUE</div>
+    </div>
+<button onmouseover="rubrik()">
+      <h1 style="color: blue; font-size: 100px; font-family: verdana;" class="h1fe" id="rubrik2">FE © ® ™</h1>
+    </button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="min bi bi-microsoft" viewBox="0 0 16 16" onclick="mic_min()">
+      <path d="M7.462 0H0v7.19h7.462zM16 0H8.538v7.19H16zM7.462 8.211H0V16h7.462zm8.538 0H8.538V16H16z"></path>
+    </svg>
+    <div id="kalkulator">
+
+    </div>
+    <div id="kalkulator_ja_eller_nej">
+
+    </div>
+    <p id="btn_areey">
+        <button onclick="areey()">Klicka här</button>
+    </p>
+    <div id="menyBar"><nav>
+                  <ul>
+
+
+                        <h3 class="class4">Meny</h3>
+                        <br>
+                        <br>
+                     <p></p><li><a href="login.html" class="Startsida"><button>LIPFE<br><br></button></a> </li>  <p></p> 
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p></p><li><a href="FE2.html" class="Startsida"><button>VTNOFE<br><br></button></a></li><p></p>
+                        <br>
+                        <br><br>
+                        <br>
+                        <br>
+                        <br>
+                       <p></p><li><a href="kontakt.html" class="Startsida"><button>FEK</button></a></li><p></p> 
+                       <br>
+                       <br>
+                       <br>
+                        <br>
+                        <br>
+                        <br>
+                       <p></p><li><a href="Hjälp.html" class="Startsida"><button>Hjälp.html<br><br></button></a></li><p></p>
+                       <br>
+                       <br>
+                       <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p></p><li><a href="avtal.html" class="Startsida"><button>AHFE<br><br></button></a></li><p></p>
+            
+<button onclick="saveInput()">SPARA TILL MENY</button>
+
+<p id="menyBarKod"></p>
+</ul>
+            </nav></div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+            <br><br><br>
+            <h2>FE's sökmotor</h2>
+            <div>
+                  <form id="searchForm" onsubmit="return submitForm()">
+                        <input type="text" id="searchQuery" placeholder="Skriv in din sökning">
+                        <input type="submit" value="Sök">
+                    </form>
+            </div>
+            <br>
+            <h2>FE's AI</h2>
+            <div class="chat-container">
+                  <div id="chat-box"></div>
+                  <input type="text" id="user-input" placeholder="Skriv ett meddelande...">
+                  <button id="send-btn">Skicka</button>
+                </div>
+            <aside class="class5">
+                  hej
+                  </aside>
+            <div>
+                  <p>
+                  </p><dl style="color: green" ;font-size:20px;font-famyily:verdna;="">
+                        <dt>FE</dt>
+                        <dd> bra på so i sverige och i världen </dd>
+                  </dl>
+                  <p></p>
+            </div>
+            <a href="fe.html" class="FE" onclick="logSd()">FE</a>
+            <p id="id6">
+<url><a href="http://feue.webber.se" target="_blank" rel="noopener noreferrer">En FE-hesida </a></url>
+            </p>
+             
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permission Buttons</title>
+
+
+
+<button onclick="aterkomst()">Återkomst</button>
+<script>
+      function aterkomst() {
+            
+      
+  // Tillgång till GPS
+ // function getGPSPermission() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Tillåt åtkomst till GPS.");
+      }, function(error) {
+        console.error("GPS-åtkomst nekad: " + error.message);
+      });
+    } else {
+      console.error("GPS-stöd saknas i den här webbläsaren.");
+    }
+  
+
+  // Tillgång till kamera och mikrofon
+  //function getCameraPermission() {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(function(stream) {
+        console.log("Tillåt åtkomst till kamera och mikrofon.");
+      })
+      .catch(function(error) {
+        console.error("Kamera och mikrofon-åtkomst nekad: " + error.message);
+      });
+  
+
+  // Tillgång till filsystemet
+ // function getFilesystemPermission() {
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+      console.log("Tillåt åtkomst till filsystemet.");
+    } else {
+      console.error("Filsystem-stöd saknas i den här webbläsaren.");
+    }
+  
+
+  // Push-meddelanden
+  //function getPushPermission() {
+    Notification.requestPermission().then(function(permission) {
+      if (permission === "granted") {
+        console.log("Tillåt push-meddelanden.");
+      } else {
+        console.error("Push-meddelanden nekades.");
+      }
+    });
+  
+
+  // Tillgång till Bluetooth-enheter
+  //function getBluetoothPermission() {
+    navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
+      .then(function(device) {
+        console.log("Tillåt åtkomst till Bluetooth-enheter.");
+      })
+      .catch(function(error) {
+        console.error("Bluetooth-åtkomst nekad: " + error.message);
+      });
+  
+
+  // Tillgång till rörelsesensorer
+  //function getMotionSensorPermission() {
+    if (window.DeviceMotionEvent) {
+      console.log("Tillåt åtkomst till rörelsesensorer.");
+    } else {
+      console.error("Rörelsesensor-stöd saknas i den här webbläsaren.");
+    }
+  
+
+  // Tillgång till nätverksinformation
+ 
+    if (navigator.connection) {
+      console.log("Tillåt åtkomst till nätverksinformation.");
+    } else {
+      console.error("Nätverksinformation-stöd saknas i den här webbläsaren.");
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filesystem Access</title>
+
+
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion and Network</title>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kameraåtkomst</title>
+
+
+
+<h1>Kameraåtkomst</h1>
+<video id="videoElement" width="400" height="300" autoplay=""></video>
+<button onclick="startCamera()">Starta kameran</button>
+
+<script>
+function startCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+            var videoElement = document.getElementById('videoElement');
+            videoElement.srcObject = stream;
+        })
+        .catch(function(err) {
+            console.error('Kunde inte få åtkomst till kameran: ' + err);
+        });
+}
+</script>
+
+
+
+
+
+
+<h2>skapa gif</h2>
+<img src="GIS/" alt="">
+
+      <div style="color: black">
+            <p class="FE">
+                  <br>
+                  FE kan alltid stopa saker i samhället
+                  <br>
+            </p>
+            <p>
+                  UE <span id="lpl">Är</span> samma sak som FE
+                  <br>
+            </p>
+            <p>
+                  FE's låt <br>
+                  <audio src="Musik/Min spelnings låt.mp3" controls="" id="id3"></audio>
+            </p>
+      </div>
+      <div>
+            <main>
+                  <section id="bild">
+                  
+                        <img src="imgs/Free_Sample_By_Wix.jpg" alt="FE loggan ©" class="vcv">FE loggan ©
+                  </section>
+                  <section>
+                        <p>
+                              <textarea id="textarea" cols="30" rows="10" placeholder="Skriv saker i detta fält och sen klicka på Klicka på mig!"></textarea>
+                              <button id="you">Klick på mig!</button>
+                        </p>
+                        <p id="edit-text">Din text kommer hit</p>
+                        <p id="test"></p>
+                        <p>
+                              <a href="download:FE.html" download="">Ladda ner filen</a>
+
+                        </p>
+                        
+
+                        <div>
+                        
+                  </div></section>
+            </main>
+            <a href="#" class="FE" onclick="FE()">FE</a>
+      </div>
+      <div class="pvp">
+
+      </div>
+      
+      <section>
+            <div class="pvp">
+                 
+            </div>
+            <button value="Hej" onclick="Function = BTN_Start2(BTN_Start2)">Hej</button>
+            
+            
+            <p>
+                  Klicka på dena ruta för att komma nängst upp <a href="FE.html" class="FE" id="cd">FE</a>
+                  </p>
+                  <nav>
+                        <div>
+                        <p>
+                        FE kan vara på två olika sätt de första sätt är att ”om (FE eller UE, FEF och UEF) chefers dokument indelning är på minneskort kan man spara lite pengar med ett minneskort på en TB-stort minneskort och med FE's USB-minne på 36 GB
+                        </p>
+                      <h4>All HTMLkod är dett </h4>
+                      <p>
+                        </p><nav>
+                              <div>
+                                    <label for="Hejsan">
+                                          
+                                    </label>
+                                    <a href="fe.java" id="Hejsan">HTMLkod somgör dena hemsida</a>
+                              </div>
+                        </nav>
+                      <p></p>
+                        </div>
+                        </nav>
+                        <div>
+                              <h5>
+                                    Lista
+                              </h5>
+                             <ul id="ul1">
+                              <li>sak 1</li>
+                              <li>sak 2</li>
+                             </ul>
+                             
+<button id="btn3">Klick här</button>
+                        </div>
+                        
+                        
+      </section>
+      <h2>test i css</h2>
+      <div class="TIC" id="TIC">
+            <input type="checkbox">
+      </div>
+      <table>
+            <tbody><tr>
+                  <td>
+                      FE  
+                  </td>
+                  <td>
+                        UE
+                  </td>
+            
+            </tr>
+            <tr>
+                  <td>
+                        FE
+                  </td>
+                  <td>
+                  UE
+                  </td>
+            </tr>
+            <tr>
+                  <td>
+                      FE  
+                  </td>
+                  <td>
+                        UE
+                  </td>
+            
+            </tr>
+            <tr>
+                  <td>
+                        FE
+                  </td>
+                  <td>
+                  UE
+                  </td>
+            </tr>
+      <tr>
+            <td>
+                FE  
+            </td>
+            <td>
+                  UE
+            </td>
+      
+      </tr>
+      <tr>
+            <td>
+                  FE
+            </td>
+            <td>
+            UE
+            </td>
+      </tr>
+
+
+
+      </tbody></table><canvas>          <div id="MOP">
+      <div class="div">
+            <div class="div">
+                  <div class="div"><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div></div>
+            </div>
+      </div>
+            <h2 class="blue_MOP">Model Of Project</h2>
+
+            <h3 class="blue_MOP">(Model Of Project 1 FÈUE Type Sing)</h3>
+            <div class="canvas">
+                  <div class="canvas">
+                        <div class="canvas" id="main_Model_Of_Project">
+                              <div class="canvas" id="main_MOP">
+                                    <textarea name="Model_Of_Project_text" id="textarea_MOP" placeholder="Skriv vad du tycker om &quot;Model Of Project&quot; som FÈUE gör till en utgivare till almenheten?" cols="30" rows="10"></textarea>
+                              </div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"><img src="imgs/" alt="1:or och 0:or" srcset="7"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="text" placeholder="Skriv om MOP"></div>
+                              <div class="canvas" id="main_animation"><input type="hidden" value="inputField_MOP"></div>
+
+                        </div>
+                  </div>
+            </div>
+      </div>
+</canvas> 
+
+      <button onclick="btnbtnbtn()">addEventLister i JavaScript</button>
+      <p id="btn4"></p>
+<button onclick="fu7()">Hjälp HTMLEN</button>
+      <a href="FE.php">FE's PHP</a>
+     <p>
+      </p><p><a href="#" onclick="fu6()">javascript från AI</a></p>
+      <a href="#" onclick="functionIJavascript()">Hej</a>
+     <p></p>
+     <p class="Javascript2"></p>
+      <button id="helow" onclick="helow()">Info</button>
+
+      <p><a href="feue.java">FE's Java</a></p>
+
+
+</div>
+
+      <div class="class3">
+            <div class="box1" id="box1"> <button id="id4" onclick="Hjälp()">Hjelp</button></div>
+            <div class="box2">
+                  <h2>FE &amp; FE hacks</h2>
+                  <p>
+                        <img src="imgs/hakare.jpeg" alt="Hackare med en dator">   
+                              hackings gör samhället otyckt.
+                     </p>
+               </div>
+               <div>
+                  <b>
+                        JavaScript är ett kodspråk som används med html
+                  </b>
+                  <b>
+                        CSS är ett kodstil kodspråk som används med html
+                  </b>
+                  <b>
+                        HTML är ett kodspråk som används med CSS och JavaScript
+                        <img src="imgs/html.jpeg" alt="html:5">
+                  </b>
+                  <h2>HCJ</h2>
+                  <div>
+                        <img src="imgs/HCJ.jpeg" alt="HCJ">
+                  </div>
+               </div>
+            </div>
+           <h3>FE's video</h3>
+       
+                  <h3>
+                        FE kan försärkra dig med att du inte kan bli hakad på internet    
+                      </h3>
+                      <p>
+                        För att inte bli hackad på internat kan du köra vår "Ctrl Alt Delete" 
+                        <img src="imgs/Alt.jpeg" alt="Ctrl Alt Delete">
+                        <button onclick="abcabc()">CAD</button>
+                      </p>
+            </div>
+            <div id="visualizer"></div>
+            <button id="startRecording">Starta inspelning</button>
+            <button id="stopRecording">Stoppa inspelning och ladda ner</button>
+            <div class="square"></div>
+<div class="element"></div>
+
+
+            
+            <img src="imgs/epost_test.png" alt="atl">
+            <p>
+                  med integrity <a href="vilkor.py">vilkor</a>
+                  <input type="checkbox" value="ja till vilkoren">
+            </p>
+            <!--&#8734 är oändlighets tecknet, &#174 är rägisterat varumärke, &#169 är kopereringsförbjud, &#8482 är TM -->
+      <h3>Windows uppgraderings test till Windows 10</h3>
+      <button onclick="showConfirm()" id="Windows3">Windows uppgraderings test till Windows 10 BTN med FE-HCJ</button>
+      <p>🔒</p>
+<h3>spara din text i din dator och sen se det igen</h3>
+      <p>
+            <textarea id="mittTextarea"></textarea>
+<button onclick="sparaText()">Spara</button>
+<button onclick="visaText()">Visa</button>
+</p><div id="visatext"></div>
+<h2>Hur kan man...</h2>
+<img src="imgs/Free_Sample_By_Wix.jpg" alt="Fe:s loggan">
+<p id="hur_kan_man">...göra ett eget företag med HCJ. <br>
+
+</p>
+<div id="olDiv">
+      <p id="olP">
+            </p><ol class="ol-class" id="ol_id" type="I">
+                  	<li class="ol_class-li">
+                              1
+                        </li>
+                        <li class="ol_id-li">
+                              2
+                        </li>
+                        <li class="ol_id-li">
+                              3
+                        </li>
+            </ol>
+      <p></p>
+</div>
+<br><br><br><br><br><br><br><br><br>
+        <h2>FE's miniräknare</h2>
+        <div class="calculator">
+            <input type="text" id="display" readonly="">
+            <div class="buttons">
+              <button onclick="appendToDisplay('(')">(</button>
+              <button onclick="appendToDisplay(')')">)</button>
+              <button onclick="appendToDisplay('%')">%</button>
+              <button onclick="appendToDisplay('7')">7</button>
+              <button onclick="appendToDisplay('8')">8</button>
+              <button onclick="appendToDisplay('9')">9</button>
+              <button onclick="appendToDisplay('+')">+</button>
+              <button onclick="appendToDisplay('4')">4</button>
+              <button onclick="appendToDisplay('5')">5</button>
+              <button onclick="appendToDisplay('6')">6</button>
+              <button onclick="appendToDisplay('-')">-</button>
+              <button onclick="appendToDisplay('1')">1</button>
+              <button onclick="appendToDisplay('2')">2</button>
+              <button onclick="appendToDisplay('3')">3</button>
+              <button onclick="appendToDisplay('*')">*</button>
+              <button onclick="appendToDisplay('0')">0</button>
+              <button onclick="appendToDisplay(',')">,</button>
+              <button onclick="saveToMemory()">Spara</button>
+              <button onclick="recallMemory()">Visa</button>
+              <button onclick="clearDisplay()">C</button>
+              <button onclick="calculate()">=</button>
+              <button onclick="appendToDisplay('/')">/</button>
+            </div>
+          </div>    
+
+          <b>HRJ</b>
+      <p></p>
+      <h2>Logga in som adimisratör</h2>
+      <div id="container">
+            <input type="password" id="kodInput" placeholder="Skriv din kod här">
+            <button onclick="kollaKod()">Skicka</button>
+            <p id="resultat"></p>
+        </div>
+<a href="#minElement">Höckst upp på sidan</a>
+<a href="FE.xml">FE's </a>
+<a href="FE.html" download="FE.html">Inställningar</a>
+<button onclick="btnsifra()">Skriv en sifra</button>
+<h3>FE adimisratör (lätt) <img src="imgs/las.png"><p>Vi på FE adimisratör vi kan se sak som man inte kan se om man är medlem i FE. <br> <br> </p></h3><h3>Till inlogning för adimisratör på FE (svår) <br> <br> <a href="login2.html" onclick="login2.html.com()">login till adimisratör-sidan (svår)<p></p>
+        <h2>Nerräknare från 100 sekunder</h2>
+
+        
+    <button onclick="fu52()"><div id="nedraknare">100</div></button>   
+    </a><div class="clock"><a href="login2.html" onclick="login2.html.com()">
+      <input type="number" id="hoursInput" min="0" max="23" placeholder="HH">
+      <span>:</span>
+      <input type="number" id="minutesInput" min="0" max="59" placeholder="MM">
+      <span>:</span>
+      <input type="number" id="secondsInput" min="0" max="59" placeholder="SS">
+     
+            Skicka e-post
+        </a>
+        <textarea readonly="" style="display: none;">            Hej det här är ett meddelande.
+        </textarea>
+        <a href="mailto:feue.com1@outlook.com?subject=FE e-post från FE.html&amp;body=FE-medelande från FE.html Skriv ditt medelande här under:">Skicka e-post till FE</a>
+        
+
+    </div>
+    <div class="time" id="time"></div>
+<button id="clickBtn">Click Me</button>
+
+  <div id="hoverDiv">Hover Over Me</div>
+
+    <button id="updateButton">Uppdatera</button>
+    <button id="mig5" onclick="fu83()">Test är altid best</button>
+    <input type="checkbox">
+
+    <a href="FE.rb"><button>FE's Ruby</button></a>
+<button onclick="farg()">endra färg</button>
+<button onclick="farg2()">endar färg igen</button>
+    <p class="pvpFE-com"></p>
+<div id="var">s</div>
+<br><p id="css">CSS</p>
+<input type="checkbox" id="checkbox2">
+
+    </h3><h2>RÖD</h2>
+    <input type="checkbox" id="toggleBtn">
+      <label for="toggleBtn">Klicka här</label>
+<p class="box123">SD</p>
+    <p class="getElementByj">s</p>
+      <p class="getElementByh">s</p>
+    <p class="getElementByTaggName">s</p>
+    <p class="getElementById">s</p>
+    <br><br><br><br><br><br><br>
+    <div class="container">
+      <div class="inner-container"> <div class="box">Ha musen på mig</div>
+      <div class="hidden-box">Se, ta bort musen nu</div></div>
+     
+    </div>
+    <div>
+      <section id="Ny_selleckt">
+            <h2>Inledning för grunderna i html css och javascript</h2>
+            <p><img src="imgs/datbas.jpeg" alt="DataBasutveklingsbild"><br><b><i>med</i></b><br><img src="imgs/access.jpeg" alt="Microsoft 365 betal access datbas"><br> <b><i> kan vi gör hur mycket som helst</i></b><br></p>
+      <h2>Enkelt ner laddnings inputvärde i html css och javascript</h2>
+      <label for="">Hemside kod (använd inte inlängkad i ccs och js)</label>
+
+      <label for="HCJ">HTML kod CSS JS i en</label>
+      <br><br>
+      
+
+      <button onclick="generateDocument()">Generate Hemsida</button>
+  <p>Test</p>
+  <a href="path/till/FE.ini" download="">a</a>
+ <h2>Öppna feue.webber.se i ett ny fönster</h2>
+<button onclick="windowOpen()">Öppna feue.webber.se</button> 
+</section>
+
+    </div>
+    <h2>Error</h2>
+    <!-- inte error men vad man kan göra om det är error -->
+    <p>
+      <img class="bild3" src="imgs/error.jpeg" alt="error">
+    </p>
+   <button onclick="label_confirm()">Anroppa</button>
+    <br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><div class="box56"><b><br><br><br><br>Animation<br> För <br> FE</b> </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+<audio controls="">
+      <source src="Musik/Timeline 1.xml" type="audio/mpeg">
+</audio>
+<footer id="footer">FE 2024 © ® ™</footer>
+<p> × </p>
+<br> 
+<div class="spiner"></div>
+
+<!-- <br> betyder 
+      radbryt, <p> betyder styke, <div> betyder behålare, ex <div class="Kommentar test ex"> betyder att det är
+      en klass som man kan ha flera gånger, <div id="Kommentar test ex"> betyder att man har ett id
+      som man kan ha EN gång i HELA documentet, <button>EX</button> är en knapp nästan alla taggar har
+      en slut-tagg som ex kan se ut så har "<div>
+      <p> text lite mer text och lite till text </p></div>", <button onclick="Test funtion ex()" 
+      > betyder att man kan klicka på knapen och aktivera en funtion i javascript som är in längkat, 
+      <script src="Test script" type="text/javascript"></script> betyder att man längkar in javascript
+      <img src="test blid" alt="hjälp text för dom som är synskadade eller att det är fel på blilden">
+      betyder att det är en blild med en img-tagg som bara har en taggdel, <a href="www.feue.webber.se">
+      din längk texten som du vill ha på längken, (detta är INGA ricktiga taggar), src="" står för
+      source som är med i ex bilder, ljud, video och script document, href="" hypertext reference
+      som är i längkar och i visa andra; (detta är ritia taggar nu) saker <video controls src="Musik/min
+      spelnings låt.mp3">, <iframe src="Musik/min spelnings låt.mp3" är typ sama ska som <video src="">,
+      <iframe src="Musik/Min spelnings låt.mp3" controls width="560" height="315" frameborder="0" allowfullscreen>
+      </iframe><object data="imgs/bakrundsfarg.jpeg" type="application/jpeg" width="400" height="300"></object>, 
+      indelningen det är dra om du har en mapp till HTML, JavaScript, C++, Python, php, SCC, Java
+      och för Blider som heter IMGS, Video som hter Video, Musik som heter Musik och Gifs som heter GIF och 
+      grund koden för HTML: <!DOCTYPE html><html lang="en"><head><link src="stale.css"><meta charset="UTF-8">
+      <meta name="viewport"content="width=device-width, initial-scale=1.0"><title>Document</title></head><body>
+      <p> Test i bäst </p></body><script src="script.js"></script></html> (detta var inte alla taggar som finns)-->
+            <div id="hiden">
+                  <a href="https://www.feue.webber.se/Info">script</a>
+                  <article><p dir="rtl">
+                        <a href="https://www.feue.webber.se">css</a>
+                  </p></article>
+                  <a href="https://www.feue.webber.se/Js">js</a>
+                  <script type="module" src="search.php">$php = escape("ha hå");</script>
+                  <script src="index.php"></script>
+            </div>
+ <br><br><br>
+<sidfot>FE</sidfot> 
+<br><script src="fe.js" type="text/javascript">
+function myFunction() {
+    // Lägg till koden som ska köras varje gång funktionen anropas
+    console.log('Denna funktion körs 30 gånger per sekund!');
+}
+
+// Ange tiden i millisekunder för hur ofta funktionen ska köras (1000 ms = 1 sekund)
+const interval = 1000 / 30; // Beräkna intervallet för 30 Hz
+
+// Använd setInterval() för att upprepa anropet till funktionen med det givna intervallet
+const timerId = setInterval(myFunction, interval);
+
+// För att stoppa upprepningen, kan du använda clearInterval() med timerId:
+// clearInterval(timerId);
+
+</script>
+<h2>Ladda ner sidan</h2>
+<button onclick="Ladda_sidan()" id="download-button">Ladda ner sidan</button>
+<noscript src="app.js"></noscript>
+<script src="pvp.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script><script src="https://smtpjs.com/v3/smtp.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="manifest" href="FE.jsonc">
+<noscript src="FE.jsonc"></noscript>
+<meta rel="manifest" href="FE.jsonc">
+<script src="FE.jsonc"></script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/668646e4eaf3bd8d4d17ebc6/1i1u89rq6';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+    <script>
+        // script.js
+document.getElementById('Vribrera').addEventListener('click', function() {
+    // Kontrollera om Vibrations-API stöds
+    if (navigator.vibrate) {
+        // Vibrera med ett mönster för "jätte mycket" vibration
+        navigator.vibrate([500, 100, 500, 100, 500, 100, 500, 100, 500]);
+    } else {
+        alert('Vibrationer stöds inte på denna enhet.');
+    }
+});
+
+    </script>
+
+
+
+
+
+</doctype><script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/66b9ed69fcc/languages/sv.js"></script><div id="cmgimgpc6rjo1723899044326" class="widget-visible"><iframe src="about:blank" frameborder="0" scrolling="no" width="64px" height="60px" style="outline:none !important; visibility:visible !important; resize:none !important; box-shadow:none !important; overflow:visible !important; background:none !important; opacity:1 !important; filter:alpha(opacity=100) !important; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity 1}) !important; -mz-opacity:1 !important; -khtml-opacity:1 !important; top:auto !important; right:20px !important; bottom:20px !important; left:auto !important; position:fixed !important; border:0 !important; min-height:60px !important; min-width:64px !important; max-height:60px !important; max-width:64px !important; padding:0 !important; margin:0 !important; -moz-transition-property:none !important; -webkit-transition-property:none !important; -o-transition-property:none !important; transition-property:none !important; transform:none !important; -webkit-transform:none !important; -ms-transform:none !important; width:64px !important; height:60px !important; display:block !important; z-index:1000001 !important; background-color:transparent !important; cursor:none !important; float:none !important; border-radius:unset !important; pointer-events:auto !important; clip:auto !important; color-scheme:light !important;" id="z8r2ueiultj1723899044377" class="" title="chat widget"></iframe><iframe src="about:blank" frameborder="0" scrolling="no" width="210px" height="496px" style="outline:none !important; visibility:visible !important; resize:none !important; box-shadow:none !important; overflow:visible !important; background:none !important; opacity:1 !important; filter:alpha(opacity=100) !important; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity 1}) !important; -mz-opacity:1 !important; -khtml-opacity:1 !important; top:auto !important; right:10px !important; bottom:90px !important; left:auto !important; position:fixed !important; border:0 !important; min-height:496px !important; min-width:210px !important; max-height:496px !important; max-width:210px !important; padding:0 !important; margin:0 !important; -moz-transition-property:none !important; -webkit-transition-property:none !important; -o-transition-property:none !important; transition-property:none !important; transform:none !important; -webkit-transform:none !important; -ms-transform:none !important; width:210px !important; height:496px !important; display:none !important; z-index:1000002 !important; background-color:transparent !important; cursor:none !important; float:none !important; border-radius:5px !important; pointer-events:auto !important; clip:auto !important; color-scheme:light !important;" id="itl0tvjhovmo1723899044436" class="" title="chat widget"></iframe><iframe src="about:blank" frameborder="0" scrolling="no" width="360px" height="55px" style="outline:none !important; visibility:visible !important; resize:none !important; box-shadow:none !important; overflow:visible !important; background:none !important; opacity:1 !important; filter:alpha(opacity=100) !important; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity 1}) !important; -mz-opacity:1 !important; -khtml-opacity:1 !important; top:auto !important; right:20px !important; bottom:100px; left:auto !important; position:fixed !important; border:0 !important; min-height:55px !important; min-width:360px !important; max-height:55px !important; max-width:360px !important; padding:0 !important; margin:0 !important; -moz-transition-property:none !important; -webkit-transition-property:none !important; -o-transition-property:none !important; transition-property:none !important; transform:none !important; -webkit-transform:none !important; -ms-transform:none !important; width:360px !important; height:55px !important; display:none !important; z-index:auto !important; background-color:transparent !important; cursor:none !important; float:none !important; border-radius:unset !important; pointer-events:auto !important; clip:auto !important; color-scheme:light !important;" id="a9ko2rqi5o9g1723899044411" class="" title="chat widget"></iframe><iframe src="about:blank" frameborder="0" scrolling="no" width="124px" height="95px" style="outline:none !important; visibility:visible !important; resize:none !important; box-shadow:none !important; overflow:visible !important; background:none !important; opacity:1 !important; filter:alpha(opacity=100) !important; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity 1}) !important; -mz-opacity:1 !important; -khtml-opacity:1 !important; top:auto !important; right:0px !important; bottom:30px !important; left:auto !important; position:fixed !important; border:0 !important; min-height:95px !important; min-width:124px !important; max-height:95px !important; max-width:124px !important; padding:0 !important; margin:0px 0 0 0 !important; -moz-transition-property:none !important; -webkit-transition-property:none !important; -o-transition-property:none !important; transition-property:none !important; transform:rotate(0deg) translateZ(0); -webkit-transform:rotate(0deg) translateZ(0); -ms-transform:rotate(0deg) translateZ(0); width:124px !important; height:95px !important; display:block !important; z-index:1000002 !important; background-color:transparent !important; cursor:none !important; float:none !important; border-radius:unset !important; pointer-events:auto !important; clip:auto !important; color-scheme:light !important; -moz-transform:rotate(0deg) translateZ(0); -o-transform:rotate(0deg) translateZ(0); transform-origin:0; -moz-transform-origin:0; -webkit-transform-origin:0; -o-transform-origin:0; -ms-transform-origin:0;" id="pdpjqas4pnfg1723899044396" class="" title="chat widget"></iframe></div></body></html>
