@@ -93,12 +93,20 @@ alert('Vibrationer stöds inte på denna enhet.');
                 }
 
                 const devices = await navigator.hid.requestDevice({
-                    filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Justera vendorId och productId för din micro:bit
+                    filters: [
+                        {
+                            vendorId: 0x0d28, // Vendor ID för micro:bit
+                            productId: 0x0204, // Product ID för micro:bit
+                            // Om enheten är unik, kan du även använda det unika ID:t i filtret
+                        }
+                    ]
                 });
 
-                if (devices.length > 0) {
-                    microbitDevice = devices[0];
-                    await microbitDevice.open(); // Försök öppna enheten
+                // Filtrera enheten baserat på det unika ID:t
+                microbitDevice = devices.find(device => device.productId === 0x0204);
+
+                if (microbitDevice) {
+                    await microbitDevice.open(); // Öppna enheten för kommunikation
                     document.getElementById("status").textContent = "Ansluten till micro:bit!";
                     document.getElementById("sendButton").disabled = false;
                 } else {
