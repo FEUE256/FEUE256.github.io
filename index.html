@@ -97,7 +97,85 @@ display: none !important;
 
 
 
- <!DOCTYPE html> <html lang="sv"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Micro:bit HID</title> <style> body { font-family: Arial, sans-serif; text-align: center; margin: 20px; } button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 10px; } #status { margin-top: 20px; font-size: 16px; color: green; } </style> </head> <body> <h1>Micro:bit HID</h1> <button id="connectButton">Anslut till micro:bit</button> <button id="sendButton" disabled>Skicka Check-tecken</button> <div id="status"></div> <script> let microbitDevice; async function connectToMicrobit() { try { // Begär tillgång till micro:bit via HID microbitDevice = await navigator.hid.requestDevice({ filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Använd vendorId och productId för micro:bit }); if (microbitDevice.length === 0) { document.getElementById("status").textContent = "Ingen micro:bit hittades."; return; } microbitDevice = microbitDevice[0]; await microbitDevice.open(); // Bekräfta anslutningen document.getElementById("status").textContent = "Ansluten till micro:bit!"; document.getElementById("sendButton").disabled = false; } catch (error) { document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error; console.error(error); // Logga detaljer för felsökning } } document.getElementById("connectButton").addEventListener("click", connectToMicrobit); document.getElementById("sendButton").addEventListener("click", async function() { if (!microbitDevice) { document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!"; return; } // Skicka kommando till micro:bit try { const command = new Uint8Array([0x01, 0x00, 0x01]); // Exempelkommando, justera efter behov await microbitDevice.sendReport(0, command); document.getElementById("status").textContent = "Check-tecken visat på micro:bit!"; } catch (error) { document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error; console.error(error); // Logga detaljer för felsökning } }); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro:bit HID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Micro:bit HID</h1>
+    <button id="connectButton">Anslut till micro:bit</button>
+    <button id="sendButton" disabled>Skicka Check-tecken</button>
+    <div id="status"></div>
+
+    <script>
+        let microbitDevice;
+
+        async function connectToMicrobit() {
+            try {
+                // Begär tillgång till micro:bit via HID
+                microbitDevice = await navigator.hid.requestDevice({
+                    filters: [{ vendorId: 0x0d28, productId: 0x0204 }] // Använd vendorId och productId för micro:bit
+                });
+
+                if (microbitDevice.length === 0) {
+                    document.getElementById("status").textContent = "Ingen micro:bit hittades.";
+                    return;
+                }
+
+                microbitDevice = microbitDevice[0];
+                await microbitDevice.open();
+
+                // Bekräfta anslutningen
+                document.getElementById("status").textContent = "Ansluten till micro:bit!";
+                document.getElementById("sendButton").disabled = false;
+            } catch (error) {
+                document.getElementById("status").textContent = "Kunde inte ansluta till micro:bit: " + error;
+                console.error(error); // Logga detaljer för felsökning
+            }
+        }
+
+        document.getElementById("connectButton").addEventListener("click", connectToMicrobit);
+
+        document.getElementById("sendButton").addEventListener("click", async function() {
+            if (!microbitDevice) {
+                document.getElementById("status").textContent = "Du måste ansluta till micro:bit först!";
+                return;
+            }
+
+            // Skicka kommando till micro:bit
+            try {
+                const command = new Uint8Array([0x01, 0x00, 0x01]); // Exempelkommando, justera efter behov
+                await microbitDevice.sendReport(0, command);
+                document.getElementById("status").textContent = "Check-tecken visat på micro:bit!";
+            } catch (error) {
+                document.getElementById("status").textContent = "Kunde inte skicka kommando till micro:bit: " + error;
+                console.error(error); // Logga detaljer för felsökning
+            }
+        });
+    </script>
+</body>
+</html>
 
 
 
