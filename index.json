@@ -1,1194 +1,1350 @@
 [
-  {
-    "personer": [
-      {
-        "namn": "Oscar",
-        "ålder": 30,
-        "ärAktiv": true,
-        "hobbies": ["engelska", "resa", "kameror"],
-        "adress": {
-          "gata": "Storgatan 2",
-          "stad": "Stockholm",
-          "postnummer": "12345"
-        },
-        "relationer": [
-          {
-            "relation": "syster",
-            "namn": "Emma",
-            "ålder": 28,
-            "adress": {
-              "gata": "Storgatan 1",
-              "stad": "Stockholm",
-              "postnummer": "12345"
+    {
+        "personer": [
+            {
+                "namn": "Oscar",
+                "ålder": 30,
+                "ärAktiv": true,
+                "hobbies": [
+                    "engelska",
+                    "resa",
+                    "kameror"
+                ],
+                "adress": {
+                    "gata": "Storgatan 2",
+                    "stad": "Stockholm",
+                    "postnummer": "12345"
+                },
+                "relationer": [
+                    {
+                        "relation": "syster",
+                        "namn": "Emma",
+                        "ålder": 28,
+                        "adress": {
+                            "gata": "Storgatan 1",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "far",
+                        "namn": "Anders",
+                        "ålder": 58,
+                        "adress": {
+                            "gata": "Lundvägen 10",
+                            "stad": "Lund",
+                            "postnummer": "22345"
+                        }
+                    },
+                    {
+                        "relation": "mor",
+                        "namn": "Birgitta",
+                        "ålder": 56,
+                        "adress": {
+                            "gata": "Lundvägen 10",
+                            "stad": "Lund",
+                            "postnummer": "22345"
+                        }
+                    },
+                    {
+                        "relation": "fru",
+                        "namn": "Sara",
+                        "ålder": 29,
+                        "adress": {
+                            "gata": "Storgatan 2",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "son",
+                        "namn": "Leo",
+                        "ålder": 5,
+                        "adress": {
+                            "gata": "Storgatan 2",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "dotter",
+                        "namn": "Nora",
+                        "ålder": 3,
+                        "adress": {
+                            "gata": "Storgatan 2",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "farfar",
+                        "namn": "Gustav",
+                        "ålder": 85,
+                        "adress": {
+                            "gata": "Äldregatan 3",
+                            "stad": "Malmö",
+                            "postnummer": "21234"
+                        }
+                    },
+                    {
+                        "relation": "farmor",
+                        "namn": "Elsa",
+                        "ålder": 83,
+                        "adress": {
+                            "gata": "Äldregatan 3",
+                            "stad": "Malmö",
+                            "postnummer": "21234"
+                        }
+                    },
+                    {
+                        "relation": "morfar",
+                        "namn": "Sten",
+                        "ålder": 82,
+                        "adress": {
+                            "gata": "Kyrkvägen 5",
+                            "stad": "Göteborg",
+                            "postnummer": "41234"
+                        }
+                    },
+                    {
+                        "relation": "mormor",
+                        "namn": "Kerstin",
+                        "ålder": 80,
+                        "adress": {
+                            "gata": "Kyrkvägen 5",
+                            "stad": "Göteborg",
+                            "postnummer": "41234"
+                        }
+                    }
+                ]
+            },
+            {
+                "namn": "Emma",
+                "ålder": 28,
+                "ärAktiv": true,
+                "hobbies": [
+                    "läsa",
+                    "resa",
+                    "simma"
+                ],
+                "adress": {
+                    "gata": "Storgatan 1",
+                    "stad": "Stockholm",
+                    "postnummer": "12345"
+                },
+                "relationer": [
+                    {
+                        "relation": "bror",
+                        "namn": "Oscar",
+                        "ålder": 30,
+                        "adress": {
+                            "gata": "Storgatan 2",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "far",
+                        "namn": "Anders",
+                        "ålder": 58,
+                        "adress": {
+                            "gata": "Lundvägen 10",
+                            "stad": "Lund",
+                            "postnummer": "22345"
+                        }
+                    },
+                    {
+                        "relation": "mor",
+                        "namn": "Birgitta",
+                        "ålder": 56,
+                        "adress": {
+                            "gata": "Lundvägen 10",
+                            "stad": "Lund",
+                            "postnummer": "22345"
+                        }
+                    },
+                    {
+                        "relation": "make",
+                        "namn": "Johan",
+                        "ålder": 32,
+                        "adress": {
+                            "gata": "Storgatan 1",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "son",
+                        "namn": "Erik",
+                        "ålder": 4,
+                        "adress": {
+                            "gata": "Storgatan 1",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "dotter",
+                        "namn": "Maja",
+                        "ålder": 2,
+                        "adress": {
+                            "gata": "Storgatan 1",
+                            "stad": "Stockholm",
+                            "postnummer": "12345"
+                        }
+                    },
+                    {
+                        "relation": "farfar",
+                        "namn": "Gustav",
+                        "ålder": 85,
+                        "adress": {
+                            "gata": "Äldregatan 3",
+                            "stad": "Malmö",
+                            "postnummer": "21234"
+                        }
+                    },
+                    {
+                        "relation": "farmor",
+                        "namn": "Elsa",
+                        "ålder": 83,
+                        "adress": {
+                            "gata": "Äldregatan 3",
+                            "stad": "Malmö",
+                            "postnummer": "21234"
+                        }
+                    },
+                    {
+                        "relation": "morfar",
+                        "namn": "Sten",
+                        "ålder": 82,
+                        "adress": {
+                            "gata": "Kyrkvägen 5",
+                            "stad": "Göteborg",
+                            "postnummer": "41234"
+                        }
+                    },
+                    {
+                        "relation": "mormor",
+                        "namn": "Kerstin",
+                        "ålder": 80,
+                        "adress": {
+                            "gata": "Kyrkvägen 5",
+                            "stad": "Göteborg",
+                            "postnummer": "41234"
+                        }
+                    }
+                ]
             }
-          },
-          {
-            "relation": "far",
-            "namn": "Anders",
-            "ålder": 58,
-            "adress": {
-              "gata": "Lundvägen 10",
-              "stad": "Lund",
-              "postnummer": "22345"
-            }
-          },
-          {
-            "relation": "mor",
-            "namn": "Birgitta",
-            "ålder": 56,
-            "adress": {
-              "gata": "Lundvägen 10",
-              "stad": "Lund",
-              "postnummer": "22345"
-            }
-          },
-          {
-            "relation": "fru",
-            "namn": "Sara",
-            "ålder": 29,
-            "adress": {
-              "gata": "Storgatan 2",
-              "stad": "Stockholm",
-              "postnummer": "12345"
-            }
-          },
-          {
-            "relation": "son",
-            "namn": "Leo",
-            "ålder": 5,
-            "adress": {
-              "gata": "Storgatan 2",
-              "stad": "Stockholm",
-              "postnummer": "12345"
-            }
-          },
-          {
-            "relation": "dotter",
-            "namn": "Nora",
-            "ålder": 3,
-            "adress": {
-              "gata": "Storgatan 2",
-              "stad": "Stockholm",
-              "postnummer": "12345"
-            }
-          },
-          {
-            "relation": "farfar",
-            "namn": "Gustav",
-            "ålder": 85,
-            "adress": {
-              "gata": "Äldregatan 3",
-              "stad": "Malmö",
-              "postnummer": "21234"
-            }
-          },
-          {
-            "relation": "farmor",
-            "namn": "Elsa",
-            "ålder": 83,
-            "adress": {
-              "gata": "Äldregatan 3",
-              "stad": "Malmö",
-              "postnummer": "21234"
-            }
-          },
-          {
-            "relation": "morfar",
-            "namn": "Sten",
-            "ålder": 82,
-            "adress": {
-              "gata": "Kyrkvägen 5",
-              "stad": "Göteborg",
-              "postnummer": "41234"
-            }
-          },
-          {
-            "relation": "mormor",
-            "namn": "Kerstin",
-            "ålder": 80,
-            "adress": {
-              "gata": "Kyrkvägen 5",
-              "stad": "Göteborg",
-              "postnummer": "41234"
-            }
-          }
         ]
-      },
-      {
-        "namn": "Emma",
-        "ålder": 28,
-        "ärAktiv": true,
-        "hobbies": ["läsa", "resa", "simma"],
-        "adress": {
-          "gata": "Storgatan 1",
-          "stad": "Stockholm",
-          "postnummer": "12345"
-        },
-        "relationer": [
-          {
-            "relation": "bror",
-            "namn": "Oscar",
-            "ålder": 30,
-            "adress": {
-              "gata": "Storgatan 2",
-              "stad": "Stockholm",
-              "postnummer": "12345"
+    },
+    {
+        "personer": [
+            {
+                "namn": "Alice",
+                "ålder": 27,
+                "ärAktiv": false,
+                "hobbies": [
+                    "matlagning",
+                    "yoga",
+                    "läsa"
+                ],
+                "adress": {
+                    "gata": "Lillgatan 5",
+                    "stad": "Göteborg",
+                    "postnummer": "54321"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "Emma"
+                    },
+                    {
+                        "relation": "kollega",
+                        "namn": "Charlie"
+                    }
+                ]
+            },
+            {
+                "namn": "Bob",
+                "ålder": 35,
+                "ärAktiv": false,
+                "hobbies": [
+                    "programmera",
+                    "musik",
+                    "resa"
+                ],
+                "adress": {
+                    "gata": "Huvudgatan 10",
+                    "stad": "Malmö",
+                    "postnummer": "67890"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "Oscar"
+                    },
+                    {
+                        "relation": "granne",
+                        "namn": "Diana"
+                    }
+                ]
+            },
+            {
+                "namn": "Charlie",
+                "ålder": 40,
+                "ärAktiv": true,
+                "hobbies": [
+                    "läsa",
+                    "cykla",
+                    "programmera"
+                ],
+                "adress": {
+                    "gata": "Centrala Gatan 15",
+                    "stad": "Uppsala",
+                    "postnummer": "11223"
+                },
+                "relationer": [
+                    {
+                        "relation": "kollega",
+                        "namn": "Alice"
+                    },
+                    {
+                        "relation": "kusin",
+                        "namn": "David"
+                    }
+                ]
+            },
+            {
+                "namn": "Diana",
+                "ålder": 22,
+                "ärAktiv": true,
+                "hobbies": [
+                    "fotografera",
+                    "måla",
+                    "simma"
+                ],
+                "adress": {
+                    "gata": "Södra Vägen 20",
+                    "stad": "Lund",
+                    "postnummer": "98765"
+                },
+                "relationer": [
+                    {
+                        "relation": "granne",
+                        "namn": "Bob"
+                    },
+                    {
+                        "relation": "vän",
+                        "namn": "Ellen"
+                    }
+                ]
+            },
+            {
+                "namn": "David",
+                "ålder": 33,
+                "ärAktiv": false,
+                "hobbies": [
+                    "spel",
+                    "resa",
+                    "matlagning"
+                ],
+                "adress": {
+                    "gata": "Västra Gatan 25",
+                    "stad": "Helsingborg",
+                    "postnummer": "55443"
+                },
+                "relationer": [
+                    {
+                        "relation": "kusin",
+                        "namn": "Charlie"
+                    },
+                    {
+                        "relation": "kollega",
+                        "namn": "Frank"
+                    }
+                ]
+            },
+            {
+                "namn": "Ellen",
+                "ålder": 29,
+                "ärAktiv": true,
+                "hobbies": [
+                    "träning",
+                    "resa",
+                    "dansa"
+                ],
+                "adress": {
+                    "gata": "Norr Gatan 30",
+                    "stad": "Örebro",
+                    "postnummer": "33445"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "Diana"
+                    },
+                    {
+                        "relation": "kollega",
+                        "namn": "George"
+                    }
+                ]
+            },
+            {
+                "namn": "Frank",
+                "ålder": 31,
+                "ärAktiv": true,
+                "hobbies": [
+                    "klättring",
+                    "spel",
+                    "laga mat"
+                ],
+                "adress": {
+                    "gata": "Östra Gatan 35",
+                    "stad": "Västerås",
+                    "postnummer": "55667"
+                },
+                "relationer": [
+                    {
+                        "relation": "kollega",
+                        "namn": "David"
+                    },
+                    {
+                        "relation": "vän",
+                        "namn": "Hanna"
+                    }
+                ]
+            },
+            {
+                "namn": "George",
+                "ålder": 36,
+                "ärAktiv": false,
+                "hobbies": [
+                    "läsa",
+                    "resa",
+                    "fotografera"
+                ],
+                "adress": {
+                    "gata": "Lilla Gatan 40",
+                    "stad": "Norrköping",
+                    "postnummer": "66778"
+                },
+                "relationer": [
+                    {
+                        "relation": "kollega",
+                        "namn": "Ellen"
+                    },
+                    {
+                        "relation": "vän",
+                        "namn": "Ivan"
+                    }
+                ]
+            },
+            {
+                "namn": "Hanna",
+                "ålder": 25,
+                "ärAktiv": true,
+                "hobbies": [
+                    "simma",
+                    "cykla",
+                    "laga mat"
+                ],
+                "adress": {
+                    "gata": "Centrala Gatan 45",
+                    "stad": "Sundsvall",
+                    "postnummer": "77889"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "Frank"
+                    },
+                    {
+                        "relation": "kollega",
+                        "namn": "Jack"
+                    }
+                ]
+            },
+            {
+                "namn": "Ivan",
+                "ålder": 38,
+                "ärAktiv": false,
+                "hobbies": [
+                    "springa",
+                    "läsa",
+                    "spela gitarr"
+                ],
+                "adress": {
+                    "gata": "Västra Gatan 50",
+                    "stad": "Karlstad",
+                    "postnummer": "88990"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "George"
+                    },
+                    {
+                        "relation": "granne",
+                        "namn": "Julia"
+                    }
+                ]
+            },
+            {
+                "namn": "Jack",
+                "ålder": 32,
+                "ärAktiv": true,
+                "hobbies": [
+                    "dansa",
+                    "laga mat",
+                    "resa"
+                ],
+                "adress": {
+                    "gata": "Lilla Gatan 55",
+                    "stad": "Östersund",
+                    "postnummer": "99001"
+                },
+                "relationer": [
+                    {
+                        "relation": "kollega",
+                        "namn": "Hanna"
+                    },
+                    {
+                        "relation": "vän",
+                        "namn": "Karen"
+                    }
+                ]
+            },
+            {
+                "namn": "Julia",
+                "ålder": 34,
+                "ärAktiv": true,
+                "hobbies": [
+                    "yoga",
+                    "läsa",
+                    "simma"
+                ],
+                "adress": {
+                    "gata": "Norra Gatan 60",
+                    "stad": "Gävle",
+                    "postnummer": "11212"
+                },
+                "relationer": [
+                    {
+                        "relation": "granne",
+                        "namn": "Ivan"
+                    },
+                    {
+                        "relation": "vän",
+                        "namn": "Leo"
+                    }
+                ]
+            },
+            {
+                "namn": "Karen",
+                "ålder": 29,
+                "ärAktiv": true,
+                "hobbies": [
+                    "måla",
+                    "läsa",
+                    "resa"
+                ],
+                "adress": {
+                    "gata": "Södra Vägen 65",
+                    "stad": "Kalmar",
+                    "postnummer": "22134"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "Jack"
+                    },
+                    {
+                        "relation": "kollega",
+                        "namn": "Michael"
+                    }
+                ]
+            },
+            {
+                "namn": "Leo",
+                "ålder": 27,
+                "ärAktiv": true,
+                "hobbies": [
+                    "fotografera",
+                    "cykla",
+                    "laga mat"
+                ],
+                "adress": {
+                    "gata": "Huvudgatan 70",
+                    "stad": "Halmstad",
+                    "postnummer": "33445"
+                },
+                "relationer": [
+                    {
+                        "relation": "vän",
+                        "namn": "Julia"
+                    },
+                    {
+                        "relation": "granne",
+                        "namn": "Nina"
+                    }
+                ]
+            },
+            {
+                "namn": "Michael",
+                "ålder": 30,
+                "ärAktiv": true,
+                "hobbies": [
+                    "springa",
+                    "programmera",
+                    "resa"
+                ],
+                "adress": {
+                    "gata": "Centrala Gatan 75",
+                    "stad": "Eskilstuna",
+                    "postnummer": "55667"
+                },
+                "relationer": [
+                    {
+                        "relation": "far",
+                        "namn": "Robert",
+                        "ålder": 60,
+                        "adress": {
+                            "gata": "Gamla Vägen 5",
+                            "stad": "Västerås",
+                            "postnummer": "72212"
+                        }
+                    },
+                    {
+                        "relation": "mor",
+                        "namn": "Elisabeth",
+                        "ålder": 58,
+                        "adress": {
+                            "gata": "Gamla Vägen 5",
+                            "stad": "Västerås",
+                            "postnummer": "72212"
+                        }
+                    },
+                    {
+                        "relation": "bror",
+                        "namn": "David",
+                        "ålder": 35,
+                        "adress": {
+                            "gata": "Huvudgatan 10",
+                            "stad": "Malmö",
+                            "postnummer": "67890"
+                        }
+                    },
+                    {
+                        "relation": "syster",
+                        "namn": "Anna",
+                        "ålder": 28,
+                        "adress": {
+                            "gata": "Lillgatan 5",
+                            "stad": "Göteborg",
+                            "postnummer": "54321"
+                        }
+                    },
+                    {
+                        "relation": "fru",
+                        "namn": "Emma",
+                        "ålder": 29,
+                        "adress": {
+                            "gata": "Centrala Gatan 75",
+                            "stad": "Eskilstuna",
+                            "postnummer": "55667"
+                        }
+                    },
+                    {
+                        "relation": "son",
+                        "namn": "Lucas",
+                        "ålder": 5,
+                        "adress": {
+                            "gata": "Centrala Gatan 75",
+                            "stad": "Eskilstuna",
+                            "postnummer": "55667"
+                        }
+                    },
+                    {
+                        "relation": "dotter",
+                        "namn": "Sofia",
+                        "ålder": 3,
+                        "adress": {
+                            "gata": "Centrala Gatan 75",
+                            "stad": "Eskilstuna",
+                            "postnummer": "55667"
+                        }
+                    },
+                    {
+                        "relation": "farfar",
+                        "namn": "Karl",
+                        "ålder": 85,
+                        "adress": {
+                            "gata": "Äldregatan 1",
+                            "stad": "Västerås",
+                            "postnummer": "72211"
+                        }
+                    },
+                    {
+                        "relation": "farmor",
+                        "namn": "Ingrid",
+                        "ålder": 82,
+                        "adress": {
+                            "gata": "Äldregatan 1",
+                            "stad": "Västerås",
+                            "postnummer": "72211"
+                        }
+                    },
+                    {
+                        "relation": "morfar",
+                        "namn": "Göran",
+                        "ålder": 83,
+                        "adress": {
+                            "gata": "Centralvägen 20",
+                            "stad": "Uppsala",
+                            "postnummer": "75323"
+                        }
+                    },
+                    {
+                        "relation": "mormor",
+                        "namn": "Margareta",
+                        "ålder": 80,
+                        "adress": {
+                            "gata": "Centralvägen 20",
+                            "stad": "Uppsala",
+                            "postnummer": "75323"
+                        }
+                    }
+                ]
+            },
+            {
+                "namn": "Nina",
+                "ålder": 26,
+                "ärAktiv": true,
+                "hobbies": [
+                    "läsa",
+                    "fotografera",
+                    "simma"
+                ],
+                "adress": {
+                    "gata": "Lilla Gatan 80",
+                    "stad": "Borås",
+                    "postnummer": "66778"
+                },
+                "relationer": [
+                    {
+                        "relation": "granne",
+                        "namn": "Leo"
+                    },
+                    {
+                        "relation": "vän",
+                        "namn": "Michael"
+                    }
+                ]
             }
-          },
-          {
-            "relation": "far",
-            "namn": "Anders",
-            "ålder": 58,
-            "adress": {
-              "gata": "Lundvägen 10",
-              "stad": "Lund",
-              "postnummer": "22345"
-            }
-          },
-          {
-            "relation": "mor",
-            "namn": "Birgitta",
-            "ålder": 56,
-            "adress": {
-              "gata": "Lundvägen 10",
-              "stad": "Lund",
-              "postnummer": "22345"
-            }
-          },
-          {
-            "relation": "make",
-            "namn": "Johan",
-            "ålder": 32,
-            "adress": {
-              "gata": "Storgatan 1",
-              "stad": "Stockholm",
-              "postnummer": "12345"
-            }
-          },
-          {
-            "relation": "son",
-            "namn": "Erik",
-            "ålder": 4,
-            "adress": {
-              "gata": "Storgatan 1",
-              "stad": "Stockholm",
-              "postnummer": "12345"
-            }
-          },
-          {
-            "relation": "dotter",
-            "namn": "Maja",
-            "ålder": 2,
-            "adress": {
-              "gata": "Storgatan 1",
-              "stad": "Stockholm",
-              "postnummer": "12345"
-            }
-          },
-          {
-            "relation": "farfar",
-            "namn": "Gustav",
-            "ålder": 85,
-            "adress": {
-              "gata": "Äldregatan 3",
-              "stad": "Malmö",
-              "postnummer": "21234"
-            }
-          },
-          {
-            "relation": "farmor",
-            "namn": "Elsa",
-            "ålder": 83,
-            "adress": {
-              "gata": "Äldregatan 3",
-              "stad": "Malmö",
-              "postnummer": "21234"
-            }
-          },
-          {
-            "relation": "morfar",
-            "namn": "Sten",
-            "ålder": 82,
-            "adress": {
-              "gata": "Kyrkvägen 5",
-              "stad": "Göteborg",
-              "postnummer": "41234"
-            }
-          },
-          {
-            "relation": "mormor",
-            "namn": "Kerstin",
-            "ålder": 80,
-            "adress": {
-              "gata": "Kyrkvägen 5",
-              "stad": "Göteborg",
-              "postnummer": "41234"
-            }
-          }
         ]
-      }
-    ]
-  },
-  {
-    "personer": [
-      {
-        "namn": "Alice",
-        "ålder": 27,
-        "ärAktiv": false,
-        "hobbies": ["matlagning", "yoga", "läsa"],
-        "adress": {
-          "gata": "Lillgatan 5",
-          "stad": "Göteborg",
-          "postnummer": "54321"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "Emma"
-          },
-          {
-            "relation": "kollega",
-            "namn": "Charlie"
-          }
-        ]
-      },
-      {
-        "namn": "Bob",
-        "ålder": 35,
-        "ärAktiv": false,
-        "hobbies": ["programmera", "musik", "resa"],
-        "adress": {
-          "gata": "Huvudgatan 10",
-          "stad": "Malmö",
-          "postnummer": "67890"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "Oscar"
-          },
-          {
-            "relation": "granne",
-            "namn": "Diana"
-          }
-        ]
-      },
-      {
-        "namn": "Charlie",
-        "ålder": 40,
-        "ärAktiv": true,
-        "hobbies": ["läsa", "cykla", "programmera"],
-        "adress": {
-          "gata": "Centrala Gatan 15",
-          "stad": "Uppsala",
-          "postnummer": "11223"
-        },
-        "relationer": [
-          {
-            "relation": "kollega",
-            "namn": "Alice"
-          },
-          {
-            "relation": "kusin",
-            "namn": "David"
-          }
-        ]
-      },
-      {
-        "namn": "Diana",
-        "ålder": 22,
-        "ärAktiv": true,
-        "hobbies": ["fotografera", "måla", "simma"],
-        "adress": {
-          "gata": "Södra Vägen 20",
-          "stad": "Lund",
-          "postnummer": "98765"
-        },
-        "relationer": [
-          {
-            "relation": "granne",
-            "namn": "Bob"
-          },
-          {
-            "relation": "vän",
-            "namn": "Ellen"
-          }
-        ]
-      },
-      {
-        "namn": "David",
-        "ålder": 33,
-        "ärAktiv": false,
-        "hobbies": ["spel", "resa", "matlagning"],
-        "adress": {
-          "gata": "Västra Gatan 25",
-          "stad": "Helsingborg",
-          "postnummer": "55443"
-        },
-        "relationer": [
-          {
-            "relation": "kusin",
-            "namn": "Charlie"
-          },
-          {
-            "relation": "kollega",
-            "namn": "Frank"
-          }
-        ]
-      },
-      {
-        "namn": "Ellen",
-        "ålder": 29,
-        "ärAktiv": true,
-        "hobbies": ["träning", "resa", "dansa"],
-        "adress": {
-          "gata": "Norr Gatan 30",
-          "stad": "Örebro",
-          "postnummer": "33445"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "Diana"
-          },
-          {
-            "relation": "kollega",
-            "namn": "George"
-          }
-        ]
-      },
-      {
-        "namn": "Frank",
-        "ålder": 31,
-        "ärAktiv": true,
-        "hobbies": ["klättring", "spel", "laga mat"],
-        "adress": {
-          "gata": "Östra Gatan 35",
-          "stad": "Västerås",
-          "postnummer": "55667"
-        },
-        "relationer": [
-          {
-            "relation": "kollega",
-            "namn": "David"
-          },
-          {
-            "relation": "vän",
-            "namn": "Hanna"
-          }
-        ]
-      },
-      {
-        "namn": "George",
-        "ålder": 36,
-        "ärAktiv": false,
-        "hobbies": ["läsa", "resa", "fotografera"],
-        "adress": {
-          "gata": "Lilla Gatan 40",
-          "stad": "Norrköping",
-          "postnummer": "66778"
-        },
-        "relationer": [
-          {
-            "relation": "kollega",
-            "namn": "Ellen"
-          },
-          {
-            "relation": "vän",
-            "namn": "Ivan"
-          }
-        ]
-      },
-      {
-        "namn": "Hanna",
-        "ålder": 25,
-        "ärAktiv": true,
-        "hobbies": ["simma", "cykla", "laga mat"],
-        "adress": {
-          "gata": "Centrala Gatan 45",
-          "stad": "Sundsvall",
-          "postnummer": "77889"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "Frank"
-          },
-          {
-            "relation": "kollega",
-            "namn": "Jack"
-          }
-        ]
-      },
-      {
-        "namn": "Ivan",
-        "ålder": 38,
-        "ärAktiv": false,
-        "hobbies": ["springa", "läsa", "spela gitarr"],
-        "adress": {
-          "gata": "Västra Gatan 50",
-          "stad": "Karlstad",
-          "postnummer": "88990"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "George"
-          },
-          {
-            "relation": "granne",
-            "namn": "Julia"
-          }
-        ]
-      },
-      {
-        "namn": "Jack",
-        "ålder": 32,
-        "ärAktiv": true,
-        "hobbies": ["dansa", "laga mat", "resa"],
-        "adress": {
-          "gata": "Lilla Gatan 55",
-          "stad": "Östersund",
-          "postnummer": "99001"
-        },
-        "relationer": [
-          {
-            "relation": "kollega",
-            "namn": "Hanna"
-          },
-          {
-            "relation": "vän",
-            "namn": "Karen"
-          }
-        ]
-      },
-      {
-        "namn": "Julia",
-        "ålder": 34,
-        "ärAktiv": true,
-        "hobbies": ["yoga", "läsa", "simma"],
-        "adress": {
-          "gata": "Norra Gatan 60",
-          "stad": "Gävle",
-          "postnummer": "11212"
-        },
-        "relationer": [
-          {
-            "relation": "granne",
-            "namn": "Ivan"
-          },
-          {
-            "relation": "vän",
-            "namn": "Leo"
-          }
-        ]
-      },
-      {
-        "namn": "Karen",
-        "ålder": 29,
-        "ärAktiv": true,
-        "hobbies": ["måla", "läsa", "resa"],
-        "adress": {
-          "gata": "Södra Vägen 65",
-          "stad": "Kalmar",
-          "postnummer": "22134"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "Jack"
-          },
-          {
-            "relation": "kollega",
-            "namn": "Michael"
-          }
-        ]
-      },
-      {
-        "namn": "Leo",
-        "ålder": 27,
-        "ärAktiv": true,
-        "hobbies": ["fotografera", "cykla", "laga mat"],
-        "adress": {
-          "gata": "Huvudgatan 70",
-          "stad": "Halmstad",
-          "postnummer": "33445"
-        },
-        "relationer": [
-          {
-            "relation": "vän",
-            "namn": "Julia"
-          },
-          {
-            "relation": "granne",
-            "namn": "Nina"
-          }
-        ]
-      },
-      {
-        "namn": "Michael",
-        "ålder": 30,
-        "ärAktiv": true,
-        "hobbies": ["springa", "programmera", "resa"],
-        "adress": {
-          "gata": "Centrala Gatan 75",
-          "stad": "Eskilstuna",
-          "postnummer": "55667"
-        },
-        "relationer": [
-          {
-            "relation": "far",
-            "namn": "Robert",
-            "ålder": 60,
-            "adress": {
-              "gata": "Gamla Vägen 5",
-              "stad": "Västerås",
-              "postnummer": "72212"
+    },
+    {
+        "personer": [
+            {
+                "namn": "Alice",
+                "ålder": 30,
+                "yrke": "Ingenjör",
+                "hobbies": [
+                    "läsa",
+                    "cykla",
+                    "programmera"
+                ],
+                "kontakt": {
+                    "telefon": "070-1234567",
+                    "email": "alice@example.com",
+                    "adress": {
+                        "gata": "Storgatan 1",
+                        "stad": "Stockholm",
+                        "land": "Sverige"
+                    }
+                }
+            },
+            {
+                "namn": "Bob",
+                "ålder": 25,
+                "yrke": "Designer",
+                "hobbies": [
+                    "måla",
+                    "rita",
+                    "fotografera"
+                ],
+                "kontakt": {
+                    "telefon": "070-7654321",
+                    "email": "bob@example.com",
+                    "adress": {
+                        "gata": "Lillgatan 2",
+                        "stad": "Göteborg",
+                        "land": "Sverige"
+                    }
+                }
             }
-          },
-          {
-            "relation": "mor",
-            "namn": "Elisabeth",
-            "ålder": 58,
-            "adress": {
-              "gata": "Gamla Vägen 5",
-              "stad": "Västerås",
-              "postnummer": "72212"
-            }
-          },
-          {
-            "relation": "bror",
-            "namn": "David",
-            "ålder": 35,
-            "adress": {
-              "gata": "Huvudgatan 10",
-              "stad": "Malmö",
-              "postnummer": "67890"
-            }
-          },
-          {
-            "relation": "syster",
-            "namn": "Anna",
-            "ålder": 28,
-            "adress": {
-              "gata": "Lillgatan 5",
-              "stad": "Göteborg",
-              "postnummer": "54321"
-            }
-          },
-          {
-            "relation": "fru",
-            "namn": "Emma",
-            "ålder": 29,
-            "adress": {
-              "gata": "Centrala Gatan 75",
-              "stad": "Eskilstuna",
-              "postnummer": "55667"
-            }
-          },
-          {
-            "relation": "son",
-            "namn": "Lucas",
-            "ålder": 5,
-            "adress": {
-              "gata": "Centrala Gatan 75",
-              "stad": "Eskilstuna",
-              "postnummer": "55667"
-            }
-          },
-          {
-            "relation": "dotter",
-            "namn": "Sofia",
-            "ålder": 3,
-            "adress": {
-              "gata": "Centrala Gatan 75",
-              "stad": "Eskilstuna",
-              "postnummer": "55667"
-            }
-          },
-          {
-            "relation": "farfar",
-            "namn": "Karl",
-            "ålder": 85,
-            "adress": {
-              "gata": "Äldregatan 1",
-              "stad": "Västerås",
-              "postnummer": "72211"
-            }
-          },
-          {
-            "relation": "farmor",
-            "namn": "Ingrid",
-            "ålder": 82,
-            "adress": {
-              "gata": "Äldregatan 1",
-              "stad": "Västerås",
-              "postnummer": "72211"
-            }
-          },
-          {
-            "relation": "morfar",
-            "namn": "Göran",
-            "ålder": 83,
-            "adress": {
-              "gata": "Centralvägen 20",
-              "stad": "Uppsala",
-              "postnummer": "75323"
-            }
-          },
-          {
-            "relation": "mormor",
-            "namn": "Margareta",
-            "ålder": 80,
-            "adress": {
-              "gata": "Centralvägen 20",
-              "stad": "Uppsala",
-              "postnummer": "75323"
-            }
-          }
-        ]
-      },
-      {
-        "namn": "Nina",
-        "ålder": 26,
-        "ärAktiv": true,
-        "hobbies": ["läsa", "fotografera", "simma"],
-        "adress": {
-          "gata": "Lilla Gatan 80",
-          "stad": "Borås",
-          "postnummer": "66778"
-        },
-        "relationer": [
-          {
-            "relation": "granne",
-            "namn": "Leo"
-          },
-          {
-            "relation": "vän",
-            "namn": "Michael"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "personer": [
-      {
-        "namn": "Alice",
-        "ålder": 30,
-        "yrke": "Ingenjör",
-        "hobbies": ["läsa", "cykla", "programmera"],
-        "kontakt": {
-          "telefon": "070-1234567",
-          "email": "alice@example.com",
-          "adress": {
-            "gata": "Storgatan 1",
-            "stad": "Stockholm",
-            "land": "Sverige"
-          }
-        }
-      },
-      {
-        "namn": "Bob",
-        "ålder": 25,
-        "yrke": "Designer",
-        "hobbies": ["måla", "rita", "fotografera"],
-        "kontakt": {
-          "telefon": "070-7654321",
-          "email": "bob@example.com",
-          "adress": {
-            "gata": "Lillgatan 2",
-            "stad": "Göteborg",
-            "land": "Sverige"
-          }
-        }
-      }
-    ],
-    "företag": [
-      {
-        "namn": "Tech Solutions",
-        "grundat": 2010,
-        "anställda": 100,
-        "kontor": [
-          {
-            "stad": "Stockholm",
-            "land": "Sverige",
-            "adress": "Västra Gatan 5"
-          },
-          {
-            "stad": "Malmö",
-            "land": "Sverige",
-            "adress": "Östra Vägen 10"
-          }
         ],
-        "kontakt": {
-          "telefon": "08-123456",
-          "email": "info@techsolutions.se",
-          "webbplats": "www.techsolutions.se"
-        }
-      },
-      {
-        "namn": "Creative Minds",
-        "grundat": 2015,
-        "anställda": 50,
-        "kontor": [
-          {
-            "stad": "Göteborg",
-            "land": "Sverige",
-            "adress": "Norra Vägen 7"
-          },
-          {
-            "stad": "Uppsala",
-            "land": "Sverige",
-            "adress": "Södra Gatan 4"
-          }
+        "företag": [
+            {
+                "namn": "Tech Solutions",
+                "grundat": 2010,
+                "anställda": 100,
+                "kontor": [
+                    {
+                        "stad": "Stockholm",
+                        "land": "Sverige",
+                        "adress": "Västra Gatan 5"
+                    },
+                    {
+                        "stad": "Malmö",
+                        "land": "Sverige",
+                        "adress": "Östra Vägen 10"
+                    }
+                ],
+                "kontakt": {
+                    "telefon": "08-123456",
+                    "email": "info@techsolutions.se",
+                    "webbplats": "www.techsolutions.se"
+                }
+            },
+            {
+                "namn": "Creative Minds",
+                "grundat": 2015,
+                "anställda": 50,
+                "kontor": [
+                    {
+                        "stad": "Göteborg",
+                        "land": "Sverige",
+                        "adress": "Norra Vägen 7"
+                    },
+                    {
+                        "stad": "Uppsala",
+                        "land": "Sverige",
+                        "adress": "Södra Gatan 4"
+                    }
+                ],
+                "kontakt": {
+                    "telefon": "031-654321",
+                    "email": "kontakt@creativeminds.se",
+                    "webbplats": "www.creativeminds.se"
+                }
+            }
         ],
-        "kontakt": {
-          "telefon": "031-654321",
-          "email": "kontakt@creativeminds.se",
-          "webbplats": "www.creativeminds.se"
-        }
-      }
-    ],
-    "produkter": [
-      {
-        "namn": "Laptop",
-        "kategori": "Elektronik",
-        "pris": 10000,
-        "lagerstatus": "I lager",
-        "specifikationer": {
-          "märke": "TechBrand",
-          "modell": "X100",
-          "processor": "Intel i7",
-          "ram": "16GB",
-          "lagring": "512GB SSD"
-        }
-      },
-      {
-        "namn": "Smartphone",
-        "kategori": "Elektronik",
-        "pris": 8000,
-        "lagerstatus": "Slutsåld",
-        "specifikationer": {
-          "märke": "SmartTech",
-          "modell": "S20",
-          "skärm": "6.5 tum",
-          "batteri": "4000mAh",
-          "kamera": "12MP"
-        }
-      }
-    ],
-    "resor": [
-      {
-        "destination": "Paris",
-        "land": "Frankrike",
-        "pris": 5000,
-        "datum": {
-          "avresa": "2024-08-01",
-          "återkomst": "2024-08-10"
-        },
-        "detaljer": {
-          "flyg": {
-            "flygbolag": "Air France",
-            "flightnummer": "AF1234",
-            "avgångstid": "08:00",
-            "ankomsttid": "10:00"
-          },
-          "boende": {
-            "hotell": "Hotel Paris",
-            "adress": "Rue de Paris 3",
-            "antal_nätter": 9
-          }
-        }
-      },
-      {
-        "destination": "Tokyo",
-        "land": "Japan",
-        "pris": 15000,
-        "datum": {
-          "avresa": "2024-09-15",
-          "återkomst": "2024-09-25"
-        },
-        "detaljer": {
-          "flyg": {
-            "flygbolag": "Japan Airlines",
-            "flightnummer": "JL5678",
-            "avgångstid": "14:00",
-            "ankomsttid": "06:00"
-          },
-          "boende": {
-            "hotell": "Hotel Tokyo",
-            "adress": "Tokyo Street 5",
-            "antal_nätter": 10
-          }
-        }
-      }
-    ],
-    "evenemang": [
-      {
-        "namn": "Konsert",
-        "plats": "Stockholm",
-        "datum": "2024-10-01",
-        "tid": "19:00",
-        "biljetter": {
-          "pris": 500,
-          "tillgänglighet": "I lager"
-        },
-        "detaljer": {
-          "artist": "Famous Band",
-          "genre": "Rock",
-          "längd": "2 timmar"
-        }
-      },
-      {
-        "namn": "Teaterföreställning",
-        "plats": "Göteborg",
-        "datum": "2024-11-15",
-        "tid": "18:00",
-        "biljetter": {
-          "pris": 300,
-          "tillgänglighet": "Slutsåld"
-        },
-        "detaljer": {
-          "pjäs": "Hamlet",
-          "regissör": "Jane Doe",
-          "längd": "3 timmar"
-        }
-      }
-    ],
-    "bibliotek": {
-      "böcker": [
-        {
-          "titel": "En bok",
-          "författare": "Författare 1",
-          "år": 2020,
-          "genre": "Fiktion",
-          "status": "Tillgänglig"
-        },
-        {
-          "titel": "En annan bok",
-          "författare": "Författare 2",
-          "år": 2018,
-          "genre": "Biografi",
-          "status": "Utlånad"
-        }
-      ],
-      "tidningar": [
-        {
-          "titel": "Dagstidning",
-          "datum": "2024-07-01",
-          "utgivare": "Dagstidningsföretaget"
-        },
-        {
-          "titel": "Veckotidning",
-          "datum": "2024-07-05",
-          "utgivare": "Veckotidningsföretaget"
-        }
-      ],
-      "medlemmar": [
-        {
-          "namn": "Anna",
-          "medlemsnummer": 12345,
-          "registreringsdatum": "2023-01-01",
-          "kontakt": {
-            "telefon": "070-1112233",
-            "email": "anna@example.com"
-          }
-        },
-        {
-          "namn": "Erik",
-          "medlemsnummer": 67890,
-          "registreringsdatum": "2022-05-15",
-          "kontakt": {
-            "telefon": "070-4445566",
-            "email": "erik@example.com"
-          }
-        }
-      ]
-    }
-  },
-  {
-    "företag": [
-      {
-        "namn": "Tech Solutions",
-        "grundat": 2010,
-        "anställda": 100,
-        "kontor": [
-          {
-            "stad": "Stockholm",
-            "land": "Sverige",
-            "adress": "Västra Gatan 5"
-          },
-          {
-            "stad": "Malmö",
-            "land": "Sverige",
-            "adress": "Östra Vägen 10"
-          }
+        "produkter": [
+            {
+                "namn": "Laptop",
+                "kategori": "Elektronik",
+                "pris": 10000,
+                "lagerstatus": "I lager",
+                "specifikationer": {
+                    "märke": "TechBrand",
+                    "modell": "X100",
+                    "processor": "Intel i7",
+                    "ram": "16GB",
+                    "lagring": "512GB SSD"
+                }
+            },
+            {
+                "namn": "Smartphone",
+                "kategori": "Elektronik",
+                "pris": 8000,
+                "lagerstatus": "Slutsåld",
+                "specifikationer": {
+                    "märke": "SmartTech",
+                    "modell": "S20",
+                    "skärm": "6.5 tum",
+                    "batteri": "4000mAh",
+                    "kamera": "12MP"
+                }
+            }
         ],
-        "kontakt": {
-          "telefon": "08-123456",
-          "email": "info@techsolutions.se",
-          "webbplats": "www.techsolutions.se"
-        },
-        "recensioner": [
-          {
-            "recensent": "Anna Svensson",
-            "datum": "2024-06-15",
-            "betyg": 5,
-            "kommentar": "Fantastisk service och mycket kunnig personal!"
-          },
-          {
-            "recensent": "Björn Eriksson",
-            "datum": "2024-05-20",
-            "betyg": 4,
-            "kommentar": "Bra produkter men leveransen tog lite tid."
-          }
+        "resor": [
+            {
+                "destination": "Paris",
+                "land": "Frankrike",
+                "pris": 5000,
+                "datum": {
+                    "avresa": "2024-08-01",
+                    "återkomst": "2024-08-10"
+                },
+                "detaljer": {
+                    "flyg": {
+                        "flygbolag": "Air France",
+                        "flightnummer": "AF1234",
+                        "avgångstid": "08:00",
+                        "ankomsttid": "10:00"
+                    },
+                    "boende": {
+                        "hotell": "Hotel Paris",
+                        "adress": "Rue de Paris 3",
+                        "antal_nätter": 9
+                    }
+                }
+            },
+            {
+                "destination": "Tokyo",
+                "land": "Japan",
+                "pris": 15000,
+                "datum": {
+                    "avresa": "2024-09-15",
+                    "återkomst": "2024-09-25"
+                },
+                "detaljer": {
+                    "flyg": {
+                        "flygbolag": "Japan Airlines",
+                        "flightnummer": "JL5678",
+                        "avgångstid": "14:00",
+                        "ankomsttid": "06:00"
+                    },
+                    "boende": {
+                        "hotell": "Hotel Tokyo",
+                        "adress": "Tokyo Street 5",
+                        "antal_nätter": 10
+                    }
+                }
+            }
+        ],
+        "evenemang": [
+            {
+                "namn": "Konsert",
+                "plats": "Stockholm",
+                "datum": "2024-10-01",
+                "tid": "19:00",
+                "biljetter": {
+                    "pris": 500,
+                    "tillgänglighet": "I lager"
+                },
+                "detaljer": {
+                    "artist": "Famous Band",
+                    "genre": "Rock",
+                    "längd": "2 timmar"
+                }
+            },
+            {
+                "namn": "Teaterföreställning",
+                "plats": "Göteborg",
+                "datum": "2024-11-15",
+                "tid": "18:00",
+                "biljetter": {
+                    "pris": 300,
+                    "tillgänglighet": "Slutsåld"
+                },
+                "detaljer": {
+                    "pjäs": "Hamlet",
+                    "regissör": "Jane Doe",
+                    "längd": "3 timmar"
+                }
+            }
+        ],
+        "bibliotek": {
+            "böcker": [
+                {
+                    "titel": "En bok",
+                    "författare": "Författare 1",
+                    "år": 2020,
+                    "genre": "Fiktion",
+                    "status": "Tillgänglig"
+                },
+                {
+                    "titel": "En annan bok",
+                    "författare": "Författare 2",
+                    "år": 2018,
+                    "genre": "Biografi",
+                    "status": "Utlånad"
+                }
+            ],
+            "tidningar": [
+                {
+                    "titel": "Dagstidning",
+                    "datum": "2024-07-01",
+                    "utgivare": "Dagstidningsföretaget"
+                },
+                {
+                    "titel": "Veckotidning",
+                    "datum": "2024-07-05",
+                    "utgivare": "Veckotidningsföretaget"
+                }
+            ],
+            "medlemmar": [
+                {
+                    "namn": "Anna",
+                    "medlemsnummer": 12345,
+                    "registreringsdatum": "2023-01-01",
+                    "kontakt": {
+                        "telefon": "070-1112233",
+                        "email": "anna@example.com"
+                    }
+                },
+                {
+                    "namn": "Erik",
+                    "medlemsnummer": 67890,
+                    "registreringsdatum": "2022-05-15",
+                    "kontakt": {
+                        "telefon": "070-4445566",
+                        "email": "erik@example.com"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "företag": [
+            {
+                "namn": "Tech Solutions",
+                "grundat": 2010,
+                "anställda": 100,
+                "kontor": [
+                    {
+                        "stad": "Stockholm",
+                        "land": "Sverige",
+                        "adress": "Västra Gatan 5"
+                    },
+                    {
+                        "stad": "Malmö",
+                        "land": "Sverige",
+                        "adress": "Östra Vägen 10"
+                    }
+                ],
+                "kontakt": {
+                    "telefon": "08-123456",
+                    "email": "info@techsolutions.se",
+                    "webbplats": "www.techsolutions.se"
+                },
+                "recensioner": [
+                    {
+                        "recensent": "Anna Svensson",
+                        "datum": "2024-06-15",
+                        "betyg": 5,
+                        "kommentar": "Fantastisk service och mycket kunnig personal!"
+                    },
+                    {
+                        "recensent": "Björn Eriksson",
+                        "datum": "2024-05-20",
+                        "betyg": 4,
+                        "kommentar": "Bra produkter men leveransen tog lite tid."
+                    }
+                ]
+            },
+            {
+                "namn": "Creative Minds",
+                "grundat": 2015,
+                "anställda": 50,
+                "kontor": [
+                    {
+                        "stad": "Göteborg",
+                        "land": "Sverige",
+                        "adress": "Norra Vägen 7"
+                    },
+                    {
+                        "stad": "Uppsala",
+                        "land": "Sverige",
+                        "adress": "Södra Gatan 4"
+                    }
+                ],
+                "kontakt": {
+                    "telefon": "031-654321",
+                    "email": "kontakt@creativeminds.se",
+                    "webbplats": "www.creativeminds.se"
+                },
+                "recensioner": [
+                    {
+                        "recensent": "Karin Larsson",
+                        "datum": "2024-04-10",
+                        "betyg": 5,
+                        "kommentar": "Mycket kreativa lösningar och vänlig personal!"
+                    },
+                    {
+                        "recensent": "Lars Johansson",
+                        "datum": "2024-03-05",
+                        "betyg": 3,
+                        "kommentar": "Okej service men förväntade mig mer av resultatet."
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "namn": "Creative Minds",
-        "grundat": 2015,
-        "anställda": 50,
-        "kontor": [
-          {
-            "stad": "Göteborg",
-            "land": "Sverige",
-            "adress": "Norra Vägen 7"
-          },
-          {
-            "stad": "Uppsala",
-            "land": "Sverige",
-            "adress": "Södra Gatan 4"
-          }
+    },
+    {
+        "JS": {
+            "språk": "JavaScript",
+            "beskrivning": "JavaScript är ett populärt programmeringsspråk som har genomgått flera versioner och används i många olika sammanhang.",
+            "versioner": [
+                {
+                    "version": "ES5",
+                    "releaseYear": 2009,
+                    "beskrivning": "ES5 införde bland annat strikt läge och JSON-hantering.",
+                    "features": [
+                        "Strict mode",
+                        "Getter och Setter",
+                        "JSON"
+                    ]
+                },
+                {
+                    "version": "ES6",
+                    "releaseYear": 2015,
+                    "beskrivning": "ES6 lade till moderna funktioner som pilar, klasser och moduler.",
+                    "features": [
+                        "Arrow functions",
+                        "Classes",
+                        "Template literals",
+                        "Destructuring",
+                        "Modules"
+                    ]
+                },
+                {
+                    "version": "ES7",
+                    "releaseYear": 2016,
+                    "beskrivning": "ES7 tillförde exponentieringsoperatorn och en metod för att kontrollera om ett värde finns i en array.",
+                    "features": [
+                        "Exponentiation operator",
+                        "Array.prototype.includes"
+                    ]
+                },
+                {
+                    "version": "ES8",
+                    "releaseYear": 2017,
+                    "beskrivning": "ES8 förbättrade hanteringen av asynkrona funktioner och tillhandahöll nya metoder för objektmanipulering.",
+                    "features": [
+                        "Async functions",
+                        "Object.entries",
+                        "Object.values"
+                    ]
+                }
+            ],
+            "populära_bibliotek": [
+                {
+                    "namn": "React",
+                    "beskrivning": "Ett bibliotek för att bygga användargränssnitt.",
+                    "webbplats": "https://reactjs.org/"
+                },
+                {
+                    "namn": "Lodash",
+                    "beskrivning": "Ett bibliotek med verktyg för att arbeta med arrays, objekt och funktioner.",
+                    "webbplats": "https://lodash.com/"
+                },
+                {
+                    "namn": "Axios",
+                    "beskrivning": "Ett bibliotek för att göra HTTP-förfrågningar.",
+                    "webbplats": "https://axios-http.com/"
+                }
+            ],
+            "användningsområden": [
+                "Webbutveckling",
+                "Server-side scripting",
+                "Mobilapplikationer",
+                "Spelutveckling"
+            ]
+        }
+    },
+    {
+        "språk": "JavaScript",
+        "introduktion": "JavaScript är ett mångsidigt programmeringsspråk som används för att skapa dynamiska och interaktiva webbapplikationer. Språket har utvecklats kraftigt sedan det först släpptes.",
+        "versioner": [
+            {
+                "version": "ECMAScript 5 (ES5)",
+                "utgivningsår": 2009,
+                "sammanfattning": "ES5 var en stor uppdatering som lade till flera viktiga funktioner och strikta regler för att förbättra kodens kvalitet.",
+                "funktioner": [
+                    "Strikt läge (Strict mode)",
+                    "Getters och Setters",
+                    "JSON-hantering"
+                ]
+            },
+            {
+                "version": "ECMAScript 6 (ES6)",
+                "utgivningsår": 2015,
+                "sammanfattning": "ES6, även känd som ECMAScript 2015, introducerade en rad nya syntaxer och funktioner som underlättar modern JavaScript-utveckling.",
+                "funktioner": [
+                    "Pilar (Arrow functions)",
+                    "Klasser (Classes)",
+                    "Mallsträngar (Template literals)",
+                    "Destrukturering (Destructuring)",
+                    "Moduler (Modules)"
+                ]
+            },
+            {
+                "version": "ECMAScript 7 (ES7)",
+                "utgivningsår": 2016,
+                "sammanfattning": "ES7 fokuserade på att lägga till nya operatörer och metoder för att göra koden mer läsbar och effektiv.",
+                "funktioner": [
+                    "Exponentieringsoperator (Exponentiation operator)",
+                    "Array.prototype.includes"
+                ]
+            },
+            {
+                "version": "ECMAScript 8 (ES8)",
+                "utgivningsår": 2017,
+                "sammanfattning": "ES8 fortsatte att förbättra asynkron programmering och erbjöd nya verktyg för att hantera objekt.",
+                "funktioner": [
+                    "Asynkrona funktioner (Async functions)",
+                    "Object.entries",
+                    "Object.values"
+                ]
+            }
         ],
-        "kontakt": {
-          "telefon": "031-654321",
-          "email": "kontakt@creativeminds.se",
-          "webbplats": "www.creativeminds.se"
-        },
-        "recensioner": [
-          {
-            "recensent": "Karin Larsson",
-            "datum": "2024-04-10",
-            "betyg": 5,
-            "kommentar": "Mycket kreativa lösningar och vänlig personal!"
-          },
-          {
-            "recensent": "Lars Johansson",
-            "datum": "2024-03-05",
-            "betyg": 3,
-            "kommentar": "Okej service men förväntade mig mer av resultatet."
-          }
+        "populära_bibliotek": [
+            {
+                "namn": "React",
+                "typ": "Bibliotek",
+                "syfte": "Bygga användargränssnitt genom att använda komponentbaserad arkitektur.",
+                "webbplats": "https://reactjs.org/"
+            },
+            {
+                "namn": "Lodash",
+                "typ": "Verktygsbibliotek",
+                "syfte": "Erbjuda hjälpfunktioner för att arbeta med arrays, objekt och funktioner.",
+                "webbplats": "https://lodash.com/"
+            },
+            {
+                "namn": "Axios",
+                "typ": "HTTP-klient",
+                "syfte": "Göra HTTP-förfrågningar för att kommunicera med servern.",
+                "webbplats": "https://axios-http.com/"
+            }
+        ],
+        "användningsområden": [
+            "Webbutveckling",
+            "Server-side scripting",
+            "Utveckling av mobilapplikationer",
+            "Spelutveckling"
         ]
-      }
-    ]
-  },
-  {
-    "JS": {
-      "språk": "JavaScript",
-      "beskrivning": "JavaScript är ett populärt programmeringsspråk som har genomgått flera versioner och används i många olika sammanhang.",
-      "versioner": [
-        {
-          "version": "ES5",
-          "releaseYear": 2009,
-          "beskrivning": "ES5 införde bland annat strikt läge och JSON-hantering.",
-          "features": ["Strict mode", "Getter och Setter", "JSON"]
-        },
-        {
-          "version": "ES6",
-          "releaseYear": 2015,
-          "beskrivning": "ES6 lade till moderna funktioner som pilar, klasser och moduler.",
-          "features": ["Arrow functions", "Classes", "Template literals", "Destructuring", "Modules"]
-        },
-        {
-          "version": "ES7",
-          "releaseYear": 2016,
-          "beskrivning": "ES7 tillförde exponentieringsoperatorn och en metod för att kontrollera om ett värde finns i en array.",
-          "features": ["Exponentiation operator", "Array.prototype.includes"]
-        },
-        {
-          "version": "ES8",
-          "releaseYear": 2017,
-          "beskrivning": "ES8 förbättrade hanteringen av asynkrona funktioner och tillhandahöll nya metoder för objektmanipulering.",
-          "features": ["Async functions", "Object.entries", "Object.values"]
+    },
+    {
+        "HTML": {
+            "språk": "HTML",
+            "introduktion": "HTML är ett märkspråk som används för att skapa och strukturera innehåll på webben. Det är grundläggande för alla webbapplikationer och webbsidor.",
+            "versioner": [
+                {
+                    "version": "HTML 4.01",
+                    "utgivningsår": 1999,
+                    "sammanfattning": "HTML 4.01 var en viktig uppdatering som standardiserade många av funktionerna från HTML 4.0 och förbättrade stödet för stil och struktur.",
+                    "funktioner": [
+                        "Förbättrat stöd för CSS",
+                        "Förbättrad semantik och struktur",
+                        "Formulärhantering"
+                    ]
+                },
+                {
+                    "version": "HTML5",
+                    "utgivningsår": 2014,
+                    "sammanfattning": "HTML5 är den senaste versionen av HTML och introducerade nya element och API:er för att stödja moderna webbläsare och applikationer.",
+                    "funktioner": [
+                        "Nya semantiska element som `<article>`, `<section>`, `<nav>`, `<footer>`",
+                        "Inbyggt stöd för multimedia med `<audio>` och `<video>`",
+                        "Formulärkontroller som `<input type=\"date\">` och `<input type=\"range\">`",
+                        "Stöd för lokal lagring med Web Storage API",
+                        "Canvas-element för grafisk rendering"
+                    ]
+                }
+            ],
+            "vanliga_element": [
+                {
+                    "namn": "DOCTYPE",
+                    "beskrivning": "Specifikationen för HTML-dokumentets version.",
+                    "exempel": "<!DOCTYPE html>"
+                },
+                {
+                    "namn": "html",
+                    "beskrivning": "Rot-elementet för ett HTML-dokument.",
+                    "exempel": "<html> ... </html>"
+                },
+                {
+                    "namn": "head",
+                    "beskrivning": "Innehåller metadata om dokumentet, såsom titel och länkar till externa resurser.",
+                    "exempel": "<head> ... </head>"
+                },
+                {
+                    "namn": "body",
+                    "beskrivning": "Innehåller det synliga innehållet på webbsidan.",
+                    "exempel": "<body> ... </body>"
+                },
+                {
+                    "namn": "a",
+                    "beskrivning": "Skapar en hyperlänk till en annan webbsida eller resurs.",
+                    "exempel": "<a href=\"https://example.com\">Länktext</a>"
+                },
+                {
+                    "namn": "div",
+                    "beskrivning": "Används för att gruppera och styla innehåll med CSS.",
+                    "exempel": "<div>Innehåll här</div>"
+                },
+                {
+                    "namn": "span",
+                    "beskrivning": "Används för att styla en del av en text eller ett inline-element.",
+                    "exempel": "<span>Text att styla</span>"
+                }
+            ],
+            "användningsområden": [
+                "Strukturera webbsidans innehåll",
+                "Definiera layout och design med CSS",
+                "Skapa formulär och interaktiva element",
+                "Integrera multimedia såsom video och ljud"
+            ]
         }
-      ],
-      "populära_bibliotek": [
-        {
-          "namn": "React",
-          "beskrivning": "Ett bibliotek för att bygga användargränssnitt.",
-          "webbplats": "https://reactjs.org/"
-        },
-        {
-          "namn": "Lodash",
-          "beskrivning": "Ett bibliotek med verktyg för att arbeta med arrays, objekt och funktioner.",
-          "webbplats": "https://lodash.com/"
-        },
-        {
-          "namn": "Axios",
-          "beskrivning": "Ett bibliotek för att göra HTTP-förfrågningar.",
-          "webbplats": "https://axios-http.com/"
+    },
+    {
+        "CSS": {
+            "språk": "CSS",
+            "introduktion": "CSS (Cascading Style Sheets) är ett stilarksspråk som används för att beskriva presentationen av ett dokument som skrivs i HTML eller XML. CSS styr utseendet på webbsidor genom att definiera hur HTML-element ska visas på skärmen, i tryck eller på andra medier.",
+            "versioner": [
+                {
+                    "version": "CSS2",
+                    "utgivningsår": 1998,
+                    "sammanfattning": "CSS2 introducerade många nya funktioner och förbättringar över CSS1, inklusive bättre stöd för layout och mediehantering. Den la grunden för många av de stilregler som används idag.",
+                    "funktioner": [
+                        "Positionering med `position` och `z-index`",
+                        "Stöd för flera stilmallar med `@import`",
+                        "Mediefrågor för att hantera olika enheter med `@media`",
+                        "Textformattering med nya egenskaper som `text-shadow`"
+                    ]
+                },
+                {
+                    "version": "CSS3",
+                    "utgivningsår": "1999 (delvis) och fortfarande under utveckling",
+                    "sammanfattning": "CSS3 är den senaste versionen och är uppdelad i moduler som var och en lägger till nya funktioner och förbättringar. CSS3 introducerade många nya funktioner för design och layout.",
+                    "funktioner": [
+                        "Nya layoutmoduler som Flexbox och Grid",
+                        "Animering och övergångar med `@keyframes` och `transition`",
+                        "Nya selektorer som `:nth-child()` och `:not()`",
+                        "Bakgrunds- och gränseffekter med `border-radius`, `box-shadow` och `background-size`",
+                        "Responsiv design med `@media` för att hantera olika skärmstorlekar"
+                    ]
+                }
+            ],
+            "vanliga_element": [
+                {
+                    "namn": "selector",
+                    "beskrivning": "Väljer de HTML-element som ska stylas. Kan vara en typ, klass eller ID.",
+                    "exempel": "p { color: blue; }"
+                },
+                {
+                    "namn": "property",
+                    "beskrivning": "Definierar vilken stil som ska appliceras på det valda elementet.",
+                    "exempel": "color"
+                },
+                {
+                    "namn": "value",
+                    "beskrivning": "Specificerar värdet på en egenskap i en CSS-regel.",
+                    "exempel": "blue"
+                },
+                {
+                    "namn": "rule",
+                    "beskrivning": "En fullständig CSS-regel som inkluderar en selektor och en uppsättning egenskaper med värden.",
+                    "exempel": "p { color: blue; font-size: 16px; }"
+                }
+            ],
+            "användningsområden": [
+                "Styling av text och typografi",
+                "Layout och positionering av element på webbsidan",
+                "Design av responsiva webbsidor för olika enheter",
+                "Skapande av visuella effekter och animeringar",
+                "Förbättring av användargränssnitt med övergångar och animationer"
+            ]
         }
-      ],
-      "användningsområden": ["Webbutveckling", "Server-side scripting", "Mobilapplikationer", "Spelutveckling"]
+    },
+    {
+        "uuid": "1.92OmaooyLSIZn8MhhXOKYCkhkYR8H1hMV8igwW7YB4rpOwSEWqNzzDaZbShoIze3xcoeKBHvcyz6bK6jt2mDX0H7BXHDJgjXswolcbMeiEmMvZAVLl4QwhBCzg5I",
+        "version": 3,
+        "domain": "feue256.github.io",
+        "ts": 1722333441339
     }
-  },
-  {
-    "språk": "JavaScript",
-    "introduktion": "JavaScript är ett mångsidigt programmeringsspråk som används för att skapa dynamiska och interaktiva webbapplikationer. Språket har utvecklats kraftigt sedan det först släpptes.",
-    "versioner": [
-      {
-        "version": "ECMAScript 5 (ES5)",
-        "utgivningsår": 2009,
-        "sammanfattning": "ES5 var en stor uppdatering som lade till flera viktiga funktioner och strikta regler för att förbättra kodens kvalitet.",
-        "funktioner": ["Strikt läge (Strict mode)", "Getters och Setters", "JSON-hantering"]
-      },
-      {
-        "version": "ECMAScript 6 (ES6)",
-        "utgivningsår": 2015,
-        "sammanfattning": "ES6, även känd som ECMAScript 2015, introducerade en rad nya syntaxer och funktioner som underlättar modern JavaScript-utveckling.",
-        "funktioner": ["Pilar (Arrow functions)", "Klasser (Classes)", "Mallsträngar (Template literals)", "Destrukturering (Destructuring)", "Moduler (Modules)"]
-      },
-      {
-        "version": "ECMAScript 7 (ES7)",
-        "utgivningsår": 2016,
-        "sammanfattning": "ES7 fokuserade på att lägga till nya operatörer och metoder för att göra koden mer läsbar och effektiv.",
-        "funktioner": ["Exponentieringsoperator (Exponentiation operator)", "Array.prototype.includes"]
-      },
-      {
-        "version": "ECMAScript 8 (ES8)",
-        "utgivningsår": 2017,
-        "sammanfattning": "ES8 fortsatte att förbättra asynkron programmering och erbjöd nya verktyg för att hantera objekt.",
-        "funktioner": ["Asynkrona funktioner (Async functions)", "Object.entries", "Object.values"]
-      }
-    ],
-    "populära_bibliotek": [
-      {
-        "namn": "React",
-        "typ": "Bibliotek",
-        "syfte": "Bygga användargränssnitt genom att använda komponentbaserad arkitektur.",
-        "webbplats": "https://reactjs.org/"
-      },
-      {
-        "namn": "Lodash",
-        "typ": "Verktygsbibliotek",
-        "syfte": "Erbjuda hjälpfunktioner för att arbeta med arrays, objekt och funktioner.",
-        "webbplats": "https://lodash.com/"
-      },
-      {
-        "namn": "Axios",
-        "typ": "HTTP-klient",
-        "syfte": "Göra HTTP-förfrågningar för att kommunicera med servern.",
-        "webbplats": "https://axios-http.com/"
-      }
-    ],
-    "användningsområden": ["Webbutveckling", "Server-side scripting", "Utveckling av mobilapplikationer", "Spelutveckling"]
-  },
-  {
-    "HTML": {
-      "språk": "HTML",
-      "introduktion": "HTML är ett märkspråk som används för att skapa och strukturera innehåll på webben. Det är grundläggande för alla webbapplikationer och webbsidor.",
-      "versioner": [
-        {
-          "version": "HTML 4.01",
-          "utgivningsår": 1999,
-          "sammanfattning": "HTML 4.01 var en viktig uppdatering som standardiserade många av funktionerna från HTML 4.0 och förbättrade stödet för stil och struktur.",
-          "funktioner": ["Förbättrat stöd för CSS", "Förbättrad semantik och struktur", "Formulärhantering"]
-        },
-        {
-          "version": "HTML5",
-          "utgivningsår": 2014,
-          "sammanfattning": "HTML5 är den senaste versionen av HTML och introducerade nya element och API:er för att stödja moderna webbläsare och applikationer.",
-          "funktioner": ["Nya semantiska element som `<article>`, `<section>`, `<nav>`, `<footer>`", "Inbyggt stöd för multimedia med `<audio>` och `<video>`", "Formulärkontroller som `<input type=\"date\">` och `<input type=\"range\">`", "Stöd för lokal lagring med Web Storage API", "Canvas-element för grafisk rendering"]
-        }
-      ],
-      "vanliga_element": [
-        {
-          "namn": "DOCTYPE",
-          "beskrivning": "Specifikationen för HTML-dokumentets version.",
-          "exempel": "<!DOCTYPE html>"
-        },
-        {
-          "namn": "html",
-          "beskrivning": "Rot-elementet för ett HTML-dokument.",
-          "exempel": "<html> ... </html>"
-        },
-        {
-          "namn": "head",
-          "beskrivning": "Innehåller metadata om dokumentet, såsom titel och länkar till externa resurser.",
-          "exempel": "<head> ... </head>"
-        },
-        {
-          "namn": "body",
-          "beskrivning": "Innehåller det synliga innehållet på webbsidan.",
-          "exempel": "<body> ... </body>"
-        },
-        {
-          "namn": "a",
-          "beskrivning": "Skapar en hyperlänk till en annan webbsida eller resurs.",
-          "exempel": "<a href=\"https://example.com\">Länktext</a>"
-        },
-        {
-          "namn": "div",
-          "beskrivning": "Används för att gruppera och styla innehåll med CSS.",
-          "exempel": "<div>Innehåll här</div>"
-        },
-        {
-          "namn": "span",
-          "beskrivning": "Används för att styla en del av en text eller ett inline-element.",
-          "exempel": "<span>Text att styla</span>"
-        }
-      ],
-      "användningsområden": ["Strukturera webbsidans innehåll", "Definiera layout och design med CSS", "Skapa formulär och interaktiva element", "Integrera multimedia såsom video och ljud"]
-    }
-  },
-  {
-    "CSS": {
-      "språk": "CSS",
-      "introduktion": "CSS (Cascading Style Sheets) är ett stilarksspråk som används för att beskriva presentationen av ett dokument som skrivs i HTML eller XML. CSS styr utseendet på webbsidor genom att definiera hur HTML-element ska visas på skärmen, i tryck eller på andra medier.",
-      "versioner": [
-        {
-          "version": "CSS2",
-          "utgivningsår": 1998,
-          "sammanfattning": "CSS2 introducerade många nya funktioner och förbättringar över CSS1, inklusive bättre stöd för layout och mediehantering. Den la grunden för många av de stilregler som används idag.",
-          "funktioner": ["Positionering med `position` och `z-index`", "Stöd för flera stilmallar med `@import`", "Mediefrågor för att hantera olika enheter med `@media`", "Textformattering med nya egenskaper som `text-shadow`"]
-        },
-        {
-          "version": "CSS3",
-          "utgivningsår": "1999 (delvis) och fortfarande under utveckling",
-          "sammanfattning": "CSS3 är den senaste versionen och är uppdelad i moduler som var och en lägger till nya funktioner och förbättringar. CSS3 introducerade många nya funktioner för design och layout.",
-          "funktioner": ["Nya layoutmoduler som Flexbox och Grid", "Animering och övergångar med `@keyframes` och `transition`", "Nya selektorer som `:nth-child()` och `:not()`", "Bakgrunds- och gränseffekter med `border-radius`, `box-shadow` och `background-size`", "Responsiv design med `@media` för att hantera olika skärmstorlekar"]
-        }
-      ],
-      "vanliga_element": [
-        {
-          "namn": "selector",
-          "beskrivning": "Väljer de HTML-element som ska stylas. Kan vara en typ, klass eller ID.",
-          "exempel": "p { color: blue; }"
-        },
-        {
-          "namn": "property",
-          "beskrivning": "Definierar vilken stil som ska appliceras på det valda elementet.",
-          "exempel": "color"
-        },
-        {
-          "namn": "value",
-          "beskrivning": "Specificerar värdet på en egenskap i en CSS-regel.",
-          "exempel": "blue"
-        },
-        {
-          "namn": "rule",
-          "beskrivning": "En fullständig CSS-regel som inkluderar en selektor och en uppsättning egenskaper med värden.",
-          "exempel": "p { color: blue; font-size: 16px; }"
-        }
-      ],
-      "användningsområden": ["Styling av text och typografi", "Layout och positionering av element på webbsidan", "Design av responsiva webbsidor för olika enheter", "Skapande av visuella effekter och animeringar", "Förbättring av användargränssnitt med övergångar och animationer"]
-    }
-  }
 ]
-{
-  "uuid": "1.92OmaooyLSIZn8MhhXOKYCkhkYR8H1hMV8igwW7YB4rpOwSEWqNzzDaZbShoIze3xcoeKBHvcyz6bK6jt2mDX0H7BXHDJgjXswolcbMeiEmMvZAVLl4QwhBCzg5I",
-  "version": 3,
-  "domain": "feue256.github.io",
-  "ts": 1722333441339
-}
