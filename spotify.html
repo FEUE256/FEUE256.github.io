@@ -25,8 +25,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 800px;
-            overflow-y: auto; /* Gör att man kan scrolla */
-            max-height: 80vh; /* Max höjd för att förhindra att det sträcker sig utanför skärmen */
+            overflow-y: auto;
+            max-height: 80vh;
         }
         .spotify-logo {
             width: 100px;
@@ -44,7 +44,6 @@
         button {
             background-color: #1DB954;
             color: white;
-            left: 50%;
             border: none;
             border-radius: 5px;
             padding: 10px 15px;
@@ -108,8 +107,8 @@
 
         // Funktion för att logga ut användaren
         logoutButton.addEventListener('click', () => {
-            localStorage.removeItem('access_token'); // Ta bort access token från localStorage
-            window.location.reload(); // Ladda om sidan
+            const username = profileElement.querySelector('div').textContent; // Anta att profilnamnet är användarnamn
+            logout(username);
         });
 
         // Funktion för att extrahera access_token från URL efter inloggning
@@ -118,11 +117,30 @@
             if (hash) {
                 const params = new URLSearchParams(hash.substring(1));
                 const token = params.get('access_token');
-                localStorage.setItem('access_token', token); // Spara token i localStorage
+                const username = params.get('state'); // Användarnamnet skickas som state
+                if (token) {
+                    saveAccessToken(token, username); // Spara token med användarnamn som nyckel
+                }
                 window.history.pushState("", document.title, window.location.pathname); // Rensa URL
                 return token;
             }
-            return localStorage.getItem('access_token'); // Hämta token från localStorage
+            return null; // Ingen token finns
+        }
+
+        // Spara access token med användarnamn som nyckel
+        function saveAccessToken(token, username) {
+            localStorage.setItem(`access_token_${username}`, token);
+        }
+
+        // Hämta access token baserat på användarnamn
+        function getAccessTokenForUser(username) {
+            return localStorage.getItem(`access_token_${username}`);
+        }
+
+        // Logga ut och rensa token
+        function logout(username) {
+            localStorage.removeItem(`access_token_${username}`);
+            window.location.reload(); // Ladda om sidan
         }
 
         // Funktion för att hämta och visa användardata
@@ -198,70 +216,69 @@
                 topArtistsData.items.forEach(artist => {
                     topArtistsElement.innerHTML += `<div>${artist.name}</div>`;
                 });
-
-                // Hämta relaterade artister för den första toppartisten
-                const relatedArtistsResponse = await fetch(`https://api.spotify.com/v1/artists/${topArtistsData.items[0].id}/related-artists`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                const relatedArtistsData = await relatedArtistsResponse.json();
-                if (relatedArtistsData.artists.length > 0) {
-                    relatedArtistsElement.innerHTML = `Relaterade artister: ${relatedArtistsData.artists.length}`;
-                    relatedArtistsElement.style.display = 'block'; // Visa relaterade artister
-                    relatedArtistsData.artists.forEach(artist => {
-                        relatedArtistsElement.innerHTML += `<div>${artist.name}</div>`;
-                    });
-                } else {
-                    relatedArtistsElement.textContent = 'Inga relaterade artister tillgängliga.';
-                    relatedArtistsElement.style.display = 'block'; // Visa relaterade artister
-                }
             } else {
                 topArtistsElement.textContent = 'Inga topp artister tillgängliga.';
                 topArtistsElement.style.display = 'block'; // Visa topp artister
             }
 
-            // Hämta följande användare
+            // Hämta relaterade artister
+            const relatedArtistsResponse = await fetch(`https://api.spotify.com/v1/artists/${topArtistsData.items[0].id}/related-artists`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const relatedArtistsData = await relatedArtistsResponse.json();
+            if (relatedArtistsData.artists.length > 0) {
+                relatedArtistsElement.innerHTML = `Relaterade artister: ${relatedArtistsData.artists.length}`;
+                relatedArtistsElement.style.display = 'block'; // Visa relaterade artister
+                relatedArtistsData.artists.forEach(artist => {
+                    relatedArtistsElement.innerHTML += `<div>${artist.name}</div>`;
+                });
+            } else {
+                relatedArtistsElement.textContent = 'Inga relaterade artister tillgängliga.';
+                relatedArtistsElement.style.display = 'block'; // Visa relaterade artister
+            }
+
+            // Hämta följande
             const followingResponse = await fetch('https://api.spotify.com/v1/me/following?type=artist', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             const followingData = await followingResponse.json();
-            if (followingData.artists.items.length > 0) {
-                followingElement.innerHTML = `Följande: ${followingData.artists.items.length}`;
-                followingElement.style.display = 'block'; // Visa följande
-                followingData.artists.items.forEach(artist => {
-                    followingElement.innerHTML += `<div>${artist.name}</div>`;
-                });
-            } else {
-                followingElement.textContent = 'Inga följande artister tillgängliga.';
-                followingElement.style.display = 'block'; // Visa följande
-            }
+            followingElement.innerHTML = `Följande: ${followingData.artists.items.length}`;
+            followingElement.style.display = 'block'; // Visa följande
+            followingData.artists.items.forEach(artist => {
+                followingElement.innerHTML += `<div>${artist.name}</div>`;
+            });
 
             // Hämta mest spelade låt
-            if (topTracksData.items.length > 0) {
-                mostPlayedElement.innerHTML = `Mest spelade låt: ${topTracksData.items[0].name} - ${topTracksData.items[0].artists[0].name}`;
+            const mostPlayedResponse = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=1', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const mostPlayedData = await mostPlayedResponse.json();
+            if (mostPlayedData.items.length > 0) {
+                mostPlayedElement.innerHTML = `Mest spelade låt: ${mostPlayedData.items[0].name} - ${mostPlayedData.items[0].artists[0].name}`;
                 mostPlayedElement.style.display = 'block'; // Visa mest spelade låt
             } else {
-                mostPlayedElement.textContent = 'Ingen mest spelad låt tillgänglig.';
-                mostPlayedElement.style.display = 'block'; // Visa mest spelad låt
+                mostPlayedElement.textContent = 'Ingen mest spelade låt tillgänglig.';
+                mostPlayedElement.style.display = 'block'; // Visa mest spelade låt
             }
         }
 
-        // Huvudfunktion för att initiera appen
-        (async () => {
+        // Hämta användardata efter inloggning
+        window.onload = () => {
             const token = getAccessToken();
+            const username = prompt('Ange ditt användarnamn:'); // Fråga om användarnamn vid inloggning
             if (token) {
-                loginButton.style.display = 'none'; // Dölj logga in-knappen
-                logoutButton.style.display = 'block'; // Visa logga ut-knappen
-                await getUserData(token); // Hämta och visa användardata
-            } else {
-                loginButton.style.display = 'block'; // Visa logga in-knappen
-                logoutButton.style.display = 'none'; // Dölj logga ut-knappen
+                saveAccessToken(token, username); // Spara token
+                getUserData(token); // Hämta användardata
+                loginButton.style.display = 'none'; // Dölj inloggningsknappen
+                logoutButton.style.display = 'block'; // Visa utloggningsknappen
             }
-        })();
+        };
     </script>
-
 </body>
 </html>
