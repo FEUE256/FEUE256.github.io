@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Användarinformation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1DB954;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow-y: scroll;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background-color: #191414;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            overflow-y: auto; /* Gör att man kan scrolla */
+            max-height: 80vh; /* Max höjd för att förhindra att det sträcker sig utanför skärmen */
+        }
+        .spotify-logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .likes, .profile, .playlists, .top-tracks, .top-artists, .related-artists, .following, .most-played, .subscription {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        button {
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #1aa34a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify Logo" class="spotify-logo">
+        <div class="profile" id="profile"></div>
+        <div class="subscription" id="subscription"></div>
+        <div id="likes" class="likes">Gillade låtar: </div>
+        <div id="playlists" class="playlists">Spellistor: </div>
+        <div id="topTracks" class="top-tracks">Topp låtar: </div>
+        <div id="top-artists" class="top-artists">Topp artister: </div>
+        <div id="related-artists" class="related-artists">Relaterade artister: </div>
+        <div id="following" class="following">Följande: </div>
+        <div id="mostPlayed" class="most-played">Mest spelade låt: </div>
+        <button id="loginButton">Logga in med Spotify</button>
+        <button id="logoutButton" style="display:none;">Logga ut</button>
+    </div>
+
+    <script>
+        const clientId = '298808efdd1e4b3d81af791afdcf1b9d'; // Ersätt med din Spotify Client ID
+        const redirectUri = window.location.href; // Använd nuvarande URL som redirect
+        const authEndpoint = 'https://accounts.spotify.com/authorize';
+        const scopes = [
+            'user-library-read',
+            'playlist-read-private',
+            'user-top-read',
+            'user-read-private',
+            'user-follow-read',
+            'user-read-playback-state',
+            'user-read-currently-playing'
+        ]; // Behörigheter för att läsa användardata
+
+        const loginButton = document.getElementById('loginButton');
+        const logoutButton = document.getElementById('logoutButton');
+        const likesElement = document.getElementById('likes');
+        const profileElement = document.getElementById('profile');
+        const playlistsElement = document.getElementById('playlists');
+        const topTracksElement = document.getElementById('topTracks');
+        const topArtistsElement = document.getElementById('top-artists');
+        const relatedArtistsElement = document.getElementById('related-artists');
+        const followingElement = document.getElementById('following');
+        const mostPlayedElement = document.getElementById('mostPlayed');
+        const subscriptionElement = document.getElementById('subscription');
+
+        // Funktion för att logga in användaren
+        loginButton.addEventListener('click', () => {
+            const url = `${authEndpoint}?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes.join(' '))}&response_type=token&show_dialog=true`;
+            window.location = url;
+        });
+
+        // Funktion för att logga ut användaren
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('access_token'); // Ta bort access token från localStorage
+            window.location.reload(); // Ladda om sidan
+        });
+
+        // Funktion för att extrahera access_token från URL efter inloggning
+        function getAccessToken() {
+            const hash = window.location.hash;
+            if (hash) {
+                const params = new URLSearchParams(hash.substring(1));
+                const token = params.get('access_token');
+                localStorage.setItem('access_token', token); // Spara token i localStorage
+                window.history.pushState("", document.title, window.location.pathname); // Rensa URL
+                return token;
+            }
+            return localStorage.getItem('access_token'); // Hämta token från localStorage
+        }
+
+        // Funktion för att hämta och visa användardata
+        async function getUserData(token) {
+            // Hämta användarens profilinformation
+            const profileResponse = await fetch('https://api.spotify.com/v1/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const profileData = await profileResponse.json();
+            profileElement.innerHTML = `
+                <img src="${profileData.images[0]?.url}" alt="Profilbild">
+                <div>${profileData.display_name}</div>
+            `;
+            
+            // Hämta abonnemangsnivå
+            subscriptionElement.innerHTML = `Prenumeration: ${profileData.product}`;
+
+            // Hämta och visa antalet gillade låtar
+            const likesResponse = await fetch('https://api.spotify.com/v1/me/tracks', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const likesData = await likesResponse.json();
+            likesElement.textContent = `Gillade låtar: ${likesData.total}`;
+
+            // Hämta spellistor
+            const playlistsResponse = await fetch('https://api.spotify.com/v1/me/playlists', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const playlistsData = await playlistsResponse.json();
+            playlistsElement.innerHTML = `Spellistor: ${playlistsData.items.length}`;
+            playlistsData.items.forEach(playlist => {
+                playlistsElement.innerHTML += `<div>${playlist.name}</div>`;
+            });
+
+            // Hämta topp låtar
+            const topTracksResponse = await fetch('https://api.spotify.com/v1/me/top/tracks', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const topTracksData = await topTracksResponse.json();
+            if (topTracksData.items.length > 0) {
+                topTracksElement.innerHTML = `Topp låtar: ${topTracksData.items.length}`;
+                topTracksData.items.forEach(track => {
+                    topTracksElement.innerHTML += `<div>${track.name} - ${track.artists[0].name}</div>`;
+                });
+            } else {
+                topTracksElement.textContent = 'Inga topp låtar tillgängliga.';
+            }
+
+            // Hämta topp artister
+            const topArtistsResponse = await fetch('https://api.spotify.com/v1/me/top/artists', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const topArtistsData = await topArtistsResponse.json();
+            if (topArtistsData.items.length > 0) {
+                topArtistsElement.innerHTML = `Topp artister: ${topArtistsData.items.length}`;
+                topArtistsData.items.forEach(artist => {
+                    topArtistsElement.innerHTML += `<div>${artist.name}</div>`;
+                });
+
+                // Hämta relaterade artister för den första toppartisten
+                const relatedArtistsResponse = await fetch(`https://api.spotify.com/v1/artists/${topArtistsData.items[0].id}/related-artists`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                const relatedArtistsData = await relatedArtistsResponse.json();
+                if (relatedArtistsData.artists.length > 0) {
+                    relatedArtistsElement.innerHTML = `Relaterade artister: ${relatedArtistsData.artists.length}`;
+                    relatedArtistsData.artists.forEach(artist => {
+                        relatedArtistsElement.innerHTML += `<div>${artist.name}</div>`;
+                    });
+                } else {
+                    relatedArtistsElement.textContent = 'Inga relaterade artister tillgängliga.';
+                }
+            } else {
+                topArtistsElement.textContent = 'Inga topp artister tillgängliga.';
+            }
+
+            // Hämta följande användare
+            const followingResponse = await fetch('https://api.spotify.com/v1/me/following?type=artist', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const followingData = await followingResponse.json();
+            if (followingData.artists.items.length > 0) {
+                followingElement.innerHTML = `Följande: ${followingData.artists.items.length}`;
+                followingData.artists.items.forEach(artist => {
+                    followingElement.innerHTML += `<div>${artist.name}</div>`;
+                });
+            } else {
+                followingElement.textContent = 'Inga följande artister tillgängliga.';
+            }
+
+            // Hämta mest spelade låt
+            if (topTracksData.items.length > 0) {
+                mostPlayedElement.innerHTML = `Mest spelade låt: ${topTracksData.items[0].name} - ${topTracksData.items[0].artists[0].name}`;
+            } else {
+                mostPlayedElement.textContent = 'Ingen mest spelad låt tillgänglig.';
+            }
+        }
+
+        // Huvudfunktion för att initiera appen
+        (async () => {
+            const token = getAccessToken();
+            if (token) {
+                loginButton.style.display = 'none'; // Dölj logga in-knappen
+                logoutButton.style.display = 'block'; // Visa logga ut-knappen
+                await getUserData(token); // Hämta och visa användardata
+            } else {
+                loginButton.style.display = 'block'; // Visa logga in-knappen
+                logoutButton.style.display = 'none'; // Dölj logga ut-knappen
+            }
+        })();
+    </script>
+
+</body>
+</html>
