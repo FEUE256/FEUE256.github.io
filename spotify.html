@@ -267,18 +267,6 @@
                 mostPlayedElement.style.display = 'block'; // Visa mest spelade låt
             }
         }
-
-        // Hämta användardata efter inloggning
-        window.onload = () => {
-            const token = getAccessToken();
-            const username = prompt('Ange ditt användarnamn:'); // Fråga om användarnamn vid inloggning
-            if (token) {
-                saveAccessToken(token, username); // Spara token
-                getUserData(token); // Hämta användardata
-                loginButton.style.display = 'none'; // Dölj inloggningsknappen
-                logoutButton.style.display = 'block'; // Visa utloggningsknappen
-            }
-        };
     </script>
 </body>
 </html>
