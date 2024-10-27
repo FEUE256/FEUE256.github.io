@@ -13,11 +13,37 @@ list-style-type: none; /* Tar bort prickarna eller numreringen */
 padding: 0; /* Tar bort inre marginaler */
 margin: 0; /* Tar bort yttre marginaler */
 }
+
+    /* start.css */
+
+/* Standard stil (ljus tema) */
+body {
+    background-color: white; /* Bakgrundsfärg för ljus tema */
+    color: black; /* Textfärg för ljus tema */
+}
+
+/* Mörkt tema */
+body.dark-theme {
+    background-color: black; /* Bakgrundsfärg för mörk tema */
+    color: white; /* Textfärg för mörk tema */
+}
+
+/* Stil för switch-knappen */
+.theme-switcher {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    margin: 10px;
+    border-radius: 5px;
+}
+
 </style>
 </head>
 <body>
 <header>
 <h1>Välkommen till FÈUE</h1>
+<h2>Skapat av Nils Efverman</h2>
 <nav>
 <ul>
 <li><a href="about.chat.openai.com.html">Om</a></li>
@@ -39,6 +65,46 @@ margin: 0; /* Tar bort yttre marginaler */
 </head>
 <body>
 <button id="vibrateButton">Vibrera</button>
+<!-- video.html -->
+<body>
+    <div class="container">
+        <!-- Andra element -->
+        <div class="theme-switcher" onclick="toggleTheme()">Switch Theme</div>
+    </div>
+    <script>
+        // script.js
+
+// Funktion för att byta tema
+function toggleTheme() {
+    const body = document.body;
+
+    // Kolla om body har klassen 'dark-theme'
+    if (body.classList.contains('dark-theme')) {
+        body.classList.remove('dark-theme'); // Ta bort mörkt tema
+    } else {
+        body.classList.add('dark-theme'); // Lägg till mörkt tema
+    }
+}
+
+// Spara tema-inställningen i lokal lagring
+function saveTheme() {
+    const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+}
+
+// Ladda temat vid sidladdning
+function loadTheme() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+}
+
+// Anropa loadTheme-funktionen vid sidladdning
+window.onload = loadTheme;
+
+    </script>
+</body>
 
 <script>
 document.getElementById('vibrateButton').addEventListener('click', function() {
@@ -261,9 +327,8 @@ alert('Vibrationer stöds inte på denna enhet.');
 <meta name="robots" content="index, follow">
 <meta name="generator" content="WordPress">
 <meta http-equiv="content-language" content="sv">
-<meta http-equiv="refresh" content="6000000; URL='https://feue.webber.se'">
-<link rel="icon" sizes="32x32" href="Icon/Free_Sample_By_Wix.ico" type="image/icon">
-<link rel="icon" sizes="32x32" href="Icon/Free_Sample_By_Wix.ico">
+<link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico" type="image/icon">
+<link rel="icon" sizes="32x32" href="Free_Sample_By_Wix.ico">
 
 
 
