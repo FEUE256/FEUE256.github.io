@@ -91,50 +91,7 @@ body.dark-theme {
     </script>
 </head>
 <body>
-    <div id="progress-bar"></div>
-    <div style="height: 2000px;">
-        <h1>Scroll Progress Indicator</h1>
-        <p>Scrolla ner för att se indikatorn.</p>
-    </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progress Bar</title>
-    <style>
-        #progress {
-            width: 100%;
-            background-color: #f3f3f3;
-            border: 1px solid #ccc;
-        }
-        #progress-bar {
-            height: 30px;
-            width: 0;
-            background-color: green;
-            transition: width 0.5s;
-        }
-    </style>
-    <script>
-        function increaseProgress() {
-            const bar = document.getElementById('progress-bar');
-            let width = parseInt(bar.style.width);
-            if (width < 100) {
-                bar.style.width = (width + 10) + '%';
-            }
-        }
-    </script>
-</head>
-<body>
-    <h1>Progress Bar</h1>
-    <div id="progress">
-        <div id="progress-bar"></div>
-    </div>
-    <button onclick="increaseProgress()">Öka Progress</button>
-</body>
-</html>
+
 
 <!DOCTYPE html>
 <html lang="sv">
@@ -275,6 +232,7 @@ alert('Vibrationer stöds inte på denna enhet.');
 
   
 <h2>Fill index</h2>
+<li><a href="localhost.html"></a></li>
 <li><a href="https://feue256.github.io/Spel/Index.html">Mobil spel</a></li>
 <li><a href="https://feue256.github.io/Spel/info.html">Info</a></li>
 <li><a href="Spel.html">Online spel</a></li>
