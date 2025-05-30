@@ -21,6 +21,14 @@
       padding: 1rem 1.5rem;
       margin: 1rem auto;
       max-width: 400px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .team-member.active {
+      background-color: #0055aa;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,85,170,0.7);
     }
     .name {
       font-size: 1.3rem;
@@ -29,23 +37,44 @@
     }
     .role {
       font-style: italic;
-      color: #555;
+      color: inherit;
     }
   </style>
 </head>
 <body>
   <h1>Team FEUE FSS</h1>
-  <div class="team-member">
+  <div class="team-member" tabindex="0">
     <div class="name">Nils Efverman</div>
     <div class="role">Huvudutvecklare, mjukvaruutvecklare och skapare av FEUE och FEUE FSS</div>
   </div>
-  <div class="team-member">
+  <div class="team-member" tabindex="0">
     <div class="name">Joe Wells</div>
     <div class="role">Assistentutvecklare, grafisk designer och medskapare av FEUE FSS</div>
   </div>
-  <div class="team-member">
+  <div class="team-member" tabindex="0">
     <div class="name">Dexter Grant</div>
     <div class="role">Medarbetare, testare och felsökare i koden till FEUE FSS</div>
   </div>
+
+  <script>
+    const members = document.querySelectorAll('.team-member');
+
+    members.forEach(member => {
+      member.addEventListener('click', () => {
+        member.classList.add('active');
+        setTimeout(() => {
+          member.classList.remove('active');
+        }, 800);
+      });
+
+      // För att stödja keyboard: Enter eller Space aktiverar också animation
+      member.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          member.click();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
