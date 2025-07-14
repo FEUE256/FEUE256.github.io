@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<title>3D Visualisering med CSS</title>
+<style>
+  body {
+    margin: 0; padding: 20px; background: #222;
+    color: white; font-family: Arial, sans-serif;
+    perspective: 800px;
+  }
+
+  #scene {
+    position: relative;
+    width: 400px; height: 400px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    transform: rotateX(20deg) rotateY(-30deg);
+  }
+
+  .object, .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #4a90e2;
+    background: rgba(74, 144, 226, 0.7);
+    box-sizing: border-box;
+  }
+
+  .object {
+    background: #4a90e2;
+    border: 3px solid #1c3d72;
+    bottom: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+  }
+
+  .ring {
+    border-color: #e27a4a;
+    background: transparent;
+  }
+
+  /* Kontrollpanel */
+  label {
+    margin-right: 10px;
+  }
+
+  input {
+    width: 50px;
+  }
+
+  button {
+    margin-left: 10px;
+    padding: 5px 10px;
+  }
+
+</style>
+</head>
+<body>
+
+<h2>3D Visualisering av objekt med ringar (CSS 3D)</h2>
+
+<label for="step">Steg (n):</label>
+<input type="number" id="step" value="0" min="0" max="20" step="1" />
+
+<label for="thickness">Tjocklek (t) km:</label>
+<input type="number" id="thickness" value="10" min="1" step="1" />
+
+<button id="drawBtn">Rita</button>
+
+<div id="scene"></div>
+
+<script>
+  const scene = document.getElementById('scene');
+  const D0 = 176;      // km startdiameter
+  const r = 1.125;     // tillväxtfaktor
+  const PI = Math.PI;
+
+  // Skala km till px (justera vid behov)
+  const scale = 1.2;
+
+  function diameter(n) {
+    return D0 * Math.pow(r, n);
+  }
+
+  function circumference(n) {
+    return PI * diameter(n);
+  }
+
+  function ringCount(n, t) {
+    return circumference(n) / t;
+  }
+
+  function clearScene() {
+    while (scene.firstChild) {
+      scene.removeChild(scene.firstChild);
+    }
+  }
+
+  function createCircleElement(size, className) {
+    const div = document.createElement('div');
+    div.className = className;
+    div.style.width = size + 'px';
+    div.style.height = size + 'px';
+    div.style.marginLeft = -size / 2 + 'px';
+    div.style.marginBottom = -size / 2 + 'px';
+    return div;
+  }
+
+  function draw3DObject(n, t) {
+    clearScene();
+
+    const D = diameter(n);
+    const R = ringCount(n, t);
+
+    // Skapa huvudobjekt (en blå cirkel i mitten)
+    const objSize = D * scale;
+    const obj = createCircleElement(objSize, 'object');
+    obj.style.bottom = '50%';
+    obj.style.left = '50%';
+    obj.style.position = 'absolute';
+    obj.style.transform = `translateZ(0px)`; // ligger i z=0-plan
+    scene.appendChild(obj);
+
+    // Skapa ringar runt objektet i z-led (stackade djup)
+    for(let i = 1; i <= Math.floor(R); i++) {
+      const ringDiameter = (D + 2 * i * t) * scale;
+      const ring = createCircleElement(ringDiameter, 'ring');
+      // Placera ringarna i olika djup för 3D-effekt
+      ring.style.position = 'absolute';
+      ring.style.bottom = '50%';
+      ring.style.left = '50%';
+      ring.style.transform = `translateZ(${-i * 15}px)`; // djup 15px per ring bakåt
+      scene.appendChild(ring);
+    }
+  }
+
+  document.getElementById('drawBtn').addEventListener('click', () => {
+    const n = Number(document.getElementById('step').value);
+    const t = Number(document.getElementById('thickness').value);
+    draw3DObject(n, t);
+  });
+
+  // Rita initialt
+  draw3DObject(0, 10);
+</script>
+
+</body>
+</html>
